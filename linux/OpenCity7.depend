@@ -1,0 +1,1515 @@
+# depslib dependency file v1.0
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/audiomanagersdl.cpp
+	"audiomanagersdl.h"
+	<fstream>
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/audiomanagersdl.h
+	"main.h"
+	"SDL_mixer.h"
+	<vector>
+
+1439259063 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/main.h
+	"config.h"
+	"../win32/config.h"
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glext.h>
+	"SDL.h"
+	"SDL_thread.h"
+	"SDL_opengl.h"
+	<string>
+	"macros.h"
+	"enum.h"
+
+1430348580 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/linux//config.h
+
+1430348580 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/win32/config.h
+
+1422001838 /usr/include/SDL/SDL.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_config.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1422001838 /usr/include/SDL/SDL_platform.h
+
+1422001838 /usr/include/SDL/begin_code.h
+
+1422001838 /usr/include/SDL/close_code.h
+
+1422001838 /usr/include/SDL/SDL_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_keysym.h
+
+1422001838 /usr/include/SDL/SDL_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1422001838 /usr/include/SDL/SDL_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_opengl.h
+	"SDL_config.h"
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<gl.h>
+	<glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<windows.h>
+	<stddef.h>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/macros.h
+	<iostream>
+	<cassert>
+	<ciso646>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/enum.h
+
+1413564633 /usr/include/SDL/SDL_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1422001838 /usr/include/SDL/SDL_types.h
+	"SDL_stdinc.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/binreloc/binreloc.c
+	"config.h"
+	"../win32/config.h"
+	<sys/types.h>
+	<sys/stat.h>
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+	<string.h>
+	"binreloc.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/binreloc/binreloc.h
+
+1439258143 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/buildinglayer.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"buildinglayer.h"
+	"city.h"
+	"rcistructure.h"
+	"wegstructure.h"
+	"pathstructure.h"
+	"treestructure.h"
+	"guicontainer.h"
+	"guibutton.h"
+	"globalvar.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/enum/opencity_direction.h
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/enum/opencity_structure_type.h
+
+1439258295 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/buildinglayer.h
+	"main.h"
+	"layer.h"
+
+1439258560 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/layer.h
+	"main.h"
+	"persistence.h"
+	"ui.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/persistence.h
+	"main.h"
+	<fstream>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/ui.h
+	"macros.h"
+	"SDL.h"
+
+1439335751 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/city.h
+	"main.h"
+	"persistence.h"
+	"ui.h"
+	<deque>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/rcistructure.h
+	"structure.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/structure.h
+	"main.h"
+	"persistence.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/wegstructure.h
+	"structure.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/pathstructure.h
+	"structure.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/treestructure.h
+	"structure.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guicontainer.h
+	"guimain.h"
+	"texture.h"
+	<vector>
+
+1433730111 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guimain.h
+	"main.h"
+	"ui.h"
+	"SDL_image.h"
+
+1413435081 /usr/include/SDL/SDL_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/texture.h
+	"main.h"
+	<map>
+	<utility>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guibutton.h
+	"guimain.h"
+	"texture.h"
+
+1439258965 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/globalvar.h
+	"audiomanagersdl.h"
+	"audiomanager.h"
+	"main.h"
+	"extensionmanager.h"
+	"graphicmanager.h"
+	"map.h"
+	"propertymanager.h"
+	"renderer.h"
+	"networking.h"
+	"movementmanager.h"
+	"kernel.h"
+	"environment.h"
+	"pathfinder.h"
+	"mapgen/mapmaker.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/audiomanager.h
+	"main.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/extensionmanager.h
+	"main.h"
+
+1439259847 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/graphicmanager.h
+	"main.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/map.h
+	"main.h"
+	"persistence.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/propertymanager.h
+	"main.h"
+	"conf.h"
+	<vector>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/conf.h
+	"main.h"
+	<map>
+
+1431997004 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/renderer.h
+	"main.h"
+	"texture.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/networking/networking.h
+	"main.h"
+	"SDL_net.h"
+	<vector>
+
+1413389622 /usr/include/SDL/SDL_net.h
+	"SDL.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/movementmanager.h
+	"main.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/kernel.h
+	"agent.h"
+	<map>
+	<list>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/agent.h
+	"role.h"
+	"main.h"
+	<ostream>
+	<list>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/role.h
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/environment.h
+	<vector>
+	<map>
+	"agent.h"
+	"agentposition.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/agentposition.h
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/pathfinder.h
+	"main.h"
+	<vector>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/mapmaker.h
+	"map.h"
+	<vector>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/map.h
+	"macros.h"
+	<string>
+
+1440124208 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/city.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"city.h"
+	"vehicle.h"
+	"mainsim.h"
+	"structure.h"
+	"buildinglayer.h"
+	"guibar.h"
+	"guibutton.h"
+	"guilabel.h"
+	"guicontainer.h"
+	"guiwindow.h"
+	"agentpolice.h"
+	"agentdemonstrator.h"
+	"agentrobber.h"
+	"globalvar.h"
+	<sstream>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/vehicle.h
+	"movement.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/movement.h
+	"main.h"
+	"destination.h"
+	<vector>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/destination.h
+	"main.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/mainsim.h
+	"main.h"
+	"simulator.h"
+
+1433119751 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/simulator.h
+	"main.h"
+	"persistence.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guibar.h
+	"guimain.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guilabel.h
+	"guimain.h"
+
+1439515796 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guiwindow.h
+	"guimain.h"
+	"guibutton.h"
+	"texture.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/agentpolice.h
+	"agent.h"
+	<vector>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/agentdemonstrator.h
+	"agent.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/agentrobber.h
+	"agent.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/conf.cpp
+	"conf.h"
+	<fstream>
+	<cerrno>
+	<cctype>
+	<cstring>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/destination.cpp
+	"opencity_direction.h"
+	"destination.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/extensionmanager.cpp
+	"extensionmanager.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/AValueType.cpp
+	"AValueType.h"
+	"CString.h"
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/AValueType.h
+	"CObject.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CObject.h
+	"SharpPlus.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/SharpPlus.h
+	<typeinfo>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CString.h
+	"CObject.h"
+	<string>
+	<ostream>
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CBoolean.cpp
+	"CBoolean.h"
+	"CNullValue.h"
+	"CString.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CBoolean.h
+	"CObject.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CNullValue.h
+	"AValueType.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CConsole.cpp
+	"CConsole.h"
+	"CString.h"
+	<iostream>
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CConsole.h
+	"CObject.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CEnum.cpp
+	"CEnum.h"
+	"CString.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CEnum.h
+	"AValueType.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CException.cpp
+	"CException.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CException.h
+	"CObject.h"
+	"CString.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CNullValue.cpp
+	"CNullValue.h"
+	"CString.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CObject.cpp
+	"CNullValue.h"
+	"CObject.h"
+	"CString.h"
+	"CType.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CType.h
+	"Reflection/CMemberInfo.h"
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Reflection/CMemberInfo.h
+	"System/CObject.h"
+	"System/CString.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CString.cpp
+	"CNullValue.h"
+	"CString.h"
+	<sstream>
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CStringSplitOptions.cpp
+	"CStringSplitOptions.h"
+	"CString.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CStringSplitOptions.h
+	"CEnum.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/CType.cpp
+	"CType.h"
+	"cxxabi.h"
+	<cstdlib>
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Diagnostics/CDebug.cpp
+	"CDebug.h"
+	"System/CConsole.h"
+	"System/CString.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Diagnostics/CDebug.h
+	"System/CObject.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Information/Software/CSdl.cpp
+	"CSdl.h"
+	"System/CString.h"
+	"SDL.h"
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Information/Software/CSdl.h
+	"System/CObject.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Reflection/CMemberInfo.cpp
+	"CMemberInfo.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlDocument.cpp
+	"CXmlDocument.h"
+	"System/CString.h"
+	"System/CException.h"
+	<libxml/parser.h>
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlDocument.h
+	"CXmlNode.h"
+	<libxml/tree.h>
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlNode.h
+	"System/CObject.h"
+	"System/CString.h"
+
+1448034196 /usr/include/libxml2/libxml/tree.h
+	<stdio.h>
+	<limits.h>
+	<libxml/xmlversion.h>
+	<libxml/xmlstring.h>
+	<libxml/xmlregexp.h>
+	<libxml/xmlmemory.h>
+
+1448034196 /usr/include/libxml2/libxml/xmlversion.h
+	<libxml/xmlexports.h>
+	<ansidecl.h>
+
+1448034196 /usr/include/libxml2/libxml/xmlexports.h
+
+1448034196 /usr/include/libxml2/libxml/xmlstring.h
+	<stdarg.h>
+	<libxml/xmlversion.h>
+
+1448034196 /usr/include/libxml2/libxml/xmlregexp.h
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+	<libxml/dict.h>
+
+1448034196 /usr/include/libxml2/libxml/dict.h
+	<limits.h>
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+
+1448034196 /usr/include/libxml2/libxml/xmlmemory.h
+	<stdio.h>
+	<libxml/xmlversion.h>
+	<libxml/threads.h>
+	<libxml/globals.h>
+
+1448034196 /usr/include/libxml2/libxml/threads.h
+	<libxml/xmlversion.h>
+	<libxml/globals.h>
+
+1448034196 /usr/include/libxml2/libxml/globals.h
+	<libxml/xmlversion.h>
+	<libxml/parser.h>
+	<libxml/xmlerror.h>
+	<libxml/SAX.h>
+	<libxml/SAX2.h>
+	<libxml/xmlmemory.h>
+	<libxml/threads.h>
+
+1448034196 /usr/include/libxml2/libxml/parser.h
+	<stdarg.h>
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+	<libxml/dict.h>
+	<libxml/hash.h>
+	<libxml/valid.h>
+	<libxml/entities.h>
+	<libxml/xmlerror.h>
+	<libxml/xmlstring.h>
+	<libxml/encoding.h>
+	<libxml/xmlIO.h>
+	<libxml/globals.h>
+
+1448034196 /usr/include/libxml2/libxml/hash.h
+	<libxml/xmlversion.h>
+	<libxml/parser.h>
+	<libxml/dict.h>
+
+1448034196 /usr/include/libxml2/libxml/valid.h
+	<libxml/xmlversion.h>
+	<libxml/xmlerror.h>
+	<libxml/tree.h>
+	<libxml/list.h>
+	<libxml/xmlautomata.h>
+	<libxml/xmlregexp.h>
+
+1448034196 /usr/include/libxml2/libxml/xmlerror.h
+	<libxml/parser.h>
+
+1448034196 /usr/include/libxml2/libxml/list.h
+	<libxml/xmlversion.h>
+
+1448034196 /usr/include/libxml2/libxml/xmlautomata.h
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+	<libxml/xmlregexp.h>
+
+1448034196 /usr/include/libxml2/libxml/entities.h
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+
+1448034196 /usr/include/libxml2/libxml/encoding.h
+	<libxml/xmlversion.h>
+	<iconv.h>
+	<unicode/ucnv.h>
+	<libxml/tree.h>
+
+1448034196 /usr/include/libxml2/libxml/xmlIO.h
+	<stdio.h>
+	<libxml/xmlversion.h>
+	<libxml/globals.h>
+	<libxml/tree.h>
+	<libxml/parser.h>
+	<libxml/encoding.h>
+
+1448034196 /usr/include/libxml2/libxml/SAX.h
+	<stdio.h>
+	<stdlib.h>
+	<libxml/xmlversion.h>
+	<libxml/parser.h>
+	<libxml/xlink.h>
+
+1448034196 /usr/include/libxml2/libxml/xlink.h
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+
+1448034196 /usr/include/libxml2/libxml/SAX2.h
+	<stdio.h>
+	<stdlib.h>
+	<libxml/xmlversion.h>
+	<libxml/parser.h>
+	<libxml/xlink.h>
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlElement.cpp
+	"CXmlElement.h"
+	"System/CString.h"
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlElement.h
+	"CXmlLinkedNode.h"
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlLinkedNode.h
+	"CXmlNode.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlLinkedNode.cpp
+	"CXmlLinkedNode.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlNode.cpp
+	"CXmlNode.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlNodeList.cpp
+	"CXmlNodeList.h"
+	"System/CString.h"
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/framework/System/Xml/CXmlNodeList.h
+	"System/CObject.h"
+	"CXmlNode.h"
+	<vector>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/globalvar.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"globalvar.h"
+
+1439259800 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/graphicmanager.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"graphicmanager.h"
+	"structure.h"
+	"model.h"
+	"modelloader.h"
+	"movement.h"
+	"agent.h"
+	"conf.h"
+	"globalvar.h"
+	<cmath>
+	<sstream>
+
+1439259985 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/model.h
+	"main.h"
+	"texture.h"
+
+1439260237 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/modelloader.h
+	"main.h"
+	"ac3dobject.h"
+	"ac3dmaterial.h"
+	<vector>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/ac3dobject.h
+	"ac3dsurface.h"
+	<vector>
+	<string>
+	<sstream>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/ac3dsurface.h
+	<vector>
+	<string>
+	<sstream>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/ac3dmaterial.h
+	<string>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/gui3dview.cpp
+	"gui3dview.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/gui3dview.h
+	"main.h"
+	"guimain.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guibar.cpp
+	"guibar.h"
+	"guicontainer.h"
+
+1432688238 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guibutton.cpp
+	"guibutton.h"
+	"guicontainer.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guicontainer.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"guicontainer.h"
+	"globalvar.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guilabel.cpp
+	"guilabel.h"
+	"guicontainer.h"
+	"font_8x8.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/font_8x8.h
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guimain.cpp
+	"guimain.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/layer.cpp
+	"opencity_structure_type.h"
+	"layer.h"
+	"structure.h"
+	"guicontainer.h"
+	"guibutton.h"
+
+1439259046 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/main.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"main.h"
+	"city.h"
+	"conf.h"
+	"agentpolice.h"
+	"agentdemonstrator.h"
+	"globalvar.h"
+	"SDL_image.h"
+	"binreloc.h"
+	"tinyxml.h"
+	"SimpleOpt.h"
+	<cmath>
+	<cstdlib>
+	<sstream>
+	<ctime>
+	"property.h"
+	"propertymanager2.h"
+	"framework/System/CString.h"
+	"framework/System/Information/Software/CSdl.h"
+	<sys/stat.h>
+	<windows.h>
+	<shlobj.h>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxml/tinyxml.h
+	<cctype>
+	<cstdio>
+	<cstdlib>
+	<cassert>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxml/tinystr.h
+	<cassert>
+	<string>
+	<cstring>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/SimpleOpt.h
+	<crtdbg.h>
+	<assert.h>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/property.h
+	"main.h"
+	<climits>
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/propertymanager2.h
+	"main.h"
+	<map>
+	"property.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/map.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"map.h"
+	"layer.h"
+	"mapmaker.h"
+	"globalvar.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/choper.cpp
+	"choper.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/choper.h
+	"filter.h"
+	"shape.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/filter.h
+	"../map.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shape.h
+	"../map.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/context.cpp
+	"context.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/context.h
+	"../map.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/contextOnlyPositive.cpp
+	"contextOnlyPositive.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/contextOnlyPositive.h
+	"context.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/contextualizer.cpp
+	"contextualizer.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/contextualizer.h
+	"filter.h"
+	"context.h"
+	"../map.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/cutter.cpp
+	"cutter.h"
+	"map.h"
+	<cmath>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/cutter.h
+	"filter.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/filter.cpp
+	"filter.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/flattern.cpp
+	"flattern.h"
+	"map.h"
+	<cmath>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/flattern.h
+	"filter.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/gaussblur.cpp
+	"gaussblur.h"
+	<cmath>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/gaussblur.h
+	"filter.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/normalize.cpp
+	"normalize.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/normalize.h
+	"filter.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shape.cpp
+	"shape.h"
+	<math.h>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shapeBubble.cpp
+	"shapeBubble.h"
+	<math.h>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shapeBubble.h
+	"shape.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shaper.cpp
+	"shaper.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shaper.h
+	"filter.h"
+	"shape.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shapeTopRound.cpp
+	"shapeTopRound.h"
+	<math.h>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shapeTopRound.h
+	"shape.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shapeVolcano.cpp
+	"shapeVolcano.h"
+	<math.h>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/filter/shapeVolcano.h
+	"shape.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/generator/diamon.cpp
+	"diamon.h"
+	<cmath>
+	<cstdlib>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/generator/diamon.h
+	"generator.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/generator/generator.h
+	"../map.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/generator/generator.cpp
+	"generator.h"
+	<cstdlib>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/generator/heightMap.cpp
+	"heightMap.h"
+	"SDL_image.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/generator/heightMap.h
+	"generator.h"
+	"SDL.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/map.cpp
+	"map.h"
+	<cmath>
+	<fstream>
+	<assert.h>
+	"SDL.h"
+	"pngfuncs.h"
+
+1430348577 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/pngfuncs/pngfuncs.h
+	"SDL.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mapgen/mapmaker.cpp
+	"mapmaker.h"
+	"diamon.h"
+	"heightMap.h"
+	"gaussblur.h"
+	"flattern.h"
+	"normalize.h"
+	"shaper.h"
+	"choper.h"
+	"shapeBubble.h"
+	"shapeTopRound.h"
+	"shapeVolcano.h"
+	"contextualizer.h"
+	"contextOnlyPositive.h"
+	"cutter.h"
+	<cassert>
+	<cmath>
+	<cstdlib>
+	<ctime>
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/agent.cpp
+	"opencity_structure_type.h"
+	"agent.h"
+	"kernel.h"
+	"environment.h"
+	"message.h"
+	"structure.h"
+	<cassert>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/message.h
+	"any.h"
+	<vector>
+	<list>
+	<string>
+	<ostream>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/any.h
+	<string>
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/agentdemonstrator.cpp
+	"agentdemonstrator.h"
+	"kernel.h"
+	"message.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/agentpolice.cpp
+	"opencity_direction.h"
+	"agentpolice.h"
+	"kernel.h"
+	"environment.h"
+	"message.h"
+	"destination.h"
+	<cstdlib>
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/agentrobber.cpp
+	"agentrobber.h"
+	"kernel.h"
+	"message.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/any.cpp
+	"any.h"
+	"agent.h"
+	<cassert>
+	<iostream>
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/environment.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"environment.h"
+	"kernel.h"
+	"structure.h"
+	"layer.h"
+	"graphicmanager.h"
+	"pathfinder.h"
+	"globalvar.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/kernel.cpp
+	"kernel.h"
+	"agent.h"
+	"message.h"
+	<algorithm>
+	<cassert>
+	<iostream>
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/mas/message.cpp
+	"message.h"
+	"agent.h"
+	<cassert>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/ac3dmaterial.cpp
+	"ac3dmaterial.h"
+	"macros.h"
+	"ac3dmacros.h"
+	<cstdio>
+	<sstream>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/ac3dmacros.h
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/ac3dmodel.cpp
+	"ac3dmodel.h"
+	"ac3dobject.h"
+	"macros.h"
+	"ac3dmacros.h"
+	<fstream>
+	<cstring>
+	<sstream>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/ac3dmodel.h
+	"ac3dmaterial.h"
+	<vector>
+	<string>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/ac3dobject.cpp
+	"ac3dobject.h"
+	"macros.h"
+	"ac3dmacros.h"
+	<cstring>
+	<cstdio>
+	<cstdlib>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/ac3dsurface.cpp
+	"ac3dsurface.h"
+	"macros.h"
+	"ac3dmacros.h"
+	<cstdio>
+	<cstring>
+
+1439259930 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/model.cpp
+	"model.h"
+
+1439260212 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/model/modelloader.cpp
+	"modelloader.h"
+	"model.h"
+	"ac3dmodel.h"
+	"ac3dobject.h"
+	"texture.h"
+	"star.h"
+	<vector>
+	<fstream>
+	<cstring>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/triangulation/star.h
+	"triangulation.h"
+	<iostream>
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/triangulation/triangulation.h
+	"geometry.h"
+
+1430348578 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/triangulation/geometry.h
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/movement.cpp
+	"opencity_direction.h"
+	"movement.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/movementmanager.cpp
+	"opencity_direction.h"
+	"movement.h"
+	"movementmanager.h"
+	"graphicmanager.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/networking/networking.cpp
+	"netnode.h"
+	"networking.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/networking/netnode.h
+	"main.h"
+	"SDL_net.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/pathfinder.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"buildinglayer.h"
+	"destination.h"
+	"pathstructure.h"
+	"map.h"
+	"pathfinder.h"
+	<algorithm>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/persistence.cpp
+	"persistence.h"
+
+1430348577 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/pngfuncs/pngfuncs.c
+	<stdlib.h>
+	<png.h>
+	"pngfuncs.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/property.cpp
+	"property.h"
+	"xpath_processor.h"
+	"xpath_static.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_processor.h
+	"action_store.h"
+	"xpath_expression.h"
+	"xpath_stream.h"
+	"xpath_stack.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/action_store.h
+	"tinyxml.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_expression.h
+	"tinyxpath_conf.h"
+	"tinyxml.h"
+	"node_set.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/tinyxpath_conf.h
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/node_set.h
+	<cstring>
+	"tinyxml.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_stream.h
+	"lex_util.h"
+	"byte_stream.h"
+	"xpath_syntax.h"
+	"tinyxml.h"
+	"tinystr.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/lex_util.h
+	"tinyxpath_conf.h"
+	"tinyxml.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/byte_stream.h
+	"lex_util.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_syntax.h
+	<cassert>
+	<cstdio>
+	"tokenlist.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/tokenlist.h
+	"lex_util.h"
+	"lex_token.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/lex_token.h
+	<cstdio>
+	<string>
+	<cstring>
+	"lex_util.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_stack.h
+	"tinyxpath_conf.h"
+	"xpath_expression.h"
+	"xpath_stream.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_static.h
+	"xpath_processor.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/propertymanager.cpp
+	"opencity_structure_type.h"
+	"propertymanager.h"
+	"structure.h"
+	<algorithm>
+	<sstream>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/propertymanager2.cpp
+	"propertymanager2.h"
+	"xpath_processor.h"
+	"xpath_static.h"
+
+1439262200 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/renderer.cpp
+	<climits>
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"renderer.h"
+	"layer.h"
+	"font_8x8.h"
+	"model.h"
+	"structure.h"
+	"font_mini_4x6.h"
+	"font_7x14.h"
+	"font_acorn_8x8.h"
+	"font_pearl_8x8.h"
+	"globalvar.h"
+	<unistd.h>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/commercialsim.cpp
+	"opencity_structure_type.h"
+	"commercialsim.h"
+	"buildinglayer.h"
+	"structure.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/commercialsim.h
+	"main.h"
+	"simulator.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/electricitysim.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"electricitysim.h"
+	"buildinglayer.h"
+	"structure.h"
+	"globalvar.h"
+	<algorithm>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/electricitysim.h
+	"main.h"
+	"simulator.h"
+	<deque>
+	<vector>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/industrialsim.cpp
+	"opencity_structure_type.h"
+	"industrialsim.h"
+	"buildinglayer.h"
+	"structure.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/industrialsim.h
+	"main.h"
+	"simulator.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/mainsim.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"mainsim.h"
+	"residentialsim.h"
+	"commercialsim.h"
+	"industrialsim.h"
+	"electricitysim.h"
+	"trafficsim.h"
+	"structure.h"
+	"buildinglayer.h"
+	"globalvar.h"
+	<sstream>
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/residentialsim.h
+	"main.h"
+	"simulator.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/trafficsim.h
+	"main.h"
+	"simulator.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/residentialsim.cpp
+	"opencity_structure_type.h"
+	"residentialsim.h"
+	"buildinglayer.h"
+	"structure.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/simulator.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"simulator.h"
+	"buildinglayer.h"
+	"structure.h"
+	"globalvar.h"
+	<cmath>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/simulator/trafficsim.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"trafficsim.h"
+	"buildinglayer.h"
+	"../map.h"
+	"pathstructure.h"
+	"pathfinder.h"
+	"movementmanager.h"
+	"vehicle.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/pathstructure.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"pathstructure.h"
+	"globalvar.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/rcistructure.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"rcistructure.h"
+	"globalvar.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/structure.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"structure.h"
+	"globalvar.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/treestructure.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"treestructure.h"
+	"globalvar.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/structure/wegstructure.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"wegstructure.h"
+	"globalvar.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/texture.cpp
+	"opencity_direction.h"
+	"opencity_structure_type.h"
+	"texture.h"
+	"buildinglayer.h"
+	"structure.h"
+	"globalvar.h"
+	"SDL_image.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxml/tinystr.cpp
+	"tinystr.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxml/tinyxml.cpp
+	<cctype>
+	<cstring>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxml/tinyxmlerror.cpp
+	"tinyxml.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxml/tinyxmlparser.cpp
+	<cctype>
+	<cstddef>
+	<cstring>
+	"tinyxml.h"
+	<windows.h>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/action_store.cpp
+	"action_store.h"
+	<cstring>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/lex_util.cpp
+	<string>
+	<cstdio>
+	<cstring>
+	"lex_util.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/node_set.cpp
+	"node_set.h"
+	"config.h"
+	<stdint.h>
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/tokenlist.cpp
+	"tokenlist.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xml_util.cpp
+	"xml_util.h"
+
+1430348579 /media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xml_util.h
+	"tinyxml.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_expression.cpp
+	"xpath_expression.h"
+	"lex_util.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_processor.cpp
+	<cmath>
+	"xpath_processor.h"
+	"xml_util.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_stack.cpp
+	"xpath_stack.h"
+	"xpath_processor.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_static.cpp
+	"xpath_static.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_stream.cpp
+	"xpath_syntax.h"
+	"xpath_stream.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/tinyxpath/xpath_syntax.cpp
+	<cstdio>
+	"xpath_syntax.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/triangulation/star.cpp
+	"star.h"
+
+1430348579 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/ui.cpp
+	"ui.h"
+
+1430348578 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/vehicle.cpp
+	"opencity_direction.h"
+	"vehicle.h"
+
+1440124483 source:/media/datos/Proyectos/OpenCity/MiCodigo/opencity/src/guiwindow.cpp
+	"guiwindow.h"
+	"guicontainer.h"
+

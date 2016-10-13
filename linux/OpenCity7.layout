@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Linux_Debug" />
+	<File name="../src/guiwindow.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4108" topLine="171" />
+		</Cursor>
+	</File>
+	<File name="config.h" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="52" />
+		</Cursor>
+	</File>
+	<File name="../src/simulator/residentialsim.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3978" topLine="108" />
+		</Cursor>
+	</File>
+	<File name="../src/networking/networking.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6425" topLine="195" />
+		</Cursor>
+	</File>
+	<File name="../src/guibutton.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1791" topLine="45" />
+		</Cursor>
+	</File>
+	<File name="../src/simulator/simulator.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2152" topLine="39" />
+		</Cursor>
+	</File>
+	<File name="../src/guiwindow.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="723" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../src/simulator/residentialsim.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1248" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="../src/city.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8773" topLine="1124" />
+		</Cursor>
+	</File>
+	<File name="../src/networking/netnode.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1646" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="../src/guibutton.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="81" />
+		</Cursor>
+	</File>
+	<File name="../src/main.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="20224" topLine="1195" />
+		</Cursor>
+	</File>
+	<File name="../src/main.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="147" />
+		</Cursor>
+	</File>
+	<File name="../src/texture.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4317" topLine="117" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

@@ -1,0 +1,68 @@
+
+Tareas a realizar para futuras versiones
+=========================================
+
+Subdivide map for better performance
+Settings GUI                         
+Help system
+Internationalization
+Zone density
+Sea-port
+Air-port
+Gas
+Highway
+Subway
+Arcologies
+Land-mark
+Shanties
+Rendering plugins:
+        Snow, rain, fall, night
+Event plugin:
+        French attitude ...
+
+Water layer
+Water pipe
+Water pump
+Water tower
+Water micro simulator
+Tree micro simulator
+Add new vehicle models
+Fix the orthogonal projection
+Fire
+Explosion
+Nature micro simulator: earthquake
+Improve vehicle rendering
+Review the agent creation process
+Review the message system
+Rail road
+Rail station
+Train models
+Crime
+Police agent system
+Unblocking networking layer
+Add online operation notification clock
+ZeN online map loading
+Fix city size settings bug
+Add the simulator accelerator key
+Make the simulator CPU independant
+Texture lighting
+
+XML parameters accessors              (wip)
+XML handling in construction process  (wip)
+XML handling in the simulation engine (wip)
+Remove horizonal mirroring operation
+Crime
+Review the message system
+Review the agent creation process
+Police agent system
+Mouse cursor support
+Unblocking networking layer
+ZeN online map loading
+Earthquake
+Add TTF support
+
+
+
+
+
+
