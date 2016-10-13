@@ -1,14 +1,14 @@
 ------------------------------------------------------------------------------
-README for OpenCity2 0.1.0
+OpenCity Neo 0.1.0
 ------------------------------------------------------------------------------
 
-OpenCity2 es un fork de OpenCity (http://www.opencity.info).
+OpenCity Neo es un fork de OpenCity (http://www.opencity.info).
 Es un juego simulador de ciudad. La idea es simple, tienes que construir una 
 ciudad con tres tipos de zonas, Residencial, Comercial e Industrial
 Cada una depende de las itras durante su desarrollo.
 Trata de darles lo que necesitan y tu ciudad crecerá.
 
-Queremos que OpenCity2 agregue calidad gráfica, nuevas características y
+Queremos que OpenCity Neo agregue calidad gráfica, nuevas características y
 la posibilidad de jugar online.
 
 
