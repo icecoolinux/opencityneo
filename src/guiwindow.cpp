@@ -13,6 +13,8 @@
 #include "guicontainer.h"
 
 #define TEXTURE_FILE_WINDOW "graphism/gui/windowgui.png"
+#define HEIGHT_TITLE_BAR 30
+#define PIXELS_BORDER_WINDOW 10
 
 // Texture of the window: borders, title bar and corners.
 Texture* GUIWindow::_textureWindow = NULL;
@@ -39,10 +41,12 @@ _strTitle(strTitle)
 	OPENCITY_DEBUG( "Pctor" );
 
 // Initialize the position and dimension of the window
-	_iX = ciX;
-	_iY = ciY;
+	_iX = 0;
+	_iY = 0;
 	_uiWidth = cuiW;
 	_uiHeight = cuiH;
+
+	titleBarClicked = false;
 
 // Load the texture of the window if it's not load.
 	if (_textureWindow == NULL) {
@@ -51,10 +55,13 @@ _strTitle(strTitle)
 
 // Container
 	_pctr = new GUIContainer(ciX, ciY, cuiW, cuiH);
-	((GUIContainer*)_pctr)->Add(this);
 
 // Close button.
-	close = new GUIButton(cuiW-30, cuiH-30, 30, 30, ocDataDirPrefix("graphism/gui/destroy"));
+	_pbtnClose = new GUIButton(cuiW-HEIGHT_TITLE_BAR, cuiH-HEIGHT_TITLE_BAR, HEIGHT_TITLE_BAR, HEIGHT_TITLE_BAR, ocDataDirPrefix("graphism/gui/destroy"));
+
+// Add elements into the container
+	((GUIContainer*)_pctr)->Add(this);
+	((GUIContainer*)_pctr)->Add(_pbtnClose);
 
 // Visible for default
 	((GUIContainer*)_pctr)->Set( OC_GUIMAIN_VISIBLE );
@@ -66,9 +73,15 @@ _strTitle(strTitle)
 GUIWindow::~GUIWindow()
 {
 	OPENCITY_DEBUG( "Dwin" );
-	delete close;
+	delete _pbtnClose;
 }
 
+
+// Close de window
+void GUIWindow::close()
+{
+	_pctr->Unset(OC_GUIMAIN_VISIBLE);
+}
 
    /*=====================================================================*/
 void
@@ -86,25 +99,91 @@ GUIWindow::Display() const
 
 // Activate the texture 2D processing
 	glEnable( GL_TEXTURE_2D );
-	glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );
+	glEnable( GL_BLEND );
+	glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );
 
 	glColor3ub( OC_WHITE_COLOR );
 
-// Draw title bar.
+// Draw corners.
 	glBindTexture( GL_TEXTURE_2D, _textureWindow->GetName() );
+
+	// Bottom left corner.
 	glBegin( GL_QUADS );
-	glTexCoord2i( 0, 0 );	glVertex2i( 0, 0 );
-	glTexCoord2i( 1, 0 );	glVertex2i( _uiWidth-1, 0 );
-	glTexCoord2i( 1, 1 );	glVertex2i( _uiWidth-1, _uiHeight-1 );
-	glTexCoord2i( 0, 1 );	glVertex2i( 0, _uiHeight-1 );
+	glTexCoord2f( 0, 0 );		glVertex2i( 0, 0 );
+	glTexCoord2f( 0.5, 0 );		glVertex2i( PIXELS_BORDER_WINDOW, 0 );
+	glTexCoord2f( 0.5, 0.5 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0, 0.5 );		glVertex2i( 0, PIXELS_BORDER_WINDOW );
+	glEnd();
+
+	// Bottom right corner.
+	glBegin( GL_QUADS );
+	glTexCoord2f( 0.5, 0 );		glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, 0 );
+	glTexCoord2f( 1, 0 );		glVertex2i( _uiWidth, 0 );
+	glTexCoord2f( 1, 0.5 );		glVertex2i( _uiWidth, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.5, 0.5 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glEnd();
+
+	// Top right corner.
+	glBegin( GL_QUADS );
+	glTexCoord2f( 0.5, 0.5 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 1, 0.5 );		glVertex2i( _uiWidth, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 1, 1 );		glVertex2i( _uiWidth, _uiHeight );
+	glTexCoord2f( 0.5, 1 );		glVertex2i( _uiWidth-PIXELS_BORDER_WINDOW, _uiHeight );
+	glEnd();
+
+	// Top left corner.
+	glBegin( GL_QUADS );
+	glTexCoord2f( 0, 0.5 );		glVertex2i( 0, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.5, 0.5 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.5, 1 );		glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight );
+	glTexCoord2f( 0, 1 );		glVertex2i( 0, _uiHeight );
+	glEnd();
+
+// Draw border
+
+	// Border left
+	glBegin( GL_QUADS );
+	glTexCoord2f( 0.4, 0.4 );	glVertex2i( 0, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.6, 0.4 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.6, 0.6 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.4, 0.6 );	glVertex2i( 0, _uiHeight - PIXELS_BORDER_WINDOW );
+	glEnd();
+
+	// Border right
+	glBegin( GL_QUADS );
+	glTexCoord2f( 0.4, 0.4 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.6, 0.4 );	glVertex2i( _uiWidth, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.6, 0.6 );	glVertex2i( _uiWidth, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.4, 0.6 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glEnd();
+
+	// Border top
+	glBegin( GL_QUADS );
+	glTexCoord2f( 0.4, 0.4 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.6, 0.4 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.6, 0.6 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight );
+	glTexCoord2f( 0.4, 0.6 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight );
+	glEnd();
+
+	// Border bottom
+	glBegin( GL_QUADS );
+	glTexCoord2f( 0.4, 0.4 );	glVertex2i( PIXELS_BORDER_WINDOW, 0 );
+	glTexCoord2f( 0.6, 0.4 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, 0 );
+	glTexCoord2f( 0.6, 0.6 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.4, 0.6 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glEnd();
+
+// Draw window's middle
+	glBegin( GL_QUADS );
+	glTexCoord2f( 0.4, 0.4 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.6, 0.4 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.6, 0.6 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.4, 0.6 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
 	glEnd();
 
 // Restore the old matrix and attribs
 	glPopMatrix();
 	glPopAttrib();
-
-	// Button close.
-	close->Display();
 }
 
 
@@ -128,8 +207,20 @@ GUIWindow::MouseMotion( const SDL_MouseMotionEvent& rcsMouseEvent )
 		return;
 */
 
-// The button must be contained in a guicontainer !
+// The window must be contained in a guicontainer !
 	assert( _pctr != NULL );
+
+	// Move the window if title bar is clicked
+	if(titleBarClicked) {
+		// Move the container
+		int ctrX, ctrY;
+		_pctr->GetLocation(ctrX, ctrY);
+
+		ctrX += rcsMouseEvent.xrel;
+		ctrY -= rcsMouseEvent.yrel;
+
+		_pctr->SetLocation(ctrX, ctrY);
+	}
 
 // Calculate the real X,Y from the mouse X,Y;
 	((GUIContainer*)_pctr)->GetWinWH( winW, winH );
@@ -159,19 +250,31 @@ GUIWindow::MouseMotion( const SDL_MouseMotionEvent& rcsMouseEvent )
 void
 GUIWindow::MouseButton( const SDL_MouseButtonEvent& buttonEvent )
 {
-// Return immediatly if this is NOT visible
+	// Return immediatly if this is NOT visible
 	if ( !IsSet( OC_GUIMAIN_VISIBLE ) )
 		return;
 
-// IF the user clicked the LMB when the mouse is over the control
-// THEN turn on the onClick state
-// otherwise turn it off
+	// IF the user clicked the LMB when the mouse is over the control
+	// THEN turn on the onClick state
+	// otherwise turn it off
 	if ( buttonEvent.state == SDL_PRESSED ) {
 		if ( buttonEvent.button == SDL_BUTTON_LEFT ) {
-			if ( IsSet( OC_GUIMAIN_MOUSEOVER ))
+			if ( IsSet( OC_GUIMAIN_MOUSEOVER )) {
 				Set( OC_GUIMAIN_CLICKED );
+
+				// Clicked over title bar, window will traslate
+				titleBarClicked = true;
+			}
 			else
 				Unset( OC_GUIMAIN_CLICKED );
+		}
+	}
+	// User released LMB.
+	else if ( buttonEvent.state == SDL_RELEASED ) {
+		// Left Mpuse Button
+		if ( buttonEvent.button == SDL_BUTTON_LEFT ) {
+			// Release window traslate
+			titleBarClicked = false;
 		}
 	}
 }

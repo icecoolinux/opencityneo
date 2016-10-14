@@ -16,9 +16,8 @@
 
 	<!-- City's settings -->
 	<city>
-		<!-- Do not go beyond 100 per edge, seriously ! -->
-		<width value="50" />
-		<length value="50" />
+		<width value="100" />
+		<length value="100" />
 	</city>
 
 	<!-- Low value uses more CPU power. However, you can not go under 10ms -->

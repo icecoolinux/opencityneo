@@ -84,8 +84,6 @@ extern GlobalVar gVars;
 
 // OpenGL other view parameters
 #define OC_INITIAL_SCALE	12.0
-#define OC_INITIAL_DELTA_X	-25.0			// used for the translation
-#define OC_INITIAL_DELTA_Z	-30.0
 #define OC_DELTA_X_STEP		2.0
 #define OC_DELTA_Z_STEP		2.0
 
@@ -381,8 +379,9 @@ Renderer::Home()
 	_fScaleRatio = OC_INITIAL_SCALE;
 	_fXTransDelta = OC_DELTA_X_STEP;
 	_fZTransDelta = OC_DELTA_Z_STEP;
-	_dDeltaX = OC_INITIAL_DELTA_X;
-	_dDeltaZ = OC_INITIAL_DELTA_Z;
+	_dDeltaX = -((double)gVars.guiCityWidth) * 0.5;
+	_dDeltaZ = -((double)gVars.guiCityLength) * 0.75;
+
 	_dYRotateAngle = OC_Y_ROTATE_ANGLE;
 
 // Reinit the rotation matrix
@@ -1126,7 +1125,7 @@ Renderer::GetSelectedWLFrom
 //debug // cout << "Min depth: " << uiDepthMin << endl;
 		ruiL = id / _uiCityWidth;
 		ruiW = id % _uiCityWidth;
-		
+
 		// If the position is out of edge, set into the map.
 		if( ruiL < rcuiL1 ) ruiL = rcuiL1;
 		if( ruiW < rcuiW1 ) ruiW = rcuiW1;
@@ -1139,7 +1138,7 @@ Renderer::GetSelectedWLFrom
 	return false; // couldn't determine the W & L values
 }
 */
- 
+
    /*=====================================================================*/
 #include <unistd.h>
 const bool
@@ -1161,7 +1160,7 @@ Renderer::GetSelectedWLFrom
 	static uint linear = 0;
 	static uint w = 0, l = 0;
 	static const Structure* pStructure = NULL;
- 
+
 	#define OC_SELECT_BUFFER_SIZE 100
 	static GLuint selectBuffer[OC_SELECT_BUFFER_SIZE];
 	static GLuint uiDepthMin;
@@ -1237,7 +1236,7 @@ sleep(2);*/
 		id--;
 		ruiL = id / _uiCityWidth;
 		ruiW = id % _uiCityWidth;
-		
+
 		// If the position is out of edge, set into the map.
 		if( ruiL < rcuiL1 ) ruiL = rcuiL1;
 		if( ruiW < rcuiW1 ) ruiW = rcuiW1;

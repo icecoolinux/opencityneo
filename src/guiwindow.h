@@ -29,6 +29,8 @@ public:
 		const string& strTitle);
 	~GUIWindow();
 
+	// Close de window
+	void close();
 
 //========================================================================
 // Inherited methods from GUIMain
@@ -49,7 +51,8 @@ public:
 
 private:
 	string _strTitle;
-	GUIButton* close;
+	GUIButton* _pbtnClose;
+	bool titleBarClicked;
 	static Texture* _textureWindow;
 };
 

@@ -405,7 +405,7 @@ void City::Display()
 	_pctr->Display();
 
 // Display windows.
-	//_pwStatistics->GetContainer()->Display();
+	((GUIContainer*)_pwStatistics->GetContainer())->Display();
 
 // Display the menu
 	if (_pctrMenu != NULL)
@@ -706,6 +706,7 @@ City::MouseMotion( const SDL_MouseMotionEvent& rcEvent )
 		_pctrMenu->MouseMotion( rcEvent );
 	}
 	else {
+		_pwStatistics->GetContainer()->MouseMotion( rcEvent );
 		_pctr->MouseMotion( rcEvent );
 		_pctrStatus->MouseMotion( rcEvent );
 
@@ -737,6 +738,14 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
 			_HandleMenuClick();
 			_bLMBPressedOverMap = false;
 		}
+		return;
+	}
+
+// Process the mouse click on the windows
+	_pwStatistics->GetContainer()->MouseButton(rcsMBE);
+	if ( ((GUIContainer*)_pwStatistics->GetContainer())->GetClick() != 0 ) {
+		_HandleWinStatistics();
+		_bLMBPressedOverMap = false;
 		return;
 	}
 
@@ -1132,7 +1141,7 @@ City::_CreateGUI()
 	_apbtnCurrentTool[OC_TOOL_NONE]->Set( OC_GUIMAIN_VISIBLE );
 
 // Windows.
-	//_pwStatistics = new GUIWindow(_iWinWidth*0.10f, _iWinHeight*0.10f, _iWinWidth*0.80f, _iWinHeight*0.80f, "Statistics");
+	_pwStatistics = new GUIWindow(_iWinWidth*0.10f, _iWinHeight*0.10f, _iWinWidth*0.80f, _iWinHeight*0.80f, "Statistics");
 
 // GUI main toolcircle
 	pbtnZ = new GUIButton( GUIBUTTON_POSITION_1, ocDataDirPrefix( "graphism/gui/zone" ));
@@ -1315,7 +1324,7 @@ City::_DeleteGUI()
 	delete pbtnG;
 
 // Delete the windows.
-	//delete _pwStatistics;
+	delete _pwStatistics;
 
 // Delete the status bar
 	delete _pctrStatus;
@@ -1855,6 +1864,27 @@ City::_HandleMenuClick()
 	_UnloadMenu();
 }
 
+   /*=====================================================================*/
+void
+City::_HandleWinStatistics()
+{
+	assert( _pwStatistics != NULL );
+
+	uint uiObject = ((GUIContainer*)_pwStatistics->GetContainer())->GetClick();
+
+	switch (uiObject) {
+		case 1:		// Window
+			break;
+
+		case 2:		// Close button
+			_pwStatistics->close();
+			break;
+
+		default:
+			OPENCITY_DEBUG( "Statistics window error");
+			assert(0);
+	}
+}
 
    /*=====================================================================*/
 void

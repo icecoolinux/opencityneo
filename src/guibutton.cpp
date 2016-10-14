@@ -211,7 +211,7 @@ GUIButton::MouseButton( const SDL_MouseButtonEvent& buttonEvent )
 // otherwise turn it off
 	if ( buttonEvent.state == SDL_PRESSED ) {
 		if ( buttonEvent.button == SDL_BUTTON_LEFT ) {
-			if ( IsSet( OC_GUIMAIN_MOUSEOVER ) == true )
+			if ( IsSet( OC_GUIMAIN_MOUSEOVER ) )
 				Set( OC_GUIMAIN_CLICKED );
 			else
 				Unset( OC_GUIMAIN_CLICKED );

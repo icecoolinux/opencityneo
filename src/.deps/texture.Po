@@ -1,6 +1,6 @@
-../src/texture.o: ../src/texture.cpp /usr/include/stdc-predef.h \
+texture.o: texture.cpp /usr/include/stdc-predef.h \
  ../src/enum/opencity_direction.h ../src/enum/opencity_structure_type.h \
- ../src/texture.h ../src/main.h ../config.h /usr/include/SDL/SDL.h \
+ texture.h main.h ../config.h /usr/include/SDL/SDL.h \
  /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
  /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
  /usr/include/sys/types.h /usr/include/features.h \
@@ -83,7 +83,7 @@
  /usr/include/pthread.h /usr/include/sched.h /usr/include/bits/sched.h \
  /usr/include/bits/timex.h /usr/include/bits/setjmp.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/atomic_word.h \
- /usr/include/c++/4.9.2/bits/basic_string.tcc ../src/macros.h \
+ /usr/include/c++/4.9.2/bits/basic_string.tcc macros.h \
  /usr/include/c++/4.9.2/iostream /usr/include/c++/4.9.2/ostream \
  /usr/include/c++/4.9.2/ios /usr/include/c++/4.9.2/bits/ios_base.h \
  /usr/include/c++/4.9.2/bits/locale_classes.h \
@@ -100,35 +100,33 @@
  /usr/include/c++/4.9.2/bits/basic_ios.tcc \
  /usr/include/c++/4.9.2/bits/ostream.tcc /usr/include/c++/4.9.2/istream \
  /usr/include/c++/4.9.2/bits/istream.tcc /usr/include/c++/4.9.2/cassert \
- /usr/include/assert.h ../src/enum.h /usr/include/c++/4.9.2/map \
+ /usr/include/assert.h enum.h /usr/include/c++/4.9.2/map \
  /usr/include/c++/4.9.2/bits/stl_tree.h \
  /usr/include/c++/4.9.2/ext/alloc_traits.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
- ../src/buildinglayer.h ../src/layer.h ../src/persistence.h \
- /usr/include/c++/4.9.2/fstream /usr/include/c++/4.9.2/bits/codecvt.h \
- /usr/include/c++/4.9.2/cstdio \
+ buildinglayer.h layer.h persistence.h /usr/include/c++/4.9.2/fstream \
+ /usr/include/c++/4.9.2/bits/codecvt.h /usr/include/c++/4.9.2/cstdio \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/basic_file.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/c++io.h \
- /usr/include/c++/4.9.2/bits/fstream.tcc ../src/ui.h \
- ../src/structure/structure.h ../src/main.h ../src/persistence.h \
- ../src/globalvar.h ../src/audiomanagersdl.h /usr/include/SDL/SDL_mixer.h \
+ /usr/include/c++/4.9.2/bits/fstream.tcc ui.h \
+ ../src/structure/structure.h main.h persistence.h globalvar.h \
+ audiomanagersdl.h /usr/include/SDL/SDL_mixer.h \
  /usr/include/SDL/SDL_types.h /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
  /usr/include/c++/4.9.2/bits/stl_uninitialized.h \
  /usr/include/c++/4.9.2/bits/stl_vector.h \
  /usr/include/c++/4.9.2/bits/stl_bvector.h \
- /usr/include/c++/4.9.2/bits/vector.tcc ../src/extensionmanager.h \
- ../src/graphicmanager.h ../src/map.h ../src/propertymanager.h \
- ../src/conf.h ../src/renderer.h ../src/networking/networking.h \
- /usr/include/SDL/SDL_net.h /usr/include/SDL/SDL.h \
- ../src/movementmanager.h ../src/mas/kernel.h ../src/mas/agent.h \
- ../src/mas/role.h /usr/include/c++/4.9.2/list \
+ /usr/include/c++/4.9.2/bits/vector.tcc extensionmanager.h \
+ graphicmanager.h map.h propertymanager.h conf.h renderer.h \
+ ../src/networking/networking.h /usr/include/SDL/SDL_net.h \
+ /usr/include/SDL/SDL.h movementmanager.h ../src/mas/kernel.h \
+ ../src/mas/agent.h ../src/mas/role.h /usr/include/c++/4.9.2/list \
  /usr/include/c++/4.9.2/bits/stl_list.h \
  /usr/include/c++/4.9.2/bits/list.tcc ../src/mas/environment.h \
- ../src/mas/agentposition.h ../src/pathfinder.h ../src/mapgen/mapmaker.h \
- ../src/mapgen/map.h ../src/macros.h /usr/include/SDL/SDL_image.h
+ ../src/mas/agentposition.h pathfinder.h mapgen/mapmaker.h mapgen/map.h \
+ macros.h /usr/include/SDL/SDL_image.h
 
 /usr/include/stdc-predef.h:
 
@@ -136,9 +134,9 @@
 
 ../src/enum/opencity_structure_type.h:
 
-../src/texture.h:
+texture.h:
 
-../src/main.h:
+main.h:
 
 ../config.h:
 
@@ -396,7 +394,7 @@
 
 /usr/include/c++/4.9.2/bits/basic_string.tcc:
 
-../src/macros.h:
+macros.h:
 
 /usr/include/c++/4.9.2/iostream:
 
@@ -442,7 +440,7 @@
 
 /usr/include/assert.h:
 
-../src/enum.h:
+enum.h:
 
 /usr/include/c++/4.9.2/map:
 
@@ -458,11 +456,11 @@
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
 
-../src/buildinglayer.h:
+buildinglayer.h:
 
-../src/layer.h:
+layer.h:
 
-../src/persistence.h:
+persistence.h:
 
 /usr/include/c++/4.9.2/fstream:
 
@@ -476,17 +474,17 @@
 
 /usr/include/c++/4.9.2/bits/fstream.tcc:
 
-../src/ui.h:
+ui.h:
 
 ../src/structure/structure.h:
 
-../src/main.h:
+main.h:
 
-../src/persistence.h:
+persistence.h:
 
-../src/globalvar.h:
+globalvar.h:
 
-../src/audiomanagersdl.h:
+audiomanagersdl.h:
 
 /usr/include/SDL/SDL_mixer.h:
 
@@ -504,17 +502,17 @@
 
 /usr/include/c++/4.9.2/bits/vector.tcc:
 
-../src/extensionmanager.h:
+extensionmanager.h:
 
-../src/graphicmanager.h:
+graphicmanager.h:
 
-../src/map.h:
+map.h:
 
-../src/propertymanager.h:
+propertymanager.h:
 
-../src/conf.h:
+conf.h:
 
-../src/renderer.h:
+renderer.h:
 
 ../src/networking/networking.h:
 
@@ -522,7 +520,7 @@
 
 /usr/include/SDL/SDL.h:
 
-../src/movementmanager.h:
+movementmanager.h:
 
 ../src/mas/kernel.h:
 
@@ -540,12 +538,12 @@
 
 ../src/mas/agentposition.h:
 
-../src/pathfinder.h:
+pathfinder.h:
 
-../src/mapgen/mapmaker.h:
+mapgen/mapmaker.h:
 
-../src/mapgen/map.h:
+mapgen/map.h:
 
-../src/macros.h:
+macros.h:
 
 /usr/include/SDL/SDL_image.h:

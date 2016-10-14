@@ -1,12 +1,11 @@
-../src/persistence.o: ../src/persistence.cpp /usr/include/stdc-predef.h \
- ../src/persistence.h ../src/main.h ../config.h /usr/include/SDL/SDL.h \
- /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
- /usr/include/sys/types.h /usr/include/features.h \
- /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
- /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
- /usr/include/bits/types.h /usr/include/bits/typesizes.h \
- /usr/include/time.h \
+persistence.o: persistence.cpp /usr/include/stdc-predef.h persistence.h \
+ main.h ../config.h /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
+ /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
+ /usr/include/SDL/SDL_platform.h /usr/include/sys/types.h \
+ /usr/include/features.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h /usr/include/bits/types.h \
+ /usr/include/bits/typesizes.h /usr/include/time.h \
  /usr/lib/gcc/x86_64-mageia-linux-gnu/4.9.2/include/stddef.h \
  /usr/include/endian.h /usr/include/bits/endian.h \
  /usr/include/bits/byteswap.h /usr/include/bits/byteswap-16.h \
@@ -82,7 +81,7 @@
  /usr/include/pthread.h /usr/include/sched.h /usr/include/bits/sched.h \
  /usr/include/bits/timex.h /usr/include/bits/setjmp.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/atomic_word.h \
- /usr/include/c++/4.9.2/bits/basic_string.tcc ../src/macros.h \
+ /usr/include/c++/4.9.2/bits/basic_string.tcc macros.h \
  /usr/include/c++/4.9.2/iostream /usr/include/c++/4.9.2/ostream \
  /usr/include/c++/4.9.2/ios /usr/include/c++/4.9.2/bits/ios_base.h \
  /usr/include/c++/4.9.2/bits/locale_classes.h \
@@ -99,7 +98,7 @@
  /usr/include/c++/4.9.2/bits/basic_ios.tcc \
  /usr/include/c++/4.9.2/bits/ostream.tcc /usr/include/c++/4.9.2/istream \
  /usr/include/c++/4.9.2/bits/istream.tcc /usr/include/c++/4.9.2/cassert \
- /usr/include/assert.h ../src/enum.h /usr/include/c++/4.9.2/fstream \
+ /usr/include/assert.h enum.h /usr/include/c++/4.9.2/fstream \
  /usr/include/c++/4.9.2/bits/codecvt.h /usr/include/c++/4.9.2/cstdio \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/basic_file.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/c++io.h \
@@ -107,9 +106,9 @@
 
 /usr/include/stdc-predef.h:
 
-../src/persistence.h:
+persistence.h:
 
-../src/main.h:
+main.h:
 
 ../config.h:
 
@@ -367,7 +366,7 @@
 
 /usr/include/c++/4.9.2/bits/basic_string.tcc:
 
-../src/macros.h:
+macros.h:
 
 /usr/include/c++/4.9.2/iostream:
 
@@ -413,7 +412,7 @@
 
 /usr/include/assert.h:
 
-../src/enum.h:
+enum.h:
 
 /usr/include/c++/4.9.2/fstream:
 

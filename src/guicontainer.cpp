@@ -137,20 +137,19 @@ GUIContainer::GetWinWH(
 const uint
 GUIContainer::GetClick() const
 {
-	static std::vector<GUIMain*>::size_type stvector;
+	static int stvector;
 	static GUIMain* pguimain;
 
 // We return immediatly if this is NOT visible
-	if ( IsSet( OC_GUIMAIN_VISIBLE ) == false )
+	if ( ! IsSet( OC_GUIMAIN_VISIBLE ) )
 		return 0;
 
 // FOR each object DO
 // IF we find a object which is clicked and has mouseover THEN
-	for ( stvector = 0; stvector < this->vectorpguimain.size(); stvector++ ) {
+	for ( stvector = this->vectorpguimain.size()-1; stvector >= 0 ; stvector-- )
 		if ( (pguimain = vectorpguimain[ stvector ]) != NULL )
-		if ( pguimain->IsSet( OC_GUIMAIN_CLICKED | OC_GUIMAIN_MOUSEOVER ) == true )
-			return ++stvector;
-	}
+			if ( pguimain->IsSet( OC_GUIMAIN_CLICKED | OC_GUIMAIN_MOUSEOVER ) )
+				return ++stvector;
 
 // There's no clicked object
 	return 0;
@@ -193,7 +192,7 @@ GUIContainer::Display() const
 	static GUIMain* pguimain;
 
 // We return immediatly if this is NOT visible
-	if ( IsSet( OC_GUIMAIN_VISIBLE ) == false )
+	if ( ! IsSet( OC_GUIMAIN_VISIBLE ) )
 		return;
 
 // Save the old projection matrix before processing

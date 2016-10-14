@@ -210,7 +210,7 @@ private:
 
 // Windows
 	GUIWindow* _pwStatistics;
-	
+
 // GUI containers for main, zone, eLectric and Terrain toolcircles
 	GUIContainer* _pctr;
 	GUIContainer* _pctrMain;
@@ -314,7 +314,7 @@ private:
 
 	bool _HandleKeyPressed();
 	void _ProcessMoveRotationMouse();
-	
+
 //========================================================================
 /** Save the ressource record to the queue
 */
@@ -323,6 +323,8 @@ private:
 	void _DoBill( const OPENCITY_PROPERTY_CODE& );
 
 	void _HandleMenuClick();
+
+	void _HandleWinStatistics();
 
 	void _HandleStatusClick();
 

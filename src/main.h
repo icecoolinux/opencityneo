@@ -99,7 +99,7 @@ class UI;
 	#define OC_CITY_L 100				// the value of OC_SIMULATOR_LAG* too,
 										// It's dangerous !
 										// Don't touch it if you don't know what you do
-	#define OC_CITY_E 10				// The size of edge of the map.
+	#define OC_CITY_E 5					// The size of edge of the map.
 
 	#define OC_CHANCE_COUNTER_MAX 300	// help the random method to find a structure
 										// should be equal to 3% of city surface
