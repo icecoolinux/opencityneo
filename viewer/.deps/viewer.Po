@@ -105,21 +105,24 @@ viewer.o: viewer.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/cstdio \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/basic_file.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/c++io.h \
- /usr/include/c++/4.9.2/bits/fstream.tcc ../src/ui.h ../src/conf.h \
- /usr/include/c++/4.9.2/map /usr/include/c++/4.9.2/bits/stl_tree.h \
+ /usr/include/c++/4.9.2/bits/fstream.tcc ../src/ui.h ../src/guiwindow.h \
+ ../src/guimain.h /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h \
+ ../src/guibutton.h ../src/texture.h /usr/include/c++/4.9.2/map \
+ /usr/include/c++/4.9.2/bits/stl_tree.h \
  /usr/include/c++/4.9.2/ext/alloc_traits.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
- /usr/include/c++/4.9.2/bits/stl_multimap.h ../src/macros.h \
- ../src/model/modelloader.h ../src/main.h ../src/model/ac3dobject.h \
- ../src/model/ac3dsurface.h /usr/include/c++/4.9.2/vector \
+ /usr/include/c++/4.9.2/bits/stl_multimap.h \
+ /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
+ ../src/conf.h ../src/macros.h ../src/model/modelloader.h ../src/main.h \
+ ../src/model/ac3dobject.h ../src/model/ac3dsurface.h \
+ /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
  /usr/include/c++/4.9.2/bits/stl_uninitialized.h \
  /usr/include/c++/4.9.2/bits/stl_vector.h \
  /usr/include/c++/4.9.2/bits/stl_bvector.h \
  /usr/include/c++/4.9.2/bits/vector.tcc /usr/include/c++/4.9.2/sstream \
  /usr/include/c++/4.9.2/bits/sstream.tcc ../src/model/ac3dmaterial.h \
- ../src/model/model.h ../src/texture.h /usr/include/c++/4.9.2/utility \
- /usr/include/c++/4.9.2/bits/stl_relops.h ../src/structure/structure.h \
+ ../src/model/model.h ../src/texture.h ../src/structure/structure.h \
  ../src/persistence.h ../src/property.h /usr/include/c++/4.9.2/climits \
  /usr/lib/gcc/x86_64-mageia-linux-gnu/4.9.2/include/limits.h \
  /usr/lib/gcc/x86_64-mageia-linux-gnu/4.9.2/include/syslimits.h \
@@ -460,7 +463,17 @@ viewer.o: viewer.cpp /usr/include/stdc-predef.h \
 
 ../src/ui.h:
 
-../src/conf.h:
+../src/guiwindow.h:
+
+../src/guimain.h:
+
+/usr/include/SDL/SDL_image.h:
+
+/usr/include/SDL/SDL.h:
+
+../src/guibutton.h:
+
+../src/texture.h:
 
 /usr/include/c++/4.9.2/map:
 
@@ -471,6 +484,12 @@ viewer.o: viewer.cpp /usr/include/stdc-predef.h \
 /usr/include/c++/4.9.2/bits/stl_map.h:
 
 /usr/include/c++/4.9.2/bits/stl_multimap.h:
+
+/usr/include/c++/4.9.2/utility:
+
+/usr/include/c++/4.9.2/bits/stl_relops.h:
+
+../src/conf.h:
 
 ../src/macros.h:
 
@@ -503,10 +522,6 @@ viewer.o: viewer.cpp /usr/include/stdc-predef.h \
 ../src/model/model.h:
 
 ../src/texture.h:
-
-/usr/include/c++/4.9.2/utility:
-
-/usr/include/c++/4.9.2/bits/stl_relops.h:
 
 ../src/structure/structure.h:
 

@@ -35,7 +35,6 @@
 #include "globalvar.h"
 extern GlobalVar gVars;
 
-
    /*=====================================================================*/
 BuildingLayer::BuildingLayer
 (
@@ -778,7 +777,7 @@ BuildingLayer::ContainStructureOnly(
 
 
    /*=====================================================================*/
-GUIContainer* const
+GUIWindow* const
 BuildingLayer::QueryStructure
 (
 	const uint & w,
@@ -791,60 +790,53 @@ BuildingLayer::QueryStructure
 	if ( pstruct != NULL ) {
 	// Check for RCI
 		if ( pstruct->IsSet( OC_STRUCTURE_R ) ) {
-			Layer::pbtnQRo->Set( OC_GUIMAIN_VISIBLE );
-			Layer::pbtnQRf->Unset( OC_GUIMAIN_VISIBLE );
+			//Hay residencial
 		}
 		else {
-			Layer::pbtnQRo->Unset( OC_GUIMAIN_VISIBLE );
-			Layer::pbtnQRf->Set( OC_GUIMAIN_VISIBLE );
+			// NO hay residencial
 		}
 
 		if ( pstruct->IsSet( OC_STRUCTURE_C ) ) {
-			Layer::pbtnQCo->Set( OC_GUIMAIN_VISIBLE );
-			Layer::pbtnQCf->Unset( OC_GUIMAIN_VISIBLE );
+			//Hay comercial
 		}
 		else {
-			Layer::pbtnQCo->Unset( OC_GUIMAIN_VISIBLE );
-			Layer::pbtnQCf->Set( OC_GUIMAIN_VISIBLE );
+			//NO hay residencial
 		}
 
 		if ( pstruct->IsSet( OC_STRUCTURE_I ) ) {
-			Layer::pbtnQIo->Set( OC_GUIMAIN_VISIBLE );
-			Layer::pbtnQIf->Unset( OC_GUIMAIN_VISIBLE );
+			//Hay industrial
 		}
 		else {
-			Layer::pbtnQIo->Unset( OC_GUIMAIN_VISIBLE );
-			Layer::pbtnQIf->Set( OC_GUIMAIN_VISIBLE );
+			//No hay industrial
 		}
 
 	// We check only the E bit, WG are NOT implemented yet
 		if ( pstruct->IsSet( OC_STRUCTURE_E ) ) {
-			Layer::pbtnQEo->Set( OC_GUIMAIN_VISIBLE );
-			Layer::pbtnQEf->Unset( OC_GUIMAIN_VISIBLE );
+			//Hay energia
 		}
 		else {
-			Layer::pbtnQEo->Unset( OC_GUIMAIN_VISIBLE );
-			Layer::pbtnQEf->Set( OC_GUIMAIN_VISIBLE );
+			// No hay energia
 		}
 	}
-	else {
-	// Put all the controls in their off state
-		Layer::pbtnQRf->Set( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQCf->Set( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQIf->Set( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQWf->Set( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQEf->Set( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQGf->Set( OC_GUIMAIN_VISIBLE );
+	//No hay gas
+	//No hay agua
 
-		Layer::pbtnQRo->Unset( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQCo->Unset( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQIo->Unset( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQWo->Unset( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQEo->Unset( OC_GUIMAIN_VISIBLE );
-		Layer::pbtnQGo->Unset( OC_GUIMAIN_VISIBLE );
-	}
+// Create query window
+	int widthWin = gVars.guiScreenWidth*0.4;
+	if(widthWin > 300)
+		widthWin = 300;
+	int heightWin = gVars.guiScreenHeight*0.6;
+	if(heightWin > 500)
+		heightWin = 500;
+	int xWin = (gVars.guiScreenWidth - widthWin) / 2;
+	int yWin = (gVars.guiScreenHeight - heightWin) / 2;
 
-	return Layer::pctrQ;
+	char titleQuery[200];
+	strcpy(titleQuery, "Query");
+
+	GUIWindow* winQuery = new GUIWindow( xWin, yWin, widthWin, heightWin, titleQuery );
+
+	return winQuery;
 }
 
 
@@ -1296,7 +1288,7 @@ BuildingLayer::_BuildWEGStructure(
 	delete pNewStructure;
 // Put the main structure upon it
 	_tabpStructure[ linearIndex ] = pMainStructure;
-	
+
 	return OC_ERR_FREE;
 }
 

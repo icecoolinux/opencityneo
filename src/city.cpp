@@ -406,6 +406,8 @@ void City::Display()
 
 // Display windows.
 	((GUIContainer*)_pwStatistics->GetContainer())->Display();
+	if(_pwQwery != NULL)
+		((GUIContainer*)_pwQwery->GetContainer())->Display();
 
 // Display the menu
 	if (_pctrMenu != NULL)
@@ -707,6 +709,8 @@ City::MouseMotion( const SDL_MouseMotionEvent& rcEvent )
 	}
 	else {
 		_pwStatistics->GetContainer()->MouseMotion( rcEvent );
+		if(_pwQwery != NULL)
+			_pwQwery->GetContainer()->MouseMotion( rcEvent );
 		_pctr->MouseMotion( rcEvent );
 		_pctrStatus->MouseMotion( rcEvent );
 
@@ -747,6 +751,14 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
 		_HandleWinStatistics();
 		_bLMBPressedOverMap = false;
 		return;
+	}
+	if(_pwQwery != NULL) {
+		_pwQwery->GetContainer()->MouseButton(rcsMBE);
+		if ( ((GUIContainer*)_pwQwery->GetContainer())->GetClick() != 0 ) {
+			_HandleWinQuery();
+			_bLMBPressedOverMap = false;
+			return;
+		}
 	}
 
 // Process the mouse click on the status bar
@@ -844,7 +856,7 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
 			// AND dragging enabled
 			// AND mouse button was correctly released in the map
 			// THEN do tool
-			if (not (SDL_GetModState() & KMOD_CTRL)
+				if (not (SDL_GetModState() & KMOD_CTRL)
 					and _bLMBPressedOverMap
 					and gVars.gpRenderer->GetSelectedWLFrom(
 						rcsMBE.x, rcsMBE.y,
@@ -865,13 +877,6 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
 
 		// RMB (right mouse button).
 			if (rcsMBE.button == SDL_BUTTON_RIGHT) {
-			// IF the user has invoked "Query" THEN we destroy it first
-				if (_pctr == _pctrQ) {
-					_pctr = _pctrMain;
-				// Enable the visible bit since, it is disabled later
-				// the main toolcircle won't be displayed
-					_pctr->Set( OC_GUIMAIN_VISIBLE );
-				}
 
 			// Show toolcircle if not ckicked on top the status bar and not move/rotate the camera.
 				if( (!_pctrStatus->IsSet(OC_GUIMAIN_VISIBLE) || !_pctrStatus->IsInside(rcsMBE.x, _iWinHeight - rcsMBE.y))
@@ -945,11 +950,6 @@ void City::Resize( const SDL_ResizeEvent& rcEvent )
 		_pctrMenu->Resize( rcEvent );
 		_pctrMenu->SetSize( _iWinWidth, _iWinHeight );
 		_CenterMenu();
-	}
-
-// IF the query tool is displayed THEN invoke the resize event
-	if (_pctrQ != NULL) {
-		_pctrQ->Resize( rcEvent );
 	}
 }
 
@@ -1142,6 +1142,8 @@ City::_CreateGUI()
 
 // Windows.
 	_pwStatistics = new GUIWindow(_iWinWidth*0.10f, _iWinHeight*0.10f, _iWinWidth*0.80f, _iWinHeight*0.80f, "Statistics");
+	((GUIContainer*)_pwStatistics->GetContainer())->Unset(OC_GUIMAIN_VISIBLE);
+	_pwQwery = NULL;
 
 // GUI main toolcircle
 	pbtnZ = new GUIButton( GUIBUTTON_POSITION_1, ocDataDirPrefix( "graphism/gui/zone" ));
@@ -1253,9 +1255,6 @@ City::_CreateGUI()
 
 // the current _pctr points to the MAIN one
 	_pctr = _pctrMain;
-
-// there isn't a query container
-	_pctrQ = NULL;
 }
 
 
@@ -1263,8 +1262,6 @@ City::_CreateGUI()
 void
 City::_DeleteGUI()
 {
-	_pctrQ = NULL;
-
 // MAS toolcircle
 	delete _pctrMAS;
 	delete pbtnMASRobber;
@@ -1325,6 +1322,8 @@ City::_DeleteGUI()
 
 // Delete the windows.
 	delete _pwStatistics;
+	if(_pwQwery != NULL)
+		delete _pwQwery;
 
 // Delete the status bar
 	delete _pctrStatus;
@@ -1640,17 +1639,16 @@ City::_DoTool(
 		break;
 
 	case OC_TOOL_QUERY:
-	// Get the new query container
-		_pctrQ = _apLayer[ _eCurrentLayer ]->QueryStructure( _uiMapW1, _uiMapL1 );
+	// Remove old query window
+		if( _pwQwery != NULL ) {
+			delete _pwQwery;
+			_pwQwery = NULL;
+		}
 
-	// Reset the old container
-		_pctr->ResetAttribute( OC_GUIMAIN_CLICKED | OC_GUIMAIN_MOUSEOVER );
-		_pctr->Unset( OC_GUIMAIN_VISIBLE );
+	// Get the new query window
+		_pwQwery = _apLayer[ _eCurrentLayer ]->QueryStructure( _uiMapW1, _uiMapL1 );
 
-	// Show the informations queried
-		_pctr = _pctrQ;
-		_pctr->SetLocation( sdlMBEvent.x - 70, _iWinHeight - sdlMBEvent.y - 70 );
-		_pctr->Set( OC_GUIMAIN_VISIBLE );
+		_pwQwery->SetLocation( sdlMBEvent.x, _iWinHeight - sdlMBEvent.y);
 		enumErrCode = OC_ERR_SOMETHING;		// avoid to calculate the cost
 		break;
 
@@ -1882,6 +1880,28 @@ City::_HandleWinStatistics()
 
 		default:
 			OPENCITY_DEBUG( "Statistics window error");
+			assert(0);
+	}
+}
+
+   /*=====================================================================*/
+void
+City::_HandleWinQuery()
+{
+	assert( _pwQwery != NULL );
+
+	uint uiObject = ((GUIContainer*)_pwQwery->GetContainer())->GetClick();
+
+	switch (uiObject) {
+		case 1:		// Window
+			break;
+
+		case 2:		// Close button
+			_pwQwery->close();
+			break;
+
+		default:
+			OPENCITY_DEBUG( "Query window error");
 			assert(0);
 	}
 }

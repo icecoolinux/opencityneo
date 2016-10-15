@@ -8,9 +8,17 @@
  *                                                                         *
  ***************************************************************************/
 
+// Useful enumerations
+#include "opencity_direction.h"
+#include "opencity_structure_type.h"
+
 // OpenCity headers
 #include "guiwindow.h"
 #include "guicontainer.h"
+
+// Global settings
+#include "globalvar.h"
+extern GlobalVar gVars;
 
 #define TEXTURE_FILE_WINDOW "graphism/gui/windowgui.png"
 #define HEIGHT_TITLE_BAR 30
@@ -75,7 +83,6 @@ GUIWindow::~GUIWindow()
 	OPENCITY_DEBUG( "Dwin" );
 	delete _pbtnClose;
 }
-
 
 // Close de window
 void GUIWindow::close()
@@ -186,6 +193,20 @@ GUIWindow::Display() const
 	glPopAttrib();
 }
 
+// Smart set window position
+void
+GUIWindow::SetLocation(const int & rciX, const int & rciY ) {
+
+	int xWin = rciX;
+	int yWin = rciY - _uiHeight;
+
+	if( (xWin+_uiWidth) > gVars.guiScreenWidth )
+		xWin = gVars.guiScreenWidth - _uiWidth;
+	if( yWin < 0 )
+		yWin = 0;
+
+	_pctr->SetLocation(xWin, yWin);
+}
 
    /*=====================================================================*/
 void

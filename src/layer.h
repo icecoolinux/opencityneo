@@ -4,7 +4,7 @@
 	begin                : september 20th, 2003
 	copyright            : (C) 2003-2008 by Duong Khang NGUYEN
 	email                : neoneurone @ gmail com
-	
+
 	$Id: layer.h 375 2008-10-28 14:47:15Z neoneurone $
  ***************************************************************************/
 
@@ -24,6 +24,7 @@
 
 #include "persistence.h"
 #include "ui.h"
+#include "guiwindow.h"
 
 class Structure;
 class GUIContainer;
@@ -57,7 +58,7 @@ Is there something built on it already ?
 //========================================================================
 /** Preview the structure which is about to be built on the specified
 surface.
-	\param W,L The upper left corner of the surface which will be used 
+	\param W,L The upper left corner of the surface which will be used
 to build the bulding.
 	\param enumGraphicCode Will contain the OC graphic code of the building
 	\param enumStructCode Contain the structure code
@@ -213,7 +214,7 @@ queried informations. The user must call "delete pointer" to destroy
 that pointer once he/she've done with it.
 	\see _CreateQueryContainer(), _DeleteQueryContainer()
 */
-	virtual GUIContainer* const
+	virtual GUIWindow* const
 	QueryStructure(
 		const uint & w,
 		const uint & l ) const = 0;
@@ -224,20 +225,6 @@ protected:
 	uint _uiLayerLength;
 
 
-//========================================================================
-/** Used by the "Query" function
-these controls are shared by all the derived layers
-*/
-	static GUIContainer* pctrQ;						///< The query container
-	static GUIButton* pbtnQRo, *pbtnQRf;			///< Residential query button
-	static GUIButton* pbtnQCo, *pbtnQCf;			///< Commercial query button
-	static GUIButton* pbtnQIo, *pbtnQIf;			///< Industrial query button
-	static GUIButton* pbtnQWo, *pbtnQWf;			///< Water query button
-	static GUIButton* pbtnQEo, *pbtnQEf;			///< Electricity query button
-	static GUIButton* pbtnQGo, *pbtnQGf;			///< Gas query button
-	static GUIButton* pbtnQP;						///< Path query button
-
-
 private:
    /*=====================================================================*/
    /*                  PRIVATE   STATIC   ATTRIBUTES                      */
@@ -245,10 +232,6 @@ private:
 
 /// Total derived classes
 	static uint _uiNumberLayer;
-
-//========================================================================
-	void _CreateQueryContainer();
-	void _DeleteQueryContainer();
 };
 
 #endif

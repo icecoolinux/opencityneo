@@ -106,12 +106,18 @@ trafficsim.o: trafficsim.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/basic_file.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/c++io.h \
  /usr/include/c++/4.9.2/bits/fstream.tcc ../../src/buildinglayer.h \
- ../../src/layer.h ../../src/persistence.h ../../src/ui.h ../map.h \
- ../main.h ../persistence.h ../../src/structure/pathstructure.h \
+ ../../src/layer.h ../../src/persistence.h ../../src/ui.h \
+ ../../src/guiwindow.h ../../src/guimain.h /usr/include/SDL/SDL_image.h \
+ /usr/include/SDL/SDL.h ../../src/guibutton.h ../../src/texture.h \
+ /usr/include/c++/4.9.2/map /usr/include/c++/4.9.2/bits/stl_tree.h \
+ /usr/include/c++/4.9.2/ext/alloc_traits.h \
+ /usr/include/c++/4.9.2/bits/stl_map.h \
+ /usr/include/c++/4.9.2/bits/stl_multimap.h \
+ /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
+ ../map.h ../main.h ../persistence.h ../../src/structure/pathstructure.h \
  ../../src/structure/structure.h ../../src/pathfinder.h \
  /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
- /usr/include/c++/4.9.2/ext/alloc_traits.h \
  /usr/include/c++/4.9.2/bits/stl_uninitialized.h \
  /usr/include/c++/4.9.2/bits/stl_vector.h \
  /usr/include/c++/4.9.2/bits/stl_bvector.h \
@@ -458,6 +464,32 @@ simulator.h:
 
 ../../src/ui.h:
 
+../../src/guiwindow.h:
+
+../../src/guimain.h:
+
+/usr/include/SDL/SDL_image.h:
+
+/usr/include/SDL/SDL.h:
+
+../../src/guibutton.h:
+
+../../src/texture.h:
+
+/usr/include/c++/4.9.2/map:
+
+/usr/include/c++/4.9.2/bits/stl_tree.h:
+
+/usr/include/c++/4.9.2/ext/alloc_traits.h:
+
+/usr/include/c++/4.9.2/bits/stl_map.h:
+
+/usr/include/c++/4.9.2/bits/stl_multimap.h:
+
+/usr/include/c++/4.9.2/utility:
+
+/usr/include/c++/4.9.2/bits/stl_relops.h:
+
 ../map.h:
 
 ../main.h:
@@ -473,8 +505,6 @@ simulator.h:
 /usr/include/c++/4.9.2/vector:
 
 /usr/include/c++/4.9.2/bits/stl_construct.h:
-
-/usr/include/c++/4.9.2/ext/alloc_traits.h:
 
 /usr/include/c++/4.9.2/bits/stl_uninitialized.h:
 

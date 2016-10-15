@@ -115,13 +115,14 @@ city.o: city.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/stl_bvector.h \
  /usr/include/c++/4.9.2/bits/vector.tcc ../src/simulator/mainsim.h main.h \
  ../src/simulator/simulator.h persistence.h ../src/structure/structure.h \
- buildinglayer.h layer.h guibar.h guimain.h /usr/include/SDL/SDL_image.h \
- /usr/include/SDL/SDL.h guibutton.h texture.h /usr/include/c++/4.9.2/map \
+ buildinglayer.h layer.h guiwindow.h guimain.h \
+ /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h guibutton.h \
+ texture.h /usr/include/c++/4.9.2/map \
  /usr/include/c++/4.9.2/bits/stl_tree.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
- guilabel.h guicontainer.h guiwindow.h ../src/mas/agentpolice.h \
+ guibar.h guilabel.h guicontainer.h ../src/mas/agentpolice.h \
  ../src/mas/agent.h ../src/mas/role.h /usr/include/c++/4.9.2/list \
  /usr/include/c++/4.9.2/bits/stl_list.h \
  /usr/include/c++/4.9.2/bits/list.tcc ../src/mas/agentdemonstrator.h \
@@ -504,7 +505,7 @@ buildinglayer.h:
 
 layer.h:
 
-guibar.h:
+guiwindow.h:
 
 guimain.h:
 
@@ -528,11 +529,11 @@ texture.h:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
 
+guibar.h:
+
 guilabel.h:
 
 guicontainer.h:
-
-guiwindow.h:
 
 ../src/mas/agentpolice.h:
 

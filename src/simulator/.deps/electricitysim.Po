@@ -116,18 +116,18 @@ electricitysim.o: electricitysim.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/stl_bvector.h \
  /usr/include/c++/4.9.2/bits/vector.tcc ../../src/buildinglayer.h \
  ../../src/layer.h ../../src/persistence.h ../../src/ui.h \
+ ../../src/guiwindow.h ../../src/guimain.h /usr/include/SDL/SDL_image.h \
+ /usr/include/SDL/SDL.h ../../src/guibutton.h ../../src/texture.h \
+ /usr/include/c++/4.9.2/map /usr/include/c++/4.9.2/bits/stl_tree.h \
+ /usr/include/c++/4.9.2/bits/stl_map.h \
+ /usr/include/c++/4.9.2/bits/stl_multimap.h \
+ /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
  ../../src/structure/structure.h ../../src/globalvar.h \
  ../../src/audiomanagersdl.h /usr/include/SDL/SDL_mixer.h \
  /usr/include/SDL/SDL_types.h ../../src/extensionmanager.h \
  ../../src/graphicmanager.h ../../src/map.h ../../src/propertymanager.h \
- ../../src/conf.h /usr/include/c++/4.9.2/map \
- /usr/include/c++/4.9.2/bits/stl_tree.h \
- /usr/include/c++/4.9.2/bits/stl_map.h \
- /usr/include/c++/4.9.2/bits/stl_multimap.h ../../src/renderer.h \
- ../../src/texture.h /usr/include/c++/4.9.2/utility \
- /usr/include/c++/4.9.2/bits/stl_relops.h \
- ../../src/networking/networking.h /usr/include/SDL/SDL_net.h \
- /usr/include/SDL/SDL.h ../../src/movementmanager.h \
+ ../../src/conf.h ../../src/renderer.h ../../src/networking/networking.h \
+ /usr/include/SDL/SDL_net.h ../../src/movementmanager.h \
  ../../src/mas/kernel.h ../../src/mas/agent.h ../../src/mas/role.h \
  /usr/include/c++/4.9.2/list /usr/include/c++/4.9.2/bits/stl_list.h \
  /usr/include/c++/4.9.2/bits/list.tcc ../../src/mas/environment.h \
@@ -499,6 +499,30 @@ simulator.h:
 
 ../../src/ui.h:
 
+../../src/guiwindow.h:
+
+../../src/guimain.h:
+
+/usr/include/SDL/SDL_image.h:
+
+/usr/include/SDL/SDL.h:
+
+../../src/guibutton.h:
+
+../../src/texture.h:
+
+/usr/include/c++/4.9.2/map:
+
+/usr/include/c++/4.9.2/bits/stl_tree.h:
+
+/usr/include/c++/4.9.2/bits/stl_map.h:
+
+/usr/include/c++/4.9.2/bits/stl_multimap.h:
+
+/usr/include/c++/4.9.2/utility:
+
+/usr/include/c++/4.9.2/bits/stl_relops.h:
+
 ../../src/structure/structure.h:
 
 ../../src/globalvar.h:
@@ -519,27 +543,11 @@ simulator.h:
 
 ../../src/conf.h:
 
-/usr/include/c++/4.9.2/map:
-
-/usr/include/c++/4.9.2/bits/stl_tree.h:
-
-/usr/include/c++/4.9.2/bits/stl_map.h:
-
-/usr/include/c++/4.9.2/bits/stl_multimap.h:
-
 ../../src/renderer.h:
-
-../../src/texture.h:
-
-/usr/include/c++/4.9.2/utility:
-
-/usr/include/c++/4.9.2/bits/stl_relops.h:
 
 ../../src/networking/networking.h:
 
 /usr/include/SDL/SDL_net.h:
-
-/usr/include/SDL/SDL.h:
 
 ../../src/movementmanager.h:
 

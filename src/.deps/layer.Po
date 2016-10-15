@@ -104,20 +104,21 @@ layer.o: layer.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/cstdio \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/basic_file.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/c++io.h \
- /usr/include/c++/4.9.2/bits/fstream.tcc ui.h \
- ../src/structure/structure.h main.h persistence.h guicontainer.h \
- guimain.h /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h texture.h \
- /usr/include/c++/4.9.2/map /usr/include/c++/4.9.2/bits/stl_tree.h \
+ /usr/include/c++/4.9.2/bits/fstream.tcc ui.h guiwindow.h guimain.h \
+ /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h guibutton.h \
+ texture.h /usr/include/c++/4.9.2/map \
+ /usr/include/c++/4.9.2/bits/stl_tree.h \
  /usr/include/c++/4.9.2/ext/alloc_traits.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
+ ../src/structure/structure.h main.h persistence.h guicontainer.h \
  /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
  /usr/include/c++/4.9.2/bits/stl_uninitialized.h \
  /usr/include/c++/4.9.2/bits/stl_vector.h \
  /usr/include/c++/4.9.2/bits/stl_bvector.h \
- /usr/include/c++/4.9.2/bits/vector.tcc guibutton.h
+ /usr/include/c++/4.9.2/bits/vector.tcc
 
 /usr/include/stdc-predef.h:
 
@@ -447,19 +448,15 @@ persistence.h:
 
 ui.h:
 
-../src/structure/structure.h:
-
-main.h:
-
-persistence.h:
-
-guicontainer.h:
+guiwindow.h:
 
 guimain.h:
 
 /usr/include/SDL/SDL_image.h:
 
 /usr/include/SDL/SDL.h:
+
+guibutton.h:
 
 texture.h:
 
@@ -477,6 +474,14 @@ texture.h:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
 
+../src/structure/structure.h:
+
+main.h:
+
+persistence.h:
+
+guicontainer.h:
+
 /usr/include/c++/4.9.2/vector:
 
 /usr/include/c++/4.9.2/bits/stl_construct.h:
@@ -488,5 +493,3 @@ texture.h:
 /usr/include/c++/4.9.2/bits/stl_bvector.h:
 
 /usr/include/c++/4.9.2/bits/vector.tcc:
-
-guibutton.h:

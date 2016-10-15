@@ -209,6 +209,7 @@ private:
 	GUIButton*		_pbtnPlay;			///< Play button
 
 // Windows
+	GUIWindow* _pwQwery;
 	GUIWindow* _pwStatistics;
 
 // GUI containers for main, zone, eLectric and Terrain toolcircles
@@ -216,7 +217,6 @@ private:
 	GUIContainer* _pctrMain;
 	GUIContainer* _pctrL;		// electricic tool
 	GUIContainer* _pctrT;		// terrain tool
-	GUIContainer* _pctrQ;		// query tool
 	GUIContainer* _pctrZ;		// zone tool
 	GUIContainer* _pctrG;		// Government tool circle
 	GUIContainer* _pctrN;		// Nature tool circle
@@ -325,6 +325,7 @@ private:
 	void _HandleMenuClick();
 
 	void _HandleWinStatistics();
+	void _HandleWinQuery();
 
 	void _HandleStatusClick();
 

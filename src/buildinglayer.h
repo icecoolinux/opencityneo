@@ -212,7 +212,7 @@ linear index of a structure is calculated by this formula:
 //========================================================================
 /** see "layer.h" for more informations
 */
-	GUIContainer* const
+	GUIWindow* const
 	QueryStructure(
 		const uint & w,
 		const uint & l ) const;

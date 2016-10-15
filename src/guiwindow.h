@@ -38,6 +38,11 @@ public:
 	void
 	Display() const;
 
+	// Smart set window position
+	void
+	SetLocation(
+		const int & rciX,
+		const int & rciY );
 
 //========================================================================
 // Inherited methods from UI

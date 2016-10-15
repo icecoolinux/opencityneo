@@ -116,10 +116,12 @@ renderer.o: renderer.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/codecvt.h /usr/include/c++/4.9.2/cstdio \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/basic_file.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/c++io.h \
- /usr/include/c++/4.9.2/bits/fstream.tcc ui.h font_8x8.h \
- ../src/model/model.h main.h texture.h ../src/structure/structure.h \
- persistence.h globalvar.h audiomanagersdl.h /usr/include/SDL/SDL_mixer.h \
- /usr/include/SDL/SDL_types.h /usr/include/c++/4.9.2/vector \
+ /usr/include/c++/4.9.2/bits/fstream.tcc ui.h guiwindow.h guimain.h \
+ /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h guibutton.h \
+ font_8x8.h ../src/model/model.h main.h texture.h \
+ ../src/structure/structure.h persistence.h globalvar.h audiomanagersdl.h \
+ /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
+ /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
  /usr/include/c++/4.9.2/bits/stl_uninitialized.h \
  /usr/include/c++/4.9.2/bits/stl_vector.h \
@@ -127,8 +129,8 @@ renderer.o: renderer.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/vector.tcc extensionmanager.h \
  graphicmanager.h map.h propertymanager.h conf.h \
  ../src/networking/networking.h /usr/include/SDL/SDL_net.h \
- /usr/include/SDL/SDL.h movementmanager.h ../src/mas/kernel.h \
- ../src/mas/agent.h ../src/mas/role.h /usr/include/c++/4.9.2/list \
+ movementmanager.h ../src/mas/kernel.h ../src/mas/agent.h \
+ ../src/mas/role.h /usr/include/c++/4.9.2/list \
  /usr/include/c++/4.9.2/bits/stl_list.h \
  /usr/include/c++/4.9.2/bits/list.tcc ../src/mas/environment.h \
  ../src/mas/agentposition.h pathfinder.h mapgen/mapmaker.h mapgen/map.h \
@@ -502,6 +504,16 @@ persistence.h:
 
 ui.h:
 
+guiwindow.h:
+
+guimain.h:
+
+/usr/include/SDL/SDL_image.h:
+
+/usr/include/SDL/SDL.h:
+
+guibutton.h:
+
 font_8x8.h:
 
 ../src/model/model.h:
@@ -547,8 +559,6 @@ conf.h:
 ../src/networking/networking.h:
 
 /usr/include/SDL/SDL_net.h:
-
-/usr/include/SDL/SDL.h:
 
 movementmanager.h:
 
