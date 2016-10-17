@@ -113,7 +113,7 @@ pathfinder.o: pathfinder.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
- destination.h ../src/structure/pathstructure.h \
+ guilabel.h destination.h ../src/structure/pathstructure.h \
  ../src/structure/structure.h main.h persistence.h map.h pathfinder.h \
  /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
@@ -483,6 +483,8 @@ texture.h:
 /usr/include/c++/4.9.2/utility:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
+
+guilabel.h:
 
 destination.h:
 

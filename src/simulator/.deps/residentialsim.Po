@@ -114,7 +114,7 @@ residentialsim.o: residentialsim.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
- ../../src/structure/structure.h
+ ../../src/guilabel.h ../../src/structure/structure.h
 
 /usr/include/stdc-predef.h:
 
@@ -479,5 +479,7 @@ simulator.h:
 /usr/include/c++/4.9.2/utility:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
+
+../../src/guilabel.h:
 
 ../../src/structure/structure.h:

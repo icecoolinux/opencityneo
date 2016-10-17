@@ -114,9 +114,10 @@ simulator.o: simulator.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
- ../../src/structure/structure.h ../../src/globalvar.h \
- ../../src/audiomanagersdl.h /usr/include/SDL/SDL_mixer.h \
- /usr/include/SDL/SDL_types.h /usr/include/c++/4.9.2/vector \
+ ../../src/guilabel.h ../../src/structure/structure.h \
+ ../../src/globalvar.h ../../src/audiomanagersdl.h \
+ /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
+ /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
  /usr/include/c++/4.9.2/bits/stl_uninitialized.h \
  /usr/include/c++/4.9.2/bits/stl_vector.h \
@@ -499,6 +500,8 @@ simulator.h:
 /usr/include/c++/4.9.2/utility:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
+
+../../src/guilabel.h:
 
 ../../src/structure/structure.h:
 

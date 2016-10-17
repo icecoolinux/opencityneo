@@ -28,8 +28,7 @@ extern GlobalVar gVars;
 Texture* GUIWindow::_textureWindow = NULL;
 
    /*=====================================================================*/
-GUIWindow::GUIWindow():
-_strTitle("")
+GUIWindow::GUIWindow()
 {
 	OPENCITY_DEBUG( "Dctor" );
 }
@@ -43,8 +42,7 @@ GUIWindow::GUIWindow
 	const uint& cuiW,
 	const uint& cuiH,
 	const string& strTitle
-):
-_strTitle(strTitle)
+)
 {
 	OPENCITY_DEBUG( "Pctor" );
 
@@ -55,6 +53,11 @@ _strTitle(strTitle)
 	_uiHeight = cuiH;
 
 	titleBarClicked = false;
+
+// Window title
+	_lblTitle = new GUILabel(cuiW/2, cuiH-HEIGHT_TITLE_BAR/2, strTitle);
+	_lblTitle->SetAlign(GUILabel::OC_ALIGN_CENTER);
+	_lblTitle->SetForeground(OPENCITY_PALETTE[Color::OC_WHITE]);
 
 // Load the texture of the window if it's not load.
 	if (_textureWindow == NULL) {
@@ -82,6 +85,7 @@ GUIWindow::~GUIWindow()
 {
 	OPENCITY_DEBUG( "Dwin" );
 	delete _pbtnClose;
+	delete _lblTitle;
 }
 
 // Close de window
@@ -188,6 +192,9 @@ GUIWindow::Display() const
 	glTexCoord2f( 0.4, 0.6 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
 	glEnd();
 
+// Display title
+	_lblTitle->Display();
+
 // Restore the old matrix and attribs
 	glPopMatrix();
 	glPopAttrib();
@@ -202,7 +209,12 @@ GUIWindow::SetLocation(const int & rciX, const int & rciY ) {
 
 	if( (xWin+_uiWidth) > gVars.guiScreenWidth )
 		xWin = gVars.guiScreenWidth - _uiWidth;
-	if( yWin < 0 )
+	else if( xWin < 0 )
+		xWin = 0;
+
+	if( (yWin+_uiHeight) > gVars.guiScreenHeight )
+		yWin = gVars.guiScreenHeight - _uiHeight;
+	else if( yWin < 0 )
 		yWin = 0;
 
 	_pctr->SetLocation(xWin, yWin);

@@ -123,7 +123,7 @@ mainsim.o: mainsim.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
- ../../src/globalvar.h ../../src/audiomanagersdl.h \
+ ../../src/guilabel.h ../../src/globalvar.h ../../src/audiomanagersdl.h \
  /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
  ../../src/extensionmanager.h ../../src/graphicmanager.h ../../src/map.h \
  ../../src/propertymanager.h ../../src/conf.h ../../src/renderer.h \
@@ -531,6 +531,8 @@ trafficsim.h:
 /usr/include/c++/4.9.2/utility:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
+
+../../src/guilabel.h:
 
 ../../src/globalvar.h:
 

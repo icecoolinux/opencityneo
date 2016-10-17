@@ -114,9 +114,9 @@ trafficsim.o: trafficsim.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
- ../map.h ../main.h ../persistence.h ../../src/structure/pathstructure.h \
- ../../src/structure/structure.h ../../src/pathfinder.h \
- /usr/include/c++/4.9.2/vector \
+ ../../src/guilabel.h ../map.h ../main.h ../persistence.h \
+ ../../src/structure/pathstructure.h ../../src/structure/structure.h \
+ ../../src/pathfinder.h /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
  /usr/include/c++/4.9.2/bits/stl_uninitialized.h \
  /usr/include/c++/4.9.2/bits/stl_vector.h \
@@ -489,6 +489,8 @@ simulator.h:
 /usr/include/c++/4.9.2/utility:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
+
+../../src/guilabel.h:
 
 ../map.h:
 

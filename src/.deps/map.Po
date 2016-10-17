@@ -113,7 +113,7 @@ map.o: map.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
- ../src/mapgen/mapmaker.h ../src/mapgen/map.h macros.h \
+ guilabel.h ../src/mapgen/mapmaker.h ../src/mapgen/map.h macros.h \
  /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
  /usr/include/c++/4.9.2/bits/stl_uninitialized.h \
@@ -486,6 +486,8 @@ texture.h:
 /usr/include/c++/4.9.2/utility:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
+
+guilabel.h:
 
 ../src/mapgen/mapmaker.h:
 

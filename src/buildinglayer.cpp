@@ -784,55 +784,72 @@ BuildingLayer::QueryStructure
 	const uint & l
 ) const
 {
+	// Variables of Structure's info
+	char isRes = false;
+	char isCom = false;
+	char isInd = false;
+	bool isEnergy = false;
+	bool isWater = false;
+	bool isGas = false;
+	char hasEnergy[10];
+	char hasWater[10];
+	char hasGas[10];
+
+	// Window's info
+	char titleQuery[200];
+	int xWin, yWin, widthWin, heightWin;
+
 	Structure* pstruct = _tabpStructure[ l*_uiLayerWidth + w ];
+
+	// Initialize
+	strcpy(titleQuery, "Info query");
+	strcpy(hasEnergy, "No");
+	strcpy(hasWater, "No");
+	strcpy(hasGas, "No");
 
 // Look for the RCI structures around and WEG properties
 	if ( pstruct != NULL ) {
 	// Check for RCI
 		if ( pstruct->IsSet( OC_STRUCTURE_R ) ) {
-			//Hay residencial
-		}
-		else {
-			// NO hay residencial
+			strcpy(titleQuery, "Residential");
+			isRes = true;
 		}
 
 		if ( pstruct->IsSet( OC_STRUCTURE_C ) ) {
-			//Hay comercial
-		}
-		else {
-			//NO hay residencial
+			strcpy(titleQuery, "Commercial");
+			isCom = true;
 		}
 
-		if ( pstruct->IsSet( OC_STRUCTURE_I ) ) {
-			//Hay industrial
-		}
-		else {
-			//No hay industrial
+		if ( pstruct->IsSet( OC_STRUCTURE_I ) ){
+			strcpy(titleQuery, "Industry");
+			isInd = true;
 		}
 
-	// We check only the E bit, WG are NOT implemented yet
-		if ( pstruct->IsSet( OC_STRUCTURE_E ) ) {
-			//Hay energia
+		if ( pstruct->IsSet( OC_STRUCTURE_E ) ){
+			strcpy(titleQuery, "Energy");
+			isEnergy = true;
 		}
-		else {
-			// No hay energia
+
+		if ( pstruct->IsSet( OC_STRUCTURE_W ) ){
+			strcpy(titleQuery, "Water");
+			isWater = true;
+		}
+
+		if ( pstruct->IsSet( OC_STRUCTURE_G ) ){
+			strcpy(titleQuery, "Gas");
+			isGas = true;
 		}
 	}
-	//No hay gas
-	//No hay agua
 
 // Create query window
-	int widthWin = gVars.guiScreenWidth*0.4;
+	widthWin = gVars.guiScreenWidth*0.4;
 	if(widthWin > 300)
 		widthWin = 300;
-	int heightWin = gVars.guiScreenHeight*0.6;
+	heightWin = gVars.guiScreenHeight*0.6;
 	if(heightWin > 500)
 		heightWin = 500;
-	int xWin = (gVars.guiScreenWidth - widthWin) / 2;
-	int yWin = (gVars.guiScreenHeight - heightWin) / 2;
-
-	char titleQuery[200];
-	strcpy(titleQuery, "Query");
+	xWin = (gVars.guiScreenWidth - widthWin) / 2;
+	yWin = (gVars.guiScreenHeight - heightWin) / 2;
 
 	GUIWindow* winQuery = new GUIWindow( xWin, yWin, widthWin, heightWin, titleQuery );
 

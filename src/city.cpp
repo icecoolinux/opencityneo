@@ -1648,7 +1648,11 @@ City::_DoTool(
 	// Get the new query window
 		_pwQwery = _apLayer[ _eCurrentLayer ]->QueryStructure( _uiMapW1, _uiMapL1 );
 
-		_pwQwery->SetLocation( sdlMBEvent.x, _iWinHeight - sdlMBEvent.y);
+	// Set new location of the window
+		uint widthWin, heightWin;
+		_pwQwery->GetSize(widthWin, heightWin);
+		_pwQwery->SetLocation( sdlMBEvent.x - widthWin/2, _iWinHeight - sdlMBEvent.y + widthWin/2);
+
 		enumErrCode = OC_ERR_SOMETHING;		// avoid to calculate the cost
 		break;
 

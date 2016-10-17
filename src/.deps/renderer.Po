@@ -118,7 +118,7 @@ renderer.o: renderer.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/c++io.h \
  /usr/include/c++/4.9.2/bits/fstream.tcc ui.h guiwindow.h guimain.h \
  /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h guibutton.h \
- font_8x8.h ../src/model/model.h main.h texture.h \
+ guilabel.h font_8x8.h ../src/model/model.h main.h texture.h \
  ../src/structure/structure.h persistence.h globalvar.h audiomanagersdl.h \
  /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
  /usr/include/c++/4.9.2/vector \
@@ -513,6 +513,8 @@ guimain.h:
 /usr/include/SDL/SDL.h:
 
 guibutton.h:
+
+guilabel.h:
 
 font_8x8.h:
 

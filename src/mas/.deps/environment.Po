@@ -121,14 +121,14 @@ environment.o: environment.cpp /usr/include/stdc-predef.h \
  ../../src/persistence.h ../../src/ui.h ../../src/guiwindow.h \
  ../../src/guimain.h /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h \
  ../../src/guibutton.h ../../src/texture.h /usr/include/c++/4.9.2/utility \
- /usr/include/c++/4.9.2/bits/stl_relops.h ../../src/graphicmanager.h \
- ../../src/pathfinder.h ../../src/globalvar.h ../../src/audiomanagersdl.h \
- /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
- ../../src/extensionmanager.h ../../src/graphicmanager.h ../../src/map.h \
- ../../src/propertymanager.h ../../src/conf.h ../../src/renderer.h \
- ../../src/networking/networking.h /usr/include/SDL/SDL_net.h \
- ../../src/movementmanager.h kernel.h environment.h \
- ../../src/pathfinder.h ../../src/mapgen/mapmaker.h \
+ /usr/include/c++/4.9.2/bits/stl_relops.h ../../src/guilabel.h \
+ ../../src/graphicmanager.h ../../src/pathfinder.h ../../src/globalvar.h \
+ ../../src/audiomanagersdl.h /usr/include/SDL/SDL_mixer.h \
+ /usr/include/SDL/SDL_types.h ../../src/extensionmanager.h \
+ ../../src/graphicmanager.h ../../src/map.h ../../src/propertymanager.h \
+ ../../src/conf.h ../../src/renderer.h ../../src/networking/networking.h \
+ /usr/include/SDL/SDL_net.h ../../src/movementmanager.h kernel.h \
+ environment.h ../../src/pathfinder.h ../../src/mapgen/mapmaker.h \
  ../../src/mapgen/map.h ../../src/macros.h
 
 /usr/include/stdc-predef.h:
@@ -520,6 +520,8 @@ kernel.h:
 /usr/include/c++/4.9.2/utility:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
+
+../../src/guilabel.h:
 
 ../../src/graphicmanager.h:
 

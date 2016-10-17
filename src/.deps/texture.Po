@@ -112,7 +112,7 @@ texture.o: texture.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu/bits/c++io.h \
  /usr/include/c++/4.9.2/bits/fstream.tcc ui.h guiwindow.h guimain.h \
  /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h guibutton.h \
- ../src/structure/structure.h main.h persistence.h globalvar.h \
+ guilabel.h ../src/structure/structure.h main.h persistence.h globalvar.h \
  audiomanagersdl.h /usr/include/SDL/SDL_mixer.h \
  /usr/include/SDL/SDL_types.h /usr/include/c++/4.9.2/vector \
  /usr/include/c++/4.9.2/bits/stl_construct.h \
@@ -486,6 +486,8 @@ guimain.h:
 /usr/include/SDL/SDL.h:
 
 guibutton.h:
+
+guilabel.h:
 
 ../src/structure/structure.h:
 

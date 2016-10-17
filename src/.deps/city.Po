@@ -122,7 +122,7 @@ city.o: city.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.9.2/bits/stl_map.h \
  /usr/include/c++/4.9.2/bits/stl_multimap.h \
  /usr/include/c++/4.9.2/utility /usr/include/c++/4.9.2/bits/stl_relops.h \
- guibar.h guilabel.h guicontainer.h ../src/mas/agentpolice.h \
+ guilabel.h guibar.h guicontainer.h ../src/mas/agentpolice.h \
  ../src/mas/agent.h ../src/mas/role.h /usr/include/c++/4.9.2/list \
  /usr/include/c++/4.9.2/bits/stl_list.h \
  /usr/include/c++/4.9.2/bits/list.tcc ../src/mas/agentdemonstrator.h \
@@ -529,9 +529,9 @@ texture.h:
 
 /usr/include/c++/4.9.2/bits/stl_relops.h:
 
-guibar.h:
-
 guilabel.h:
+
+guibar.h:
 
 guicontainer.h:
 

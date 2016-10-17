@@ -13,7 +13,7 @@
 #include "guimain.h"
 #include "guibutton.h"
 #include "texture.h"
-
+#include "guilabel.h"
 
 //========================================================================
 /** A window gui for display information in a window.
@@ -55,7 +55,7 @@ public:
 
 
 private:
-	string _strTitle;
+	GUILabel* _lblTitle;
 	GUIButton* _pbtnClose;
 	bool titleBarClicked;
 	static Texture* _textureWindow;
