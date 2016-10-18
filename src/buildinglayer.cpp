@@ -784,64 +784,13 @@ BuildingLayer::QueryStructure
 	const uint & l
 ) const
 {
-	// Variables of Structure's info
-	char isRes = false;
-	char isCom = false;
-	char isInd = false;
-	bool isEnergy = false;
-	bool isWater = false;
-	bool isGas = false;
-	char hasEnergy[10];
-	char hasWater[10];
-	char hasGas[10];
+	Structure* pstruct = _tabpStructure[ l*_uiLayerWidth + w ];
 
 	// Window's info
 	char titleQuery[200];
 	int xWin, yWin, widthWin, heightWin;
 
-	Structure* pstruct = _tabpStructure[ l*_uiLayerWidth + w ];
-
-	// Initialize
-	strcpy(titleQuery, "Info query");
-	strcpy(hasEnergy, "No");
-	strcpy(hasWater, "No");
-	strcpy(hasGas, "No");
-
-// Look for the RCI structures around and WEG properties
-	if ( pstruct != NULL ) {
-	// Check for RCI
-		if ( pstruct->IsSet( OC_STRUCTURE_R ) ) {
-			strcpy(titleQuery, "Residential");
-			isRes = true;
-		}
-
-		if ( pstruct->IsSet( OC_STRUCTURE_C ) ) {
-			strcpy(titleQuery, "Commercial");
-			isCom = true;
-		}
-
-		if ( pstruct->IsSet( OC_STRUCTURE_I ) ){
-			strcpy(titleQuery, "Industry");
-			isInd = true;
-		}
-
-		if ( pstruct->IsSet( OC_STRUCTURE_E ) ){
-			strcpy(titleQuery, "Energy");
-			isEnergy = true;
-		}
-
-		if ( pstruct->IsSet( OC_STRUCTURE_W ) ){
-			strcpy(titleQuery, "Water");
-			isWater = true;
-		}
-
-		if ( pstruct->IsSet( OC_STRUCTURE_G ) ){
-			strcpy(titleQuery, "Gas");
-			isGas = true;
-		}
-	}
-
-// Create query window
+	// Set window size
 	widthWin = gVars.guiScreenWidth*0.4;
 	if(widthWin > 300)
 		widthWin = 300;
@@ -851,7 +800,57 @@ BuildingLayer::QueryStructure
 	xWin = (gVars.guiScreenWidth - widthWin) / 2;
 	yWin = (gVars.guiScreenHeight - heightWin) / 2;
 
+	// Variables of Structure's info
+	GUILabel* lblEnergy = 		new GUILabel(widthWin*0.1, heightWin*0.80, "Energy: ");
+	GUILabel* lblWater = 		new GUILabel(widthWin*0.1, heightWin*0.75, "Water: ");
+	GUILabel* lblGas = 			new GUILabel(widthWin*0.1, heightWin*0.70, "Gas: ");
+	GUILabel* lblHasEnergy = 	new GUILabel(widthWin*0.35, heightWin*0.80, "No");
+	GUILabel* lblHasWater = 	new GUILabel(widthWin*0.35, heightWin*0.75, "No");
+	GUILabel* lblHasGas = 		new GUILabel(widthWin*0.35, heightWin*0.70, "No");
+	lblHasEnergy->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
+	lblHasWater->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
+	lblHasGas->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
+
+	// Initialize
+	strcpy(titleQuery, "Info query");
+
+// Look for the RCI structures around and WEG properties
+	if ( pstruct != NULL ) {
+	// Check for RCI
+		if ( pstruct->IsSet( OC_STRUCTURE_R ) ) {
+			strcpy(titleQuery, "Residential");
+		}
+
+		if ( pstruct->IsSet( OC_STRUCTURE_C ) ) {
+			strcpy(titleQuery, "Commercial");
+		}
+
+		if ( pstruct->IsSet( OC_STRUCTURE_I ) ){
+			strcpy(titleQuery, "Industry");
+		}
+
+		if ( pstruct->IsSet( OC_STRUCTURE_E ) ){
+			strcpy(titleQuery, "Energy");
+		}
+
+		if ( pstruct->IsSet( OC_STRUCTURE_W ) ){
+			strcpy(titleQuery, "Water");
+		}
+
+		if ( pstruct->IsSet( OC_STRUCTURE_G ) ){
+			strcpy(titleQuery, "Gas");
+		}
+	}
+
+// Create query window
 	GUIWindow* winQuery = new GUIWindow( xWin, yWin, widthWin, heightWin, titleQuery );
+
+	((GUIContainer*)winQuery->GetContainer())->Add(lblEnergy);
+	((GUIContainer*)winQuery->GetContainer())->Add(lblWater);
+	((GUIContainer*)winQuery->GetContainer())->Add(lblGas);
+	((GUIContainer*)winQuery->GetContainer())->Add(lblHasEnergy);
+	((GUIContainer*)winQuery->GetContainer())->Add(lblHasWater);
+	((GUIContainer*)winQuery->GetContainer())->Add(lblHasGas);
 
 	return winQuery;
 }
