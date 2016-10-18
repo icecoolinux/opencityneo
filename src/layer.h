@@ -111,7 +111,7 @@ also destroyed.
 	DestroyStructure(
 		uint W1, uint L1,
 		uint W2, uint L2,
-		uint& rCost ) = 0;
+		uint& rCost, OC_LINT cityFund ) = 0;
 
 
 //========================================================================

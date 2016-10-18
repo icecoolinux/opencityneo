@@ -467,7 +467,7 @@ BuildingLayer::ResizeStructure(
 				gVars.gpPropertyMgr->GetWLH( pMain->GetGraphicCode(), xw, 0, xl, 0, xh, 0 );
 
 //				OPENCITY_DEBUG( "Delete structure - W/L " << dw << "/" << dl );
-				_DestroyStructure( dw, dl, uiCost );
+				_DestroyStructure( dw, dl, uiCost, false );
 				pTemp = new RCIStructure( OC_STRUCTURE_PART, pStruct );
 				_tabpStructure[ linearIndex ] = pTemp;
 
@@ -512,7 +512,7 @@ const OPENCITY_ERR_CODE
 BuildingLayer::DestroyStructure(
 	uint W1, uint L1,
 	uint W2, uint L2,
-	uint& rCost )
+	uint& rCost, OC_LINT cityFund )
 {
 	uint w, l;
 	uint costPerSquare;
@@ -521,10 +521,30 @@ BuildingLayer::DestroyStructure(
 	OPENCITY_SWAP( L1, L2, uint );
 	rCost = 0;
 
-	for (w = W1; w <= W2; w++)
+// Get the total cost
+	for (w = W1; w <= W2; w++) {
 		for (l = L1; l <= L2; l++) {
-		if (_DestroyStructure( w, l, costPerSquare ) == OC_ERR_FREE)
-			rCost += costPerSquare;
+			if (_DestroyStructure( w, l, costPerSquare, true ) == OC_ERR_FREE)
+				rCost += costPerSquare;
+			else
+				return OC_ERR_SOMETHING;
+		}
+	}
+
+// Insufficient funds
+	if(rCost > cityFund) {
+		rCost = 0;
+		return OC_ERR_SOMETHING;
+	}
+
+	rCost = 0;
+
+// Destroy
+	for (w = W1; w <= W2; w++) {
+		for (l = L1; l <= L2; l++) {
+			if (_DestroyStructure( w, l, costPerSquare, false ) == OC_ERR_FREE)
+				rCost += costPerSquare;
+		}
 	}
 
 	if (rCost > 0)
@@ -801,56 +821,119 @@ BuildingLayer::QueryStructure
 	yWin = (gVars.guiScreenHeight - heightWin) / 2;
 
 	// Variables of Structure's info
-	GUILabel* lblEnergy = 		new GUILabel(widthWin*0.1, heightWin*0.80, "Energy: ");
-	GUILabel* lblWater = 		new GUILabel(widthWin*0.1, heightWin*0.75, "Water: ");
-	GUILabel* lblGas = 			new GUILabel(widthWin*0.1, heightWin*0.70, "Gas: ");
-	GUILabel* lblHasEnergy = 	new GUILabel(widthWin*0.35, heightWin*0.80, "No");
-	GUILabel* lblHasWater = 	new GUILabel(widthWin*0.35, heightWin*0.75, "No");
-	GUILabel* lblHasGas = 		new GUILabel(widthWin*0.35, heightWin*0.70, "No");
-	lblHasEnergy->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
-	lblHasWater->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
-	lblHasGas->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
+	GUILabel* _lblEnergy = 		new GUILabel(widthWin*0.1, heightWin*0.80, "Energy: ");
+	GUILabel* _lblWater = 		new GUILabel(widthWin*0.1, heightWin*0.75, "Water: ");
+	GUILabel* _lblGas = 		new GUILabel(widthWin*0.1, heightWin*0.70, "Gas: ");
+	GUILabel* _lblHasEnergy = 	new GUILabel(widthWin*0.35, heightWin*0.80, "No");
+	GUILabel* _lblHasWater = 	new GUILabel(widthWin*0.35, heightWin*0.75, "No");
+	GUILabel* _lblHasGas = 		new GUILabel(widthWin*0.35, heightWin*0.70, "No");
+	_lblHasEnergy->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
+	_lblHasWater->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
+	_lblHasGas->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
 
 	// Initialize
-	strcpy(titleQuery, "Info query");
+	strcpy(titleQuery, "Nothing");
 
 // Look for the RCI structures around and WEG properties
 	if ( pstruct != NULL ) {
-	// Check for RCI
-		if ( pstruct->IsSet( OC_STRUCTURE_R ) ) {
-			strcpy(titleQuery, "Residential");
+
+		switch(pstruct->GetCode()) {
+			// Is residential
+			case OC_STRUCTURE_RES:
+				strcpy(titleQuery, "Residential");
+				break;
+			// Is commercial
+			case  OC_STRUCTURE_COM:
+				strcpy(titleQuery, "Commercial");
+				break;
+			// Is industrial
+			case OC_STRUCTURE_IND:
+				strcpy(titleQuery, "Industry");
+				break;
+			// Is coal energy plant
+			case OC_STRUCTURE_EPLANT_COAL:
+				strcpy(titleQuery, "Coal energy plant");
+				break;
+			// Is gas energy plant
+			case OC_STRUCTURE_EPLANT_GAS:
+				strcpy(titleQuery, "Gas energy plant");
+				break;
+			// Is oil energy plant
+			case OC_STRUCTURE_EPLANT_OIL:
+				strcpy(titleQuery, "Oil energy plant");
+				break;
+			// Is nuclear energy plant
+			case OC_STRUCTURE_EPLANT_NUCLEAR:
+				strcpy(titleQuery, "Nuclear energy plant");
+				break;
+			// Is a park
+			case OC_STRUCTURE_PARK:
+				strcpy(titleQuery, "Park");
+				break;
+			// Is a tree
+			case OC_STRUCTURE_FLORA:
+				strcpy(titleQuery, "Tree");
+				break;
+			// Is a road
+			case OC_STRUCTURE_ROAD:
+				strcpy(titleQuery, "Road");
+				break;
+			// Is electric line
+			case OC_STRUCTURE_ELINE:
+				strcpy(titleQuery, "Electric line");
+				break;
+			// Is fire dept
+			case OC_STRUCTURE_FIREDEPT:
+				strcpy(titleQuery, "Fire dept");
+				break;
+			// Is police
+			case OC_STRUCTURE_POLICEDEPT:
+				strcpy(titleQuery, "Police");
+				break;
+			// Is hospital
+			case OC_STRUCTURE_HOSPITALDEPT:
+				strcpy(titleQuery, "Hospital");
+				break;
+			// Is military
+			case OC_STRUCTURE_MILITARYDEPT:
+				strcpy(titleQuery, "Military");
+				break;
+			// Is school
+			case OC_STRUCTURE_EDUCATIONDEPT:
+				strcpy(titleQuery, "School");
+				break;
+			// Structure without info query
+			default:
+				strcpy(titleQuery, "Unknow structure");
+				break;
 		}
 
-		if ( pstruct->IsSet( OC_STRUCTURE_C ) ) {
-			strcpy(titleQuery, "Commercial");
+		// Has energy
+		if ( pstruct->IsSet( OC_STRUCTURE_E ) ) {
+			_lblHasEnergy->SetText("Yes");
+			_lblHasEnergy->SetForeground(OPENCITY_PALETTE[Color::OC_GREEN]);
 		}
-
-		if ( pstruct->IsSet( OC_STRUCTURE_I ) ){
-			strcpy(titleQuery, "Industry");
+		// Has water
+		if ( pstruct->IsSet( OC_STRUCTURE_W ) ) {
+			_lblHasWater->SetText("Yes");
+			_lblHasWater->SetForeground(OPENCITY_PALETTE[Color::OC_GREEN]);
 		}
-
-		if ( pstruct->IsSet( OC_STRUCTURE_E ) ){
-			strcpy(titleQuery, "Energy");
-		}
-
-		if ( pstruct->IsSet( OC_STRUCTURE_W ) ){
-			strcpy(titleQuery, "Water");
-		}
-
-		if ( pstruct->IsSet( OC_STRUCTURE_G ) ){
-			strcpy(titleQuery, "Gas");
+		// Has gas
+		if ( pstruct->IsSet( OC_STRUCTURE_G ) ) {
+			_lblHasGas->SetText("Yes");
+			_lblHasGas->SetForeground(OPENCITY_PALETTE[Color::OC_GREEN]);
 		}
 	}
 
 // Create query window
 	GUIWindow* winQuery = new GUIWindow( xWin, yWin, widthWin, heightWin, titleQuery );
 
-	((GUIContainer*)winQuery->GetContainer())->Add(lblEnergy);
-	((GUIContainer*)winQuery->GetContainer())->Add(lblWater);
-	((GUIContainer*)winQuery->GetContainer())->Add(lblGas);
-	((GUIContainer*)winQuery->GetContainer())->Add(lblHasEnergy);
-	((GUIContainer*)winQuery->GetContainer())->Add(lblHasWater);
-	((GUIContainer*)winQuery->GetContainer())->Add(lblHasGas);
+	((GUIContainer*)winQuery->GetContainer())->Add(_lblEnergy);
+	((GUIContainer*)winQuery->GetContainer())->Add(_lblWater);
+	((GUIContainer*)winQuery->GetContainer())->Add(_lblGas);
+	((GUIContainer*)winQuery->GetContainer())->Add(_lblHasEnergy);
+	((GUIContainer*)winQuery->GetContainer())->Add(_lblHasWater);
+	((GUIContainer*)winQuery->GetContainer())->Add(_lblHasGas);
 
 	return winQuery;
 }
@@ -1286,6 +1369,7 @@ BuildingLayer::_BuildWEGStructure(
 	// Insufficient funds.
 	if(rCost > cityFund) {
 		rCost = 0;
+		delete pMainStructure;
 		return OC_ERR_SOMETHING;
 	}
 
@@ -1360,7 +1444,7 @@ const OPENCITY_ERR_CODE
 BuildingLayer::_DestroyStructure(
 	const uint & w,
 	const uint & l,
-	uint& rCost )
+	uint& rCost, bool dontDestroy )
 {
 	uint linearIndex = (l*_uiLayerWidth) + w;
 	Structure* pstruct, *pstructMain;
@@ -1378,6 +1462,10 @@ BuildingLayer::_DestroyStructure(
 		return OC_ERR_SOMETHING;
 
 	rCost = gVars.gpPropertyMgr->Get( OC_DESTROY_COST, pstruct->GetCode(), pstruct );
+
+// Only return the cost
+	if(dontDestroy)
+		return OC_ERR_FREE;
 
 // The main structure is pstruct itself
 	pstructMain = pstruct;

@@ -137,7 +137,7 @@ public:
 	DestroyStructure(
 		uint W1, uint L1,
 		uint W2, uint L2,
-		uint& rCost );
+		uint& rCost, OC_LINT cityFund );
 
 
 //========================================================================
@@ -327,13 +327,14 @@ automatically when the program ends
 	\param w = OpenGL Ox
 	\param l = OpenGL Oz
 	\param rCost = the cost needed to clean up the specified cell
+	\param dontDestroy = dont detroy, only return the cost
 	\return Error code
 */
 	const OPENCITY_ERR_CODE
 	_DestroyStructure(
 		const uint & w,
 		const uint & l,
-		uint& rCost );
+		uint& rCost, bool dontDestroy );
 
 
 	const OPENCITY_ERR_CODE

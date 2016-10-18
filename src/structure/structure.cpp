@@ -140,27 +140,27 @@ Structure::LoadFrom( std::fstream& rfs )
    /*======================================================================*/
 void
 Structure::Set(
-	const uint wegBit )
+	const uint rciwegBit )
 {
-	_uiStatus |= wegBit;
+	_uiStatus |= rciwegBit;
 }
 
 
    /*======================================================================*/
 void
 Structure::Unset(
-	const uint wegBit )
+	const uint rciwegBit )
 {
-	_uiStatus &= ~wegBit;
+	_uiStatus &= ~rciwegBit;
 }
 
 
    /*======================================================================*/
 const bool
 Structure::IsSet(
-	const uint wegBit ) const
+	const uint rciwegBit ) const
 {
-	if ((_uiStatus & wegBit) == wegBit)
+	if ((_uiStatus & rciwegBit) == rciwegBit)
 		return true;
 	else
 		return false;

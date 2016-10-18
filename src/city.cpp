@@ -1454,9 +1454,6 @@ City::_DoTool(
 	OPENCITY_SWAP( h1, h2, int );
 
 
-// we return if we don't have enough funds
-	if (_liCityFund < 0)
-		return;
 
 
 // block all the sim threads while modifying the game datas
@@ -1621,6 +1618,10 @@ City::_DoTool(
 
 //FIXME: cost
 	case OC_TOOL_HEIGHT_UP:
+		if(_liCityFund < 5) {
+			cost = 0;
+			break;
+		}
 		enumErrCode = gVars.gpMapMgr->ChangeHeight( _uiMapW1, _uiMapL1, OC_MAP_UP );
 		if ( enumErrCode == OC_ERR_FREE ) {
 			gVars.gpRenderer->bHeightChange = true;
@@ -1630,6 +1631,10 @@ City::_DoTool(
 		break;
 
 	case OC_TOOL_HEIGHT_DOWN:
+		if(_liCityFund < 5) {
+			cost = 0;
+			break;
+		}
 		enumErrCode = gVars.gpMapMgr->ChangeHeight( _uiMapW1, _uiMapL1, OC_MAP_DOWN );
 		if ( enumErrCode == OC_ERR_FREE ) {
 			gVars.gpRenderer->bHeightChange = true;
@@ -1651,7 +1656,7 @@ City::_DoTool(
 	// Set new location of the window
 		uint widthWin, heightWin;
 		_pwQwery->GetSize(widthWin, heightWin);
-		_pwQwery->SetLocation( sdlMBEvent.x - widthWin/2, _iWinHeight - sdlMBEvent.y + widthWin/2);
+		_pwQwery->SetLocation( sdlMBEvent.x + widthWin/2, _iWinHeight - sdlMBEvent.y + widthWin/2);
 
 		enumErrCode = OC_ERR_SOMETHING;		// avoid to calculate the cost
 		break;
@@ -1663,7 +1668,7 @@ City::_DoTool(
 	// the structures which are going to be destroyed
 		_pMSim->RemoveStructure( _uiMapW1, _uiMapL1, _uiMapW2, _uiMapL2 );
 		enumErrCode = _apLayer[ _eCurrentLayer ]->
-			DestroyStructure( _uiMapW1, _uiMapL1, _uiMapW2, _uiMapL2, cost );
+			DestroyStructure( _uiMapW1, _uiMapL1, _uiMapW2, _uiMapL2, cost, _liCityFund );
 		if (enumErrCode == OC_ERR_FREE) {
 			gVars.gpAudioMgr->PlaySound( OC_SOUND_DESTROY );
 		}

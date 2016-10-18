@@ -98,18 +98,19 @@ user to remap the pointer to the main structured correctly.
 
 
 //========================================================================
-/** Set the properties of the structure to wegBit
+/** Set the properties of the structure to rciwegBit
+	This is used when a rciweg is in the range
 \param wegBit The desired properties. You can combine them by using the OR
 	operator.
 */
 	void
-	Set( const uint wegBit );
+	Set( const uint rciwegBit );
 
 	void
-	Unset( const uint wegBit );
+	Unset( const uint rciwegBit );
 
 	const bool
-	IsSet( const uint wegBit ) const;
+	IsSet( const uint rciwegBit ) const;
 
 
 //========================================================================
