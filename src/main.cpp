@@ -313,6 +313,9 @@ static int initSDL()
 	SDL_WM_SetCaption( PACKAGE " " VERSION, NULL );
 	SDL_WM_SetIcon( IMG_Load(ocDataDirPrefix("graphism/icon/OpenCity32.png").c_str()), NULL );
 
+// Disable mouse cursor
+	SDL_ShowCursor(SDL_DISABLE);
+
 // Set the SDL_GL_DOUBLEBUFFER attribute for smoother rendering
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
 
@@ -1120,7 +1123,7 @@ static string readSettings()
 //				cout << i++ << "||" << *pChild << std::endl;
 				if (pChild->ValueStr() == "width") {
 					pChild->QueryIntAttribute("value", (int*)&gVars.guiCityWidth);
-					
+
 					// Error if width not contains to the edge.
 					if( gVars.guiCityWidth <= 2*OC_CITY_E ){
 						char num[10];
@@ -1132,7 +1135,7 @@ static string readSettings()
 				}
 				else if (pChild->ValueStr() == "length") {
 					pChild->QueryIntAttribute("value", (int*)&gVars.guiCityLength);
-					
+
 					// Error if length not contains to the edge.
 					if( gVars.guiCityLength <= 2*OC_CITY_E ){
 						char num[10];

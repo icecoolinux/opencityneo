@@ -117,8 +117,7 @@ ElectricitySim::Main()
 		pstruct = _pBuildLayer->GetStructure( pairstructWH.first, pairstructWH.second );
 
 	// only process the EPLANT if it is not marked yet
-		if (pstruct != NULL)
-		if (pstruct->IsSet( OC_STRUCTURE_MARK ) == false )
+		if (pstruct != NULL && !pstruct->IsSet( OC_STRUCTURE_MARK ))
 			_dequepairui.push_back( pairstructWH );
 
 	// now process the deque

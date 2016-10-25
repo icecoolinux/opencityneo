@@ -130,6 +130,7 @@ class UI;
 
 	#define OC_LIGHT_MODEL_AMBIENT	0.7, 0.7, 0.7, 1.0
 
+	#define SIZE_MOUSE_POINTER 25
 
 
    /*=====================================================================*/

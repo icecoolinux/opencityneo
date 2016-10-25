@@ -159,9 +159,12 @@ private:
 // Current city's speed
 	OPENCITY_CITY_SPEED _eSpeed;
 
-// Current active tool
+// Current tool for mouse pointer
 	OPENCITY_TOOL_CODE	_eCurrentTool;
-	GUIButton*			_apbtnCurrentTool[OC_TOOL_NUMBER];
+	GUIContainer*		_pctrToolMouse[OC_TOOL_NUMBER];
+
+// Button query
+	GUIButton*	_btnQuery;
 
 // Others classes
 	Layer*		_apLayer[4];			// The array of our 4 differents layer

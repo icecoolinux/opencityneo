@@ -332,8 +332,12 @@ void City::Display()
 	static ostringstream ossStatus;
 	static bool boolKeyDown;
 	static int iMouseX, iMouseY;
+	static int mouseState;
 
 	bool drawScene = true;
+
+// Get mouse state
+	mouseState = SDL_GetMouseState( &iMouseX, &iMouseY );
 
 // Process key events such as: up, down, left, right etc..
 	boolKeyDown = _HandleKeyPressed();
@@ -351,7 +355,7 @@ void City::Display()
 // The user is dragging
 	if ( _bLMBPressedOverMap && (_eCurrentTool != OC_TOOL_NONE )) {
 	// IF the user is dragging with the left mouse button THEN
-		if ( SDL_GetMouseState( &iMouseX, &iMouseY ) & SDL_BUTTON(1) ) {
+		if ( mouseState & SDL_BUTTON(1) ) {
 			gVars.gpRenderer->GetSelectedWLFrom(
 				iMouseX, iMouseY,
 				_uiMapW2, _uiMapL2,
@@ -412,6 +416,10 @@ void City::Display()
 // Display the menu
 	if (_pctrMenu != NULL)
 		_pctrMenu->Display();
+
+// Display mouse pointer
+	_pctrToolMouse[_eCurrentTool]->SetLocation(iMouseX, _iWinHeight - iMouseY - SIZE_MOUSE_POINTER);
+	_pctrToolMouse[_eCurrentTool]->Display();
 
 // Swap the buffers and update the screen
 	SDL_GL_SwapBuffers();
@@ -1038,53 +1046,40 @@ City::_CreateGUI()
 {
 	ostringstream ossTemp;
 
-// Load the buttons used by the status bar
-	_apbtnCurrentTool[OC_TOOL_NONE]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/unknown" ));
-	_apbtnCurrentTool[OC_TOOL_DESTROY]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/destroy" ));
-	_apbtnCurrentTool[OC_TOOL_ZONE_RES]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/residential" ));
-	_apbtnCurrentTool[OC_TOOL_ZONE_COM]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/commercial" ));
-	_apbtnCurrentTool[OC_TOOL_ZONE_IND]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/industrial" ));
-	_apbtnCurrentTool[OC_TOOL_HEIGHT_UP]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/raise" ));
-	_apbtnCurrentTool[OC_TOOL_HEIGHT_DOWN]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/lower" ));
-	_apbtnCurrentTool[OC_TOOL_ROAD]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/road" ));
-	_apbtnCurrentTool[OC_TOOL_ELINE]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/power_line" ));
-	_apbtnCurrentTool[OC_TOOL_EPLANT_COAL]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/power_plant_coal" ));
-	_apbtnCurrentTool[OC_TOOL_EPLANT_NUCLEAR]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/power_plant_nuclear" ));
-	_apbtnCurrentTool[OC_TOOL_PARK]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/park" ));
-	_apbtnCurrentTool[OC_TOOL_FLORA]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/tree" ));
-	_apbtnCurrentTool[OC_TOOL_FIRE]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/fire" ));
+// Load the mouse pointer for tools
+	_pctrToolMouse[OC_TOOL_NONE] 				= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/normal.png" ));
+	_pctrToolMouse[OC_TOOL_DESTROY] 			= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/destroy.png" ));
+	_pctrToolMouse[OC_TOOL_ZONE_RES]			= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/residential.png" ));
+	_pctrToolMouse[OC_TOOL_ZONE_COM]			= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/commercial.png" ));
+	_pctrToolMouse[OC_TOOL_ZONE_IND]			= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/industrial.png" ));
+	_pctrToolMouse[OC_TOOL_HEIGHT_UP]			= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/raise.png" ));
+	_pctrToolMouse[OC_TOOL_HEIGHT_DOWN]			= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/lower.png" ));
+	_pctrToolMouse[OC_TOOL_ROAD]				= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/road.png" ));
+	_pctrToolMouse[OC_TOOL_ELINE]				= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/power_line.png" ));
+	_pctrToolMouse[OC_TOOL_EPLANT_COAL]			= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/power_plant_coal.png" ));
+	_pctrToolMouse[OC_TOOL_EPLANT_NUCLEAR]		= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/power_plant_nuclear.png" ));
+	_pctrToolMouse[OC_TOOL_PARK]				= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/park.png" ));
+	_pctrToolMouse[OC_TOOL_FLORA]				= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/tree.png" ));
+	_pctrToolMouse[OC_TOOL_FIRE]				= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/fire.png" ));
 
-	_apbtnCurrentTool[OC_TOOL_POLICE]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/police" ));
-	_apbtnCurrentTool[OC_TOOL_HOSPITAL]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/hospital" ));
-	_apbtnCurrentTool[OC_TOOL_EDUCATION]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/education" ));
-	_apbtnCurrentTool[OC_TOOL_QUERY]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/query" ));
+	_pctrToolMouse[OC_TOOL_POLICE]				= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/police.png" ));
+	_pctrToolMouse[OC_TOOL_HOSPITAL]			= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/hospital.png" ));
+	_pctrToolMouse[OC_TOOL_EDUCATION]			= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/education.png" ));
+	_pctrToolMouse[OC_TOOL_QUERY]				= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/query.png" ));
 
-	_apbtnCurrentTool[OC_TOOL_AGENT_POLICE]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/unknown" ));
-	_apbtnCurrentTool[OC_TOOL_AGENT_DEMONSTRATOR]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/unknown" ));
-	_apbtnCurrentTool[OC_TOOL_AGENT_ROBBER]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/unknown" ));
-	_apbtnCurrentTool[OC_TOOL_TEST_BUILDING]
-		= new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/unknown" ));
+	_pctrToolMouse[OC_TOOL_AGENT_POLICE]		= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/normal.png" ));
+	_pctrToolMouse[OC_TOOL_AGENT_DEMONSTRATOR]	= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/normal.png" ));
+	_pctrToolMouse[OC_TOOL_AGENT_ROBBER]		= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/normal.png" ));
+	_pctrToolMouse[OC_TOOL_TEST_BUILDING]		= new GUIContainer( 0, 0, SIZE_MOUSE_POINTER, SIZE_MOUSE_POINTER, ocDataDirPrefix( "graphism/gui/mouse/normal.png" ));
+
+// Show normal mouse pointer
+	for(int i=0; i<OC_TOOL_NUMBER; i++)
+		_pctrToolMouse[i]->Unset( OC_GUIMAIN_VISIBLE );
+	_pctrToolMouse[OC_TOOL_NONE]->Set( OC_GUIMAIN_VISIBLE );
+
+// The button query in status bar
+	_btnQuery = new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/query" ));
+	_btnQuery->Set( OC_GUIMAIN_VISIBLE );
 
 // The status bar
 	_pbtnPause = new GUIButton( 54, 4, 24, 24, ocDataDirPrefix( "graphism/gui/status/speed_pause" ));
@@ -1120,10 +1115,10 @@ City::_CreateGUI()
 	_pbarPower = new GUIBar( 42, 5, 7, 53 );
 	_pbarPower->SetForeground( OPENCITY_PALETTE[Color::OC_PINK] );
 
-	_pctrStatus =
-		new GUIContainer( (_iWinWidth-512)/2, 0, 512, 64, ocDataDirPrefix( "graphism/gui/main_status_bar.png" ) );
+	_pctrStatus = new GUIContainer( (_iWinWidth-512)/2, 0, 512, 64, ocDataDirPrefix( "graphism/gui/main_status_bar.png" ) );
 	_pctrStatus->Add( _pbtnPause );
 	_pctrStatus->Add( _pbtnPlay );
+	_pctrStatus->Add( _btnQuery );
 	_pctrStatus->Add( _plblFund );
 	_pctrStatus->Add( _plblPopulation );
 	_pctrStatus->Add( _plblDate );
@@ -1132,13 +1127,6 @@ City::_CreateGUI()
 	_pctrStatus->Add( _pbarIndustry );
 	_pctrStatus->Add( _pbarPower );
 	_pctrStatus->Set( OC_GUIMAIN_VISIBLE );
-
-// The status bar buttons
-	for (int i = 0; i < OC_TOOL_NUMBER; i++) {
-		_apbtnCurrentTool[i]->Unset( OC_GUIMAIN_VISIBLE );
-		_pctrStatus->Add( _apbtnCurrentTool[i] );
-	}
-	_apbtnCurrentTool[OC_TOOL_NONE]->Set( OC_GUIMAIN_VISIBLE );
 
 // Windows.
 	_pwStatistics = new GUIWindow(_iWinWidth*0.10f, _iWinHeight*0.10f, _iWinWidth*0.80f, _iWinHeight*0.80f, "Statistics");
@@ -1337,10 +1325,14 @@ City::_DeleteGUI()
 	delete _pbtnPlay;
 	delete _pbtnPause;
 
-// The status bar buttons
-	for (int i = 0; i < OC_TOOL_NUMBER; i++) {
-		delete _apbtnCurrentTool[i];
-		_apbtnCurrentTool[i] = NULL;		// Safe
+// The query button
+	delete _btnQuery;
+	_btnQuery = NULL;
+
+// Tools mouse pointer
+	for(int i=0; i<OC_TOOL_NUMBER; i++) {
+		delete _pctrToolMouse[i];
+		_pctrToolMouse[i] = NULL;
 	}
 }
 
@@ -1425,9 +1417,9 @@ City::_UnloadMenu()
 void
 City::_SetCurrentTool( const OPENCITY_TOOL_CODE& tool )
 {
-	_apbtnCurrentTool[ _eCurrentTool ]->Unset( OC_GUIMAIN_VISIBLE );
+	_pctrToolMouse[_eCurrentTool]->Unset( OC_GUIMAIN_VISIBLE );
 	_eCurrentTool = tool;
-	_apbtnCurrentTool[ _eCurrentTool ]->Set( OC_GUIMAIN_VISIBLE );
+	_pctrToolMouse[_eCurrentTool]->Set( OC_GUIMAIN_VISIBLE );
 }
 
 
@@ -1937,6 +1929,14 @@ City::_HandleStatusClick()
 			_pbtnPlay->Unset( OC_GUIMAIN_VISIBLE );
 			_eSpeed = OC_SPEED_NORMAL;
 			_pMSim->Run();
+			break;
+
+		case 3:		// Click on Query tool
+			OPENCITY_DEBUG( "Query tool" );
+			if( _eCurrentTool == OC_TOOL_QUERY )
+				_SetCurrentTool( OC_TOOL_NONE );
+			else
+				_SetCurrentTool( OC_TOOL_QUERY );
 			break;
 
 		default:
