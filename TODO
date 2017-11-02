@@ -2,6 +2,49 @@
 Tareas a realizar para futuras versiones
 =========================================
 
+- zonas un poco mas transparente
+-Boton de signo de pregunta para consultar por objetos, debe aparecer ventana con la info (que es, tiene agua? electrecidad? delincuencia, bomberos).
+
+-Cree carpeta "music" con una cancion.
+
+-las nubes se tienen que mover
+-iconos de guardar y abrir deben ser diferentes, son confusos (deberia aparecer texto de ayuda al dejarlos arriba un rato)
+-desplazar mas lento y hacer zoom mas rapido
+- Que empiece desde un año conocido (2000?)
+-Agua
+-El zoom cuando esta muy cerca anda lento
+-Flechas para pasar el tiempo mas rapido.
+-Demora mucho tiempo antes de que aparezca las primeras casas.
+-Las carretaras deberian pasar por arriba de las zonas.
+-Menu de guardar/cargar/salir es espantoso.
+-Status Bar esta feo, hay cosas que no se que son.
+-La musica hace que la pantalla pestanee negra.
+-Dice que la musica es ineficiente, hay que arreglarla.
+-Si la zona, carretera o construccion no se va a hacer que se muestre en rojo.
+-El tema de la configuracion que inicializa y lee en main.cpp, estaria bueno que se pase todo a globarvar.cpp
+-Tengo que rotar la camara hacia arriba y abajo.
+-Tengo que mostrar como va a quedar la construccion colocada.
+-Error cuando se carga un mapa de diferente tamaño
+-No puedo construir una calle sobre una zona.
+-Error al seleccionar una zona (para residencial, destruir, etc.) y suelto el click en la barra de titulo, violacion de segmento. (No me paso despues)
+-Sonido de error (cuando no se construye algo).
+-Cuando estoy colocando un edificio y quiero cancelar el lugar deberia hacerlo con tecla ESC sin que se salga la herramienta.
+-Prestamos e impuestos.
+-Al hacer click en el minimap se abre una ventana mas grande y se puede cambiar el tipo de minimap.
+ Si es estructura del gobierno informacion (central electrica que muestre informacion relacionada y link hacia las graficas de electricidad).
+-Se extraña usar wasd para moverse.
+-Zoom cuando acerco se mueve muy poco.
+-Modelo comercial hay muchos carritos de panchos (poco modelos).
+-Botones para acelerar el tiempo.
+-Click en el dinero abre todo tema del dinero.
+-Click en poblacion abre estadisticas de poblacion.
+-Modelos animados.
+-Sonido de las estructuras cuando me acerco.
+-Año 0?
+-Se mueve mucho con las flechas.
+-Proyeccion ortogonal se ve muy de arriba.
+-Estadisticas, un boton que abre una ventana y elegis el tipo de grafica (poblacion, comercio, industria, energia, agua, dinero, salud, educacion).
+
 Subdivide map for better performance
 Settings GUI                         
 Help system

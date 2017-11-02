@@ -4,7 +4,7 @@
 	begin                : june 29th, 05
 	copyright            : (C) 2005-2007 by Duong Khang NGUYEN
 	email                : neoneurone @ gmail com
-	
+
 	$Id: ac3dmodel.cpp 375 2008-10-28 14:47:15Z neoneurone $
  ***************************************************************************/
 
@@ -49,7 +49,7 @@ pObject(NULL)
 AC3DModel::~AC3DModel()
 {
 	OPENCITY_DEBUG("dtor");
-	
+
 	delete this->pObject;
 	this->pObject = NULL;
 	this->bGood = false;
@@ -96,7 +96,7 @@ AC3DModel::ToStr() const
 	if (this->pObject != NULL)
 		str += this->pObject->ToStr();
 
-	return str;	
+	return str;
 }
 
 
@@ -108,7 +108,7 @@ AC3DModel::ac3dmodelParse()
 {
 	ifstream in;
 	stringstream ss;
-	
+
 	char line[AC3D_MAX_LINE_LENGTH];
 	bool endBlock;
 
@@ -167,7 +167,7 @@ AC3DModel::ac3dmodelParse()
 			if (this->pObject == NULL) {
 				this->pObject = pNewObj;
 				pCurrentObj = pNewObj;
-			} 
+			}
 			else {
 				assert( pCurrentObj != NULL );
 				pCurrentObj->AddKid( pNewObj );
@@ -191,7 +191,7 @@ AC3DModel::ac3dmodelParse()
 
 		} // new OBJECT
 	} // while good
-	
+
 	if (in.is_open())
 		in.close();
 

@@ -370,7 +370,7 @@ ModelLoader::_AC3DVertexToGL
 			glColor3f( mat.rgb.fR, mat.rgb.fG, mat.rgb.fB );
 //			glColor4f( 1, 1, 1, 1 );
 		}
-		
+
 		vRef = vpSurface[pos]->GetVRef();
 		sizeRef = vRef.size();
 
@@ -399,15 +399,15 @@ ModelLoader::_AC3DVertexToGL
 				normal = GetNormal( v1, v2, v3 );
 				glNormal3f( normal.x, normal.y, normal.z );
 			}
- 
+
 			if (!bOnlyGeometry)
 				glTexCoord2f( r1.fTexS, r1.fTexT );
  			glVertex3f( v1.x, v1.y, v1.z );
- 
+
 			if (!bOnlyGeometry)
 				glTexCoord2f( r2.fTexS, r2.fTexT );
  			glVertex3f( v2.x, v2.y, v2.z );
- 
+
 			if (!bOnlyGeometry)
 				glTexCoord2f( r3.fTexS, r3.fTexT );
 

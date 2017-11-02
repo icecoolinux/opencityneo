@@ -2,7 +2,7 @@
 # OpenCity's main automake file
 #==============================================================================
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = config docs map sound src viewer
+SUBDIRS = src config docs map sound viewer
 
 
 #==============================================================================

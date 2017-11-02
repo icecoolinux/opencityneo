@@ -1,7 +1,30 @@
-oct 09th, 06: ======>  This file is no longer maintained  <=====
-	-info: Please refer to the TODO file for more information
 
 
+02/11/2017
+- Remove the tool button and to be the query button always available.
+- Mouse pointer draw according to the enable tool.
+- Bug fix: When I insert zone and release mouse on the out field the zone don't insert.
+- Keys WASD move the camera (same as the left click), these keys was using only for programmers.
+- New class GUIWindow.
+- Key ESC release current tool and toolcircle.
+-cambie parametro de entero a flotante de las funciones RotateLeft, RotateRight, MoveLeft, MoveRight, MoveUp, MoveDown, es para darle mas fluides a los movimientos. (ChangeFromIntToFloat.diff)
+-la funcion _DisplayTerrain decia que si no habia cambiado goto a dibujar displaylist, nada de goto. (DisplayTerrainQuitGoto.diff)
+-Nueva funcion IsInside (guimain.h)
+-simulator movi el constructor como privado (en vez de decir que no se puede subir) src/simulator/simulator.h
+-Cuando realizo un segundo click sobre en boton de start/pausa exacamente en el mismo lugar, me ignora, tengo que mover un poquito para que me haga caso.
+ Para esto quite el seteo en false de la bandera OC_GUIMAIN_MOUSEOVER cuando se hacia click en la barra de estado, no tiene sentido que el mouse deje de estar arriba cuando se hace click.
+ En guibutton.cpp, en la funcion MouseMotion calcula si el mouse esta arriba aunque no sea visible, porque si se llega a hacer visible no se calculo que este arriba el mouse.
+ Boton pausa y play estaban al reves de la intuicion, cuando esta corriendo el tiempo se tiene que mostrar boton pausa y al reves tambien. (ButtonStartPauseBehavior.diff)
+- Cuando compro algo y tengo plata positiva pero no me alcanza igual lo compra y queda con saldo negativo. (CityFundsPositiveForBuild.diff)
+- Agrego borde a mapa.
+- Mejora comportamiento con el click derecho.
+- Rehaciendo funcion que elige un cuadrado con el mouse.
+- Not use goto in the display function in city.cpp.
+- Change variable name from _bLMBPressed to _bLMBPressedOverMap, this variable is true when left mouse is clicked over the map.
+- Add variable _RMBPressed.
+- Add rotation of the camera with the wheel mouse button.
+- Add move of the camera with the right mouse button, if the mouse not drag then it open the toolcircle.
+-Si esta visible toolcircle, el click izquierdo lo quita.
 
 
 sep 28th, 06:
