@@ -2,12 +2,12 @@
 Tareas a realizar para futuras versiones
 =========================================
 
-- zonas un poco mas transparente
--Boton de signo de pregunta para consultar por objetos, debe aparecer ventana con la info (que es, tiene agua? electrecidad? delincuencia, bomberos).
+- Translucent zones.
+- Query button for query objects info, it must show a window with the info (object king, has water? electricity? police, fireman).
 
--Cree carpeta "music" con una cancion.
+- Create 'music' folder with songs.
 
--las nubes se tienen que mover
+- The clouds must move its
 -iconos de guardar y abrir deben ser diferentes, son confusos (deberia aparecer texto de ayuda al dejarlos arriba un rato)
 -desplazar mas lento y hacer zoom mas rapido
 - Que empiece desde un año conocido (2000?)

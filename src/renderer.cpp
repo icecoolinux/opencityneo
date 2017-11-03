@@ -1141,6 +1141,7 @@ Renderer::GetSelectedWLFrom
 
    /*=====================================================================*/
 #include <unistd.h>
+// TODO Does this function more quick.
 const bool
 Renderer::GetSelectedWLFrom
 (

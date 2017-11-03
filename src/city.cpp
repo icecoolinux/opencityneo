@@ -35,6 +35,7 @@
 #include "agentpolice.h"
 #include "agentdemonstrator.h"
 #include "agentrobber.h"
+#include "systime.h"
 
 // Global settings
 #include "globalvar.h"
@@ -72,6 +73,8 @@ _uiLength( length ),
 
 _bLMBPressedOverMap( false ),
 _bRMBPressed( false ),
+
+_msUpdateUiMapWL(0),
 
 _bMoveCamera(false),
 _bRotateCamera(false),
@@ -716,14 +719,23 @@ City::MouseMotion( const SDL_MouseMotionEvent& rcEvent )
 		_pctrMenu->MouseMotion( rcEvent );
 	}
 	else {
+				
 		_pwStatistics->GetContainer()->MouseMotion( rcEvent );
 		if(_pwQwery != NULL)
 			_pwQwery->GetContainer()->MouseMotion( rcEvent );
 		_pctr->MouseMotion( rcEvent );
 		_pctrStatus->MouseMotion( rcEvent );
 
-		// Right mouse button is pressed and the mouse move more than 3 pixels.
-		// Reset and active the move of the camera.
+	// Update current voxel land selected.
+	// Does every 500ms, it's very cost.
+		if ( (SysTime::currentMs() - _msUpdateUiMapWL) > 500) {
+			if (!_pctrStatus->IsInside(rcEvent.x, _iWinHeight - rcEvent.y))
+				gVars.gpRenderer->GetSelectedWLFrom(rcEvent.x, rcEvent.y, _uiMapW, _uiMapL, gVars.gpMapMgr, _apLayer[ _eCurrentLayer ]);
+			_msUpdateUiMapWL = SysTime::currentMs();
+		}
+		
+	// Right mouse button is pressed and the mouse move more than 3 pixels.
+	// Reset and active the move of the camera.
 		if( _bRMBPressed && ( abs(_iXMove)>3 || abs(_iYMove)>3 ) ) {
 			_bMoveCamera = true;
 			_iXMove = 0;
@@ -1563,6 +1575,7 @@ City::_DoTool(
 // not used			_pMSim->AddStructure( _uiMapW1, _uiMapL1, _uiMapW2, _uiMapL2, MainSim::OC_MICROSIM_ELE );
 			gVars.gpAudioMgr->PlaySound( OC_SOUND_EPLANT );
 		}
+
 		break;
 
 	case OC_TOOL_EDUCATION:
@@ -2354,17 +2367,18 @@ City::_BuildPreview()
 	} // if
 
 // Get the corresponding graphic code
-	if ( (scode != OC_STRUCTURE_UNDEFINED) && _bLMBPressedOverMap) {
+	if ( scode != OC_STRUCTURE_UNDEFINED ) {
+
 		ecode = _apLayer[ _eCurrentLayer ]->
-			BuildPreview( _uiMapW1, _uiMapL1, scode, gcode );
+			BuildPreview( _uiMapW, _uiMapL, scode, gcode );
 
 		if (ecode == OC_ERR_FREE) {
 			gVars.gpRenderer->DisplayBuildPreview(
-				_uiMapW1, _uiMapL1, OC_GREEN_COLOR, gcode );
+				_uiMapW, _uiMapL, OC_GREEN_COLOR, gcode );
 		}
 		else {
 			gVars.gpRenderer->DisplayBuildPreview(
-				_uiMapW1, _uiMapL1, OC_RED_COLOR, gcode );
+				_uiMapW, _uiMapL, OC_RED_COLOR, gcode );
 		}
 	}
 }

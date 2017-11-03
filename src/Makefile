@@ -118,7 +118,8 @@ am_oczen_OBJECTS = audiomanager.$(OBJEXT) buildinglayer.$(OBJEXT) \
 	renderer.$(OBJEXT) ui.$(OBJEXT) pathfinder.$(OBJEXT) \
 	persistence.$(OBJEXT) property.$(OBJEXT) \
 	propertymanager.$(OBJEXT) propertymanager2.$(OBJEXT) \
-	texture.$(OBJEXT) vehicle.$(OBJEXT) zen.$(OBJEXT)
+	texture.$(OBJEXT) systime.$(OBJEXT) vehicle.$(OBJEXT) \
+	zen.$(OBJEXT)
 oczen_OBJECTS = $(am_oczen_OBJECTS)
 oczen_DEPENDENCIES = binreloc/libbinreloc.a mapgen/libmapgen.a \
 	mas/libmas.a model/libmodel.a networking/libnet.a \
@@ -137,7 +138,7 @@ am__opencity_SOURCES_DIST = audiomanager.cpp audiomanagersdl.cpp \
 	map.cpp movement.cpp movementmanager.cpp renderer.cpp ui.cpp \
 	pathfinder.cpp persistence.cpp property.cpp \
 	propertymanager.cpp propertymanager2.cpp texture.cpp \
-	vehicle.cpp
+	systime.cpp vehicle.cpp
 am__objects_1 = audiomanager.$(OBJEXT)
 #am__objects_1 = audiomanagersdl.$(OBJEXT)
 am_opencity_OBJECTS = $(am__objects_1) buildinglayer.$(OBJEXT) \
@@ -150,7 +151,7 @@ am_opencity_OBJECTS = $(am__objects_1) buildinglayer.$(OBJEXT) \
 	movementmanager.$(OBJEXT) renderer.$(OBJEXT) ui.$(OBJEXT) \
 	pathfinder.$(OBJEXT) persistence.$(OBJEXT) property.$(OBJEXT) \
 	propertymanager.$(OBJEXT) propertymanager2.$(OBJEXT) \
-	texture.$(OBJEXT) vehicle.$(OBJEXT)
+	texture.$(OBJEXT) systime.$(OBJEXT) vehicle.$(OBJEXT)
 opencity_OBJECTS = $(am_opencity_OBJECTS)
 opencity_DEPENDENCIES = binreloc/libbinreloc.a \
 	framework/libsharpplus.la mapgen/libmapgen.a mas/libmas.a \
@@ -276,7 +277,7 @@ CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -std=c99 -g -O2
 CPP = gcc -E
-CPPFLAGS = -I/usr/X11R6/include   -Wall -Wmissing-braces -Wparentheses -pedantic-errors -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/libpng16
+CPPFLAGS = -I/usr/X11R6/include  -DNDEBUG -Wall -Wmissing-braces -Wparentheses -pedantic-errors -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/libpng16
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
@@ -468,6 +469,7 @@ opencity_SOURCES = \
 	propertymanager.cpp \
 	propertymanager2.cpp \
 	texture.cpp \
+	systime.cpp \
 	vehicle.cpp
 
 noinst_HEADERS = \
@@ -503,6 +505,7 @@ noinst_HEADERS = \
 	renderer.h \
 	SimpleOpt.h \
 	texture.h \
+	systime.h \
 	ui.h \
 	vehicle.h \
 	zen.h
@@ -551,6 +554,7 @@ oczen_SOURCES = \
 	propertymanager.cpp \
 	propertymanager2.cpp \
 	texture.cpp \
+	systime.cpp \
 	vehicle.cpp \
 	zen.cpp
 
@@ -687,6 +691,7 @@ include ./$(DEPDIR)/property.Po
 include ./$(DEPDIR)/propertymanager.Po
 include ./$(DEPDIR)/propertymanager2.Po
 include ./$(DEPDIR)/renderer.Po
+include ./$(DEPDIR)/systime.Po
 include ./$(DEPDIR)/texture.Po
 include ./$(DEPDIR)/ui.Po
 include ./$(DEPDIR)/vehicle.Po

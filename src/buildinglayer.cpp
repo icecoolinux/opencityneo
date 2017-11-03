@@ -216,8 +216,7 @@ BuildingLayer::IsConstructive(
 			// IF there's a structure on the square
 			// OR the square is not plane
 			// then the square is not constructive
-				if ((this->GetLinearStructure(linearIndex) != NULL)
-				  ||(gVars.gpMapMgr->IsSquarePlane(w, L1) != true ))
+				if ( this->GetLinearStructure(linearIndex) != NULL || !gVars.gpMapMgr->IsSquarePlane(w, L1) )
 					return false;
 				break;
 
@@ -226,7 +225,7 @@ BuildingLayer::IsConstructive(
 			// The case of "road structure"
 			// OR "eline" is
 			// processed in a seperate method
-				if (_IsPathConstructive(w, L1, enumStructCode) != true)
+				if ( !_IsPathConstructive(w, L1, enumStructCode))
 					return false;
 				break;
 
@@ -277,7 +276,7 @@ BuildingLayer::BuildPreview(
 
 // Isn't there enough space ?
 // OR is there already something on the surface ?
-	if (IsConstructive(W1, L1, W2, L2, enumStructCode) == false) {
+	if ( ! IsConstructive(W1, L1, W2, L2, enumStructCode)) {
 		return OC_ERR_SOMETHING;
 	}
 

@@ -1,7 +1,7 @@
-../src/property.o: ../src/property.cpp /usr/include/stdc-predef.h \
- ../src/property.h ../src/main.h ../config.h /usr/include/SDL/SDL.h \
- /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
+property.o: property.cpp /usr/include/stdc-predef.h property.h main.h \
+ ../config.h /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
+ /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
+ /usr/include/SDL/SDL_platform.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -91,7 +91,7 @@
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/include/x86_64-linux-gnu/c++/6/bits/atomic_word.h \
  /usr/include/c++/6/ext/alloc_traits.h \
- /usr/include/c++/6/bits/basic_string.tcc ../src/macros.h \
+ /usr/include/c++/6/bits/basic_string.tcc macros.h \
  /usr/include/c++/6/iostream /usr/include/c++/6/ostream \
  /usr/include/c++/6/ios /usr/include/c++/6/bits/ios_base.h \
  /usr/include/c++/6/bits/locale_classes.h \
@@ -107,7 +107,7 @@
  /usr/include/c++/6/bits/basic_ios.tcc \
  /usr/include/c++/6/bits/ostream.tcc /usr/include/c++/6/istream \
  /usr/include/c++/6/bits/istream.tcc /usr/include/c++/6/cassert \
- /usr/include/assert.h ../src/enum.h /usr/include/c++/6/climits \
+ /usr/include/assert.h enum.h /usr/include/c++/6/climits \
  /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
@@ -129,9 +129,9 @@
 
 /usr/include/stdc-predef.h:
 
-../src/property.h:
+property.h:
 
-../src/main.h:
+main.h:
 
 ../config.h:
 
@@ -397,7 +397,7 @@
 
 /usr/include/c++/6/bits/basic_string.tcc:
 
-../src/macros.h:
+macros.h:
 
 /usr/include/c++/6/iostream:
 
@@ -445,7 +445,7 @@
 
 /usr/include/assert.h:
 
-../src/enum.h:
+enum.h:
 
 /usr/include/c++/6/climits:
 

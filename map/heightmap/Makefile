@@ -172,7 +172,7 @@ CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -std=c99 -g -O2
 CPP = gcc -E
-CPPFLAGS = -I/usr/X11R6/include   -Wall -Wmissing-braces -Wparentheses -pedantic-errors -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/libpng16
+CPPFLAGS = -I/usr/X11R6/include  -DNDEBUG -Wall -Wmissing-braces -Wparentheses -pedantic-errors -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/libpng16
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3

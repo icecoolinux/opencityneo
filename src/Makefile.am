@@ -92,6 +92,7 @@ opencity_SOURCES = \
 	propertymanager.cpp \
 	propertymanager2.cpp \
 	texture.cpp \
+	systime.cpp \
 	vehicle.cpp
 
 
@@ -128,6 +129,7 @@ noinst_HEADERS = \
 	renderer.h \
 	SimpleOpt.h \
 	texture.h \
+	systime.h \
 	ui.h \
 	vehicle.h \
 	zen.h
@@ -177,6 +179,7 @@ oczen_SOURCES = \
 	propertymanager.cpp \
 	propertymanager2.cpp \
 	texture.cpp \
+	systime.cpp \
 	vehicle.cpp \
 	zen.cpp
 

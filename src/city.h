@@ -139,6 +139,13 @@ private:
 // Dragging mode and mouse click
 	bool		_bLMBPressedOverMap;		///< Is the left mouse button pressed over the map?
 	bool		_bRMBPressed;				///< Is the right mouse button pressed?
+	
+// Current voxel selected with mouse.
+// _msUpdateUiMapWL is a auxiliar variable for update _uiMapW and _uiMapL every 500ms.
+	uint		_uiMapW;
+	uint		_uiMapL;
+	unsigned long	_msUpdateUiMapWL;
+// Selected land zone, it's with mouse pressed and mouse released.
 	uint		_uiMapW1;
 	uint		_uiMapL1;
 	uint		_uiMapW2;

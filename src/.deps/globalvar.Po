@@ -1,9 +1,8 @@
-../src/globalvar.o: ../src/globalvar.cpp /usr/include/stdc-predef.h \
+globalvar.o: globalvar.cpp /usr/include/stdc-predef.h \
  ../src/enum/opencity_direction.h ../src/enum/opencity_structure_type.h \
- ../src/globalvar.h ../src/audiomanager.h ../src/main.h ../config.h \
- /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h \
+ globalvar.h audiomanager.h main.h ../config.h /usr/include/SDL/SDL.h \
+ /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
+ /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -93,7 +92,7 @@
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/include/x86_64-linux-gnu/c++/6/bits/atomic_word.h \
  /usr/include/c++/6/ext/alloc_traits.h \
- /usr/include/c++/6/bits/basic_string.tcc ../src/macros.h \
+ /usr/include/c++/6/bits/basic_string.tcc macros.h \
  /usr/include/c++/6/iostream /usr/include/c++/6/ostream \
  /usr/include/c++/6/ios /usr/include/c++/6/bits/ios_base.h \
  /usr/include/c++/6/bits/locale_classes.h \
@@ -109,27 +108,26 @@
  /usr/include/c++/6/bits/basic_ios.tcc \
  /usr/include/c++/6/bits/ostream.tcc /usr/include/c++/6/istream \
  /usr/include/c++/6/bits/istream.tcc /usr/include/c++/6/cassert \
- /usr/include/assert.h ../src/enum.h ../src/extensionmanager.h \
- ../src/graphicmanager.h ../src/map.h ../src/persistence.h \
- /usr/include/c++/6/fstream /usr/include/c++/6/bits/codecvt.h \
- /usr/include/c++/6/cstdio \
+ /usr/include/assert.h enum.h extensionmanager.h graphicmanager.h map.h \
+ persistence.h /usr/include/c++/6/fstream \
+ /usr/include/c++/6/bits/codecvt.h /usr/include/c++/6/cstdio \
  /usr/include/x86_64-linux-gnu/c++/6/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/6/bits/c++io.h \
- /usr/include/c++/6/bits/fstream.tcc ../src/propertymanager.h \
- ../src/conf.h /usr/include/c++/6/map /usr/include/c++/6/bits/stl_tree.h \
+ /usr/include/c++/6/bits/fstream.tcc propertymanager.h conf.h \
+ /usr/include/c++/6/map /usr/include/c++/6/bits/stl_tree.h \
  /usr/include/c++/6/bits/stl_map.h /usr/include/c++/6/bits/stl_multimap.h \
  /usr/include/c++/6/vector /usr/include/c++/6/bits/stl_construct.h \
  /usr/include/c++/6/bits/stl_uninitialized.h \
  /usr/include/c++/6/bits/stl_vector.h \
  /usr/include/c++/6/bits/stl_bvector.h /usr/include/c++/6/bits/vector.tcc \
- ../src/renderer.h ../src/texture.h /usr/include/c++/6/utility \
+ renderer.h texture.h /usr/include/c++/6/utility \
  /usr/include/c++/6/bits/stl_relops.h ../src/networking/networking.h \
- ../src/main.h /usr/include/SDL/SDL_net.h /usr/include/SDL/SDL.h \
- ../src/movementmanager.h ../src/mas/kernel.h ../src/mas/agent.h \
+ main.h /usr/include/SDL/SDL_net.h /usr/include/SDL/SDL.h \
+ movementmanager.h ../src/mas/kernel.h ../src/mas/agent.h \
  ../src/mas/role.h /usr/include/c++/6/list \
  /usr/include/c++/6/bits/stl_list.h /usr/include/c++/6/bits/list.tcc \
- ../src/mas/environment.h ../src/mas/agentposition.h ../src/pathfinder.h \
- ../src/mapgen/mapmaker.h ../src/mapgen/map.h ../src/macros.h
+ ../src/mas/environment.h ../src/mas/agentposition.h pathfinder.h \
+ mapgen/mapmaker.h mapgen/map.h macros.h
 
 /usr/include/stdc-predef.h:
 
@@ -137,11 +135,11 @@
 
 ../src/enum/opencity_structure_type.h:
 
-../src/globalvar.h:
+globalvar.h:
 
-../src/audiomanager.h:
+audiomanager.h:
 
-../src/main.h:
+main.h:
 
 ../config.h:
 
@@ -407,7 +405,7 @@
 
 /usr/include/c++/6/bits/basic_string.tcc:
 
-../src/macros.h:
+macros.h:
 
 /usr/include/c++/6/iostream:
 
@@ -455,15 +453,15 @@
 
 /usr/include/assert.h:
 
-../src/enum.h:
+enum.h:
 
-../src/extensionmanager.h:
+extensionmanager.h:
 
-../src/graphicmanager.h:
+graphicmanager.h:
 
-../src/map.h:
+map.h:
 
-../src/persistence.h:
+persistence.h:
 
 /usr/include/c++/6/fstream:
 
@@ -477,9 +475,9 @@
 
 /usr/include/c++/6/bits/fstream.tcc:
 
-../src/propertymanager.h:
+propertymanager.h:
 
-../src/conf.h:
+conf.h:
 
 /usr/include/c++/6/map:
 
@@ -501,9 +499,9 @@
 
 /usr/include/c++/6/bits/vector.tcc:
 
-../src/renderer.h:
+renderer.h:
 
-../src/texture.h:
+texture.h:
 
 /usr/include/c++/6/utility:
 
@@ -511,13 +509,13 @@
 
 ../src/networking/networking.h:
 
-../src/main.h:
+main.h:
 
 /usr/include/SDL/SDL_net.h:
 
 /usr/include/SDL/SDL.h:
 
-../src/movementmanager.h:
+movementmanager.h:
 
 ../src/mas/kernel.h:
 
@@ -535,10 +533,10 @@
 
 ../src/mas/agentposition.h:
 
-../src/pathfinder.h:
+pathfinder.h:
 
-../src/mapgen/mapmaker.h:
+mapgen/mapmaker.h:
 
-../src/mapgen/map.h:
+mapgen/map.h:
 
-../src/macros.h:
+macros.h:
