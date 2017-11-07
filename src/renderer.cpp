@@ -727,17 +727,22 @@ Renderer::DisplayHighlight(
 	glPushMatrix();
 	glTranslatef( 0., 0.1, 0. );
 	for (l = uiL1; l <= uiL2; l++) {
-		linear = l*_uiCityWidth + uiW2;
+		linear = l*_uiCityWidth + uiW1;
 		for (w = uiW1; w <= uiW2; w++) {
 			pStructure = pcLayer->GetLinearStructure( linear );
+					
+		// Highlight error.
+			OPENCITY_TOOL_CODE tool = enumTool;
+			if( pStructure != NULL || !gVars.gpMapMgr->IsSquarePlane(w, l))
+				tool = OC_TOOL_NONE;
+			
 		// Display the correction structure/terrain with "linear" as objectID
 			if ( pStructure == NULL)
-				gVars.gpGraphicMgr->DisplayTerrainHighlight( w, l, enumTool );
+				gVars.gpGraphicMgr->DisplayTerrainHighlight( w, l, tool );
 			else
-				gVars.gpGraphicMgr->
-				DisplayStructureHighlight( pStructure, w, l, enumTool );
+				gVars.gpGraphicMgr->DisplayStructureHighlight( pStructure, w, l, tool );
 
-			++linear;
+			linear++;
 		}
 	}
 	glPopMatrix();

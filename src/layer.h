@@ -70,7 +70,8 @@ to build the bulding.
 		const uint & W,
 		const uint & L,
 		const OPENCITY_STRUCTURE_CODE & enumStructCode,
-		OPENCITY_GRAPHIC_CODE & enumGraphicCode ) const = 0;
+		OPENCITY_GRAPHIC_CODE & enumGraphicCode,
+		OC_LINT cityFund ) const = 0;
 
 
 //========================================================================

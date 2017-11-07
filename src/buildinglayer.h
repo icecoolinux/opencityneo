@@ -82,7 +82,8 @@ public:
 		const uint & W,
 		const uint & L,
 		const OPENCITY_STRUCTURE_CODE & enumStructCode,
-		OPENCITY_GRAPHIC_CODE & enumGraphicCode ) const;
+		OPENCITY_GRAPHIC_CODE & enumGraphicCode,
+		OC_LINT cityFund ) const;
 
 
 //========================================================================

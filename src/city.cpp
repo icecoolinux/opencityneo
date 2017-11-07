@@ -2360,7 +2360,7 @@ City::_BuildPreview()
 	if ( scode != OC_STRUCTURE_UNDEFINED ) {
 
 		ecode = _apLayer[ _eCurrentLayer ]->
-			BuildPreview( _uiMapW, _uiMapL, scode, gcode );
+			BuildPreview( _uiMapW, _uiMapL, scode, gcode, _liCityFund );
 
 		if (ecode == OC_ERR_FREE) {
 			gVars.gpRenderer->DisplayBuildPreview(

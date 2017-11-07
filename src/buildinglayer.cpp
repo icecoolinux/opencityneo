@@ -251,7 +251,8 @@ BuildingLayer::BuildPreview(
 	const uint & W,
 	const uint & L,
 	const OPENCITY_STRUCTURE_CODE & enumStructCode,
-	OPENCITY_GRAPHIC_CODE & enumGraphicCode ) const
+	OPENCITY_GRAPHIC_CODE & enumGraphicCode,
+	OC_LINT cityFund ) const
 {
 //	OPENCITY_DEBUG( "I'm previewing a building" );
 	static uint W1, L1, W2, L2;
@@ -265,6 +266,11 @@ BuildingLayer::BuildPreview(
 		OPENCITY_DEBUG( "WARNING: not implemented" );
 		assert(0);
 	}
+
+// Get cost and test if can buy it.
+	uint rCost = gVars.gpPropertyMgr->Get( OC_TOOL_COST, enumStructCode );
+	if(rCost > cityFund)
+		return OC_ERR_SOMETHING;
 
 // Get the corresponding WLH and calculate the range
 // An coal electric plant is 4x4 size by default

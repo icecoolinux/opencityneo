@@ -390,6 +390,10 @@ GraphicManager::DisplayTerrainHighlight(
 			red = .55; green = .55; blue = .45;
 			break;
 
+		case OC_TOOL_NONE: // Error.
+			red = 1.0; green = 0.0; blue = 0.0;
+			break;
+			
 		default:
 			red = .1; green = .1; blue = .1;
 	}
