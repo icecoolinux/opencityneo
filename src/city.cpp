@@ -74,8 +74,6 @@ _uiLength( length ),
 _bLMBPressedOverMap( false ),
 _bRMBPressed( false ),
 
-_msUpdateUiMapWL(0),
-
 _bMoveCamera(false),
 _bRotateCamera(false),
 _iXMove(0),
@@ -355,23 +353,29 @@ void City::Display()
 // NOTE: We can move the following part to City::uiMouseMotion
 // however, in this case City::uiMouseMotion is called each time
 // when the mouse moves, and this is no good.
-// The user is dragging
-	if ( _bLMBPressedOverMap && (_eCurrentTool != OC_TOOL_NONE )) {
-	// IF the user is dragging with the left mouse button THEN
-		if ( mouseState & SDL_BUTTON(1) ) {
-			gVars.gpRenderer->GetSelectedWLFrom(
-				iMouseX, iMouseY,
-				_uiMapW2, _uiMapL2,
-				gVars.gpMapMgr, _apLayer[ _eCurrentLayer ] );
+	if ( _eCurrentTool != OC_TOOL_NONE ) {
+	// Get the current selected voxel.
+		gVars.gpRenderer->GetSelectedWLFrom(
+					iMouseX, iMouseY,
+					_uiMapW, _uiMapL,
+					gVars.gpMapMgr, _apLayer[ _eCurrentLayer ] );
+		
+	// The user is dragging
+		if(_bLMBPressedOverMap) {
+		// IF the user is dragging with the left mouse button THEN
+			if ( mouseState & SDL_BUTTON(1) ) {
+				_uiMapW2 = _uiMapW;
+				_uiMapL2 = _uiMapL;
+				
+			// draw the map with the highlighted area
+				gVars.gpRenderer->DisplayHighlight(
+					gVars.gpMapMgr, _apLayer[ _eCurrentLayer ],
+					_uiMapW1, _uiMapL1,
+					_uiMapW2, _uiMapL2,
+					_eCurrentTool );
 
-		// draw the map with the highlighted area
-			gVars.gpRenderer->DisplayHighlight(
-				gVars.gpMapMgr, _apLayer[ _eCurrentLayer ],
-				_uiMapW1, _uiMapL1,
-				_uiMapW2, _uiMapL2,
-				_eCurrentTool );
-
-			drawScene = false;
+				drawScene = false;
+			}
 		}
 	}
 
@@ -725,14 +729,6 @@ City::MouseMotion( const SDL_MouseMotionEvent& rcEvent )
 			_pwQwery->GetContainer()->MouseMotion( rcEvent );
 		_pctr->MouseMotion( rcEvent );
 		_pctrStatus->MouseMotion( rcEvent );
-
-	// Update current voxel land selected.
-	// Does every 500ms, it's very cost.
-		if ( (SysTime::currentMs() - _msUpdateUiMapWL) > 500) {
-			if (!_pctrStatus->IsInside(rcEvent.x, _iWinHeight - rcEvent.y))
-				gVars.gpRenderer->GetSelectedWLFrom(rcEvent.x, rcEvent.y, _uiMapW, _uiMapL, gVars.gpMapMgr, _apLayer[ _eCurrentLayer ]);
-			_msUpdateUiMapWL = SysTime::currentMs();
-		}
 		
 	// Right mouse button is pressed and the mouse move more than 3 pixels.
 	// Reset and active the move of the camera.
