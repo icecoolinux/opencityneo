@@ -5,10 +5,15 @@
 
 class SysTime {
 	private:
-
+		unsigned long msInit;
 	public:
 		
+		SysTime();
+		
 		static unsigned long currentMs();
+		
+		void start();
+		unsigned long stop();
 };
 
 #endif
