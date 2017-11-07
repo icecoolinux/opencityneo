@@ -27,7 +27,6 @@
 class Layer;
 class Map;
 
-
 //========================================================================
 /** Deal with the OpenGL library to render game's objects. This class
 	shouldn't play with SDL functions but OpenGL
@@ -196,8 +195,6 @@ private:
 
 	OC_BYTE _ubProjectionType;
 	GLfloat _fScaleRatio;
-	GLfloat _fXTransDelta;	///< The delta used for translation in the X direction
-	GLfloat _fZTransDelta;
 
 // GL display lists
 	GLuint _uiGridList;		///< GL list of the grid

@@ -51,6 +51,7 @@ for the first time:
 //========================================================================
 
 #include <climits> // need for UINT_MAX
+#include <math.h>
 
 // Useful enumerations
 #include "opencity_direction.h"
@@ -84,8 +85,6 @@ extern GlobalVar gVars;
 
 // OpenGL other view parameters
 #define OC_INITIAL_SCALE	12.0
-#define OC_DELTA_X_STEP		2.0
-#define OC_DELTA_Z_STEP		2.0
 
 #define OC_Y_ROTATE_ANGLE	0.0				// used for the rotation
 #define OC_Y_ROTATE_STEP	10.0
@@ -94,6 +93,12 @@ extern GlobalVar gVars;
 #define OC_PERSPECTIVE		1
 #define OC_ORTHOGONAL		2
 
+// Movement constants.
+#define FACTOR_ZOOM 0.2
+#define EXP_ZOOM 0.05
+#define MAX_ZOOM 92
+#define MIN_ZOOM 2
+#define MOVEMENT_FACTOR (-1.3f*((_fScaleRatio-MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + 1.35f)
 
    /*=====================================================================*/
 Renderer::Renderer
@@ -332,7 +337,7 @@ Renderer::RotateRight( const float & factor )
 void
 Renderer::MoveLeft( const float & factor )
 {
-	_dDeltaX -= _fXTransDelta*factor;
+	_dDeltaX -= MOVEMENT_FACTOR*factor;
 
 // The culling grid must be recalculated
 	_bCalculateCulling = true;
@@ -343,7 +348,7 @@ Renderer::MoveLeft( const float & factor )
 void
 Renderer::MoveRight( const float & factor )
 {
-	_dDeltaX += _fXTransDelta*factor;
+	_dDeltaX += MOVEMENT_FACTOR*factor;
 
 // The culling grid must be recalculated
 	_bCalculateCulling = true;
@@ -354,7 +359,7 @@ Renderer::MoveRight( const float & factor )
 void
 Renderer::MoveUp( const float & factor )
 {
-	_dDeltaZ -= _fZTransDelta*factor;
+	_dDeltaZ -= MOVEMENT_FACTOR*factor;
 
 // The culling grid must be recalculated
 	_bCalculateCulling = true;
@@ -365,7 +370,7 @@ Renderer::MoveUp( const float & factor )
 void
 Renderer::MoveDown( const float & factor )
 {
-	_dDeltaZ += _fZTransDelta*factor;
+	_dDeltaZ += MOVEMENT_FACTOR*factor;
 
 // The culling grid must be recalculated
 	_bCalculateCulling = true;
@@ -377,8 +382,6 @@ void
 Renderer::Home()
 {
 	_fScaleRatio = OC_INITIAL_SCALE;
-	_fXTransDelta = OC_DELTA_X_STEP;
-	_fZTransDelta = OC_DELTA_Z_STEP;
 	_dDeltaX = -((double)gVars.guiCityWidth) * 0.5;
 	_dDeltaZ = -((double)gVars.guiCityLength) * 0.75;
 
@@ -401,14 +404,10 @@ Renderer::Home()
 void
 Renderer::ZoomIn(  )
 {
-	if (_fScaleRatio >= 140)
+	if (_fScaleRatio >= MAX_ZOOM)
 		return;
 
 	_fScaleRatio += 1;
-	if (_fScaleRatio < 30) {
-		_fXTransDelta -= .09;
-		_fZTransDelta -= .09;
-	}
 	_SetLOD();
 
 // The culling grid must be recalculated
@@ -419,14 +418,10 @@ Renderer::ZoomIn(  )
    /*=====================================================================*/
 void Renderer::ZoomOut(  )
 {
-	if (_fScaleRatio <= 2)
+	if (_fScaleRatio <= MIN_ZOOM)
 		return;
 
 	_fScaleRatio -= 1;
-	if (_fScaleRatio < 30) {
-		_fXTransDelta += .09;
-		_fZTransDelta += .09;
-	}
 	_SetLOD();
 
 // The culling grid must be recalculated
@@ -1851,9 +1846,8 @@ Renderer::_PrepareView()
 		glTranslated( _iWinWidth / 2, -5.0, -_iWinHeight / 2 );
 		glScalef( 24., 24., 24. );
 	}
-	float ratio = _fScaleRatio / 10;
+	float ratio = FACTOR_ZOOM * exp(EXP_ZOOM * _fScaleRatio);
 	glScalef( ratio, ratio, ratio);
-
 
 /* you can replace the above commands by this // absolete, outdated
 	gluLookAt( 0.0, 80.0, 200.0,

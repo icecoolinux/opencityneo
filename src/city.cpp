@@ -1750,8 +1750,8 @@ City::_ProcessMoveRotationMouse()
 {
 // Move camera.
 	if( _bMoveCamera ){
-		gVars.gpRenderer->MoveLeft( ((float)_iXMove)*0.05f );
-		gVars.gpRenderer->MoveUp( ((float)_iYMove)*0.05f );
+		gVars.gpRenderer->MoveLeft( ((float)_iXMove)*0.15f );
+		gVars.gpRenderer->MoveUp( ((float)_iYMove)*0.15f );
 		_iXMove = 0;
 		_iYMove = 0;
 	}
