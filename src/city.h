@@ -328,7 +328,7 @@ private:
 */
 	void _RecordRessource();
 
-	void _DoBill( const OPENCITY_PROPERTY_CODE& );
+	void _DoBill();
 
 	void _HandleMenuClick();
 

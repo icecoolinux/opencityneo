@@ -284,16 +284,14 @@ void City::Run()
 	// Calculate the current population
 		_uiPopulation = r + c/2 + i/3;
 
+		_DoBill();
+		
 		if ( ++_uiMonth > 12 ) {
 		// New year
 			_uiMonth = 1;
 			_uiYear++;
 
-			_DoBill( OC_INCOME );
 			_RecordRessource();
-		}
-		else {
-			_DoBill( OC_MAINTENANCE_COST );
 		}
 	}
 	uiNumberFrame = 0;
@@ -1797,8 +1795,7 @@ City::_RecordRessource()
 
    /*=====================================================================*/
 void
-City::_DoBill(
-	const OPENCITY_PROPERTY_CODE & enumProperty )
+City::_DoBill( )
 {
 	uint maintenance;
 	uint index, surface;
@@ -1823,20 +1820,17 @@ City::_DoBill(
 
 	_uiIncome += (r*OC_R_INCOME_TAX + c*OC_C_INCOME_TAX + i*OC_I_INCOME_TAX) / 100;
 
-// Add the income only if we reach the end of the year
-	if (enumProperty == OC_INCOME ) {
-	// Here is the gouvernment's help for this year :D
-		_uiIncome += _uiIncome * OC_INCOME_HELP/100;
-		_liCityFund += _uiIncome;
-		OPENCITY_INFO(
-			"Happy new year ! " <<
-			"Income: " << _uiIncome <<
-			" d/m/y: " << _uiDay << "/" << _uiMonth << "/" << _uiYear <<
-			" R/C/I: " << r << "/" << c << "/" << i
-		);
+// Here is the gouvernment's help for this year :D
+	_uiIncome += _uiIncome * OC_INCOME_HELP/100;
+	_liCityFund += _uiIncome;
+	OPENCITY_INFO(
+		"Maintenace " << maintenance <<
+		" Income: " << _uiIncome <<
+		" d/m/y: " << _uiDay << "/" << _uiMonth << "/" << _uiYear <<
+		" R/C/I: " << r << "/" << c << "/" << i
+	);
 
-		_uiIncome = 0;
-	}
+	_uiIncome = 0;
 }
 
 
