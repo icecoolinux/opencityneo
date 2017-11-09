@@ -178,6 +178,7 @@ GUILabel::Display() const
 // Save the current attribs
 	glPushAttrib( GL_LIST_BIT | GL_ENABLE_BIT );
 	glDisable( GL_LIGHTING );
+	glDisable( GL_TEXTURE_2D );
 
 // Save the list base
 	glListBase( GUILabel::_uiFontBase );
