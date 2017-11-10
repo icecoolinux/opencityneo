@@ -16788,8 +16788,6 @@ ac_config_files="$ac_config_files src/Makefile"
 
 ac_config_files="$ac_config_files src/binreloc/Makefile"
 
-ac_config_files="$ac_config_files src/enum/Makefile"
-
 ac_config_files="$ac_config_files src/framework/Makefile"
 
 ac_config_files="$ac_config_files src/framework/System/Makefile"
@@ -17950,7 +17948,6 @@ do
     "sound/Makefile") CONFIG_FILES="$CONFIG_FILES sound/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "src/binreloc/Makefile") CONFIG_FILES="$CONFIG_FILES src/binreloc/Makefile" ;;
-    "src/enum/Makefile") CONFIG_FILES="$CONFIG_FILES src/enum/Makefile" ;;
     "src/framework/Makefile") CONFIG_FILES="$CONFIG_FILES src/framework/Makefile" ;;
     "src/framework/System/Makefile") CONFIG_FILES="$CONFIG_FILES src/framework/System/Makefile" ;;
     "src/framework/System/Information/Makefile") CONFIG_FILES="$CONFIG_FILES src/framework/System/Information/Makefile" ;;

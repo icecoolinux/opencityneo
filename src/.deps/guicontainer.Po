@@ -1,5 +1,4 @@
-guicontainer.o: guicontainer.cpp /usr/include/stdc-predef.h \
- ../src/enum/opencity_direction.h ../src/enum/opencity_structure_type.h \
+guicontainer.o: guicontainer.cpp /usr/include/stdc-predef.h enum.h \
  guicontainer.h guimain.h main.h ../config.h /usr/include/SDL/SDL.h \
  /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
  /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
@@ -108,7 +107,7 @@ guicontainer.o: guicontainer.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/6/bits/basic_ios.tcc \
  /usr/include/c++/6/bits/ostream.tcc /usr/include/c++/6/istream \
  /usr/include/c++/6/bits/istream.tcc /usr/include/c++/6/cassert \
- /usr/include/assert.h enum.h ui.h /usr/include/SDL/SDL_image.h \
+ /usr/include/assert.h ui.h /usr/include/SDL/SDL_image.h \
  /usr/include/SDL/SDL.h texture.h /usr/include/c++/6/map \
  /usr/include/c++/6/bits/stl_tree.h /usr/include/c++/6/bits/stl_map.h \
  /usr/include/c++/6/bits/stl_multimap.h /usr/include/c++/6/utility \
@@ -132,9 +131,7 @@ guicontainer.o: guicontainer.cpp /usr/include/stdc-predef.h \
 
 /usr/include/stdc-predef.h:
 
-../src/enum/opencity_direction.h:
-
-../src/enum/opencity_structure_type.h:
+enum.h:
 
 guicontainer.h:
 
@@ -453,8 +450,6 @@ macros.h:
 /usr/include/c++/6/cassert:
 
 /usr/include/assert.h:
-
-enum.h:
 
 ui.h:
 

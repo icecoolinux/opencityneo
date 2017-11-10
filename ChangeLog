@@ -1,6 +1,7 @@
 
 
 02/11/2017
+- Draw preview buildings before that it will build.
 - Remove the tool button and to be the query button always available.
 - Mouse pointer draw according to the enable tool.
 - Bug fix: When I insert zone and release mouse on the out field the zone don't insert.

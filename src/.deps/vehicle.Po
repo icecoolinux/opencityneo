@@ -1,8 +1,7 @@
-vehicle.o: vehicle.cpp /usr/include/stdc-predef.h \
- ../src/enum/opencity_direction.h vehicle.h movement.h main.h ../config.h \
- /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h \
+vehicle.o: vehicle.cpp /usr/include/stdc-predef.h enum.h vehicle.h \
+ movement.h main.h ../config.h /usr/include/SDL/SDL.h \
+ /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
+ /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -108,7 +107,7 @@ vehicle.o: vehicle.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/6/bits/basic_ios.tcc \
  /usr/include/c++/6/bits/ostream.tcc /usr/include/c++/6/istream \
  /usr/include/c++/6/bits/istream.tcc /usr/include/c++/6/cassert \
- /usr/include/assert.h enum.h destination.h /usr/include/c++/6/vector \
+ /usr/include/assert.h destination.h /usr/include/c++/6/vector \
  /usr/include/c++/6/bits/stl_construct.h \
  /usr/include/c++/6/bits/stl_uninitialized.h \
  /usr/include/c++/6/bits/stl_vector.h \
@@ -116,7 +115,7 @@ vehicle.o: vehicle.cpp /usr/include/stdc-predef.h \
 
 /usr/include/stdc-predef.h:
 
-../src/enum/opencity_direction.h:
+enum.h:
 
 vehicle.h:
 
@@ -435,8 +434,6 @@ macros.h:
 /usr/include/c++/6/cassert:
 
 /usr/include/assert.h:
-
-enum.h:
 
 destination.h:
 

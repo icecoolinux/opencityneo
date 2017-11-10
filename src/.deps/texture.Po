@@ -1,8 +1,7 @@
-texture.o: texture.cpp /usr/include/stdc-predef.h \
- ../src/enum/opencity_direction.h ../src/enum/opencity_structure_type.h \
- texture.h main.h ../config.h /usr/include/SDL/SDL.h \
- /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
+texture.o: texture.cpp /usr/include/stdc-predef.h enum.h texture.h main.h \
+ ../config.h /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
+ /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
+ /usr/include/SDL/SDL_platform.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -108,7 +107,7 @@ texture.o: texture.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/6/bits/basic_ios.tcc \
  /usr/include/c++/6/bits/ostream.tcc /usr/include/c++/6/istream \
  /usr/include/c++/6/bits/istream.tcc /usr/include/c++/6/cassert \
- /usr/include/assert.h enum.h /usr/include/c++/6/map \
+ /usr/include/assert.h /usr/include/c++/6/map \
  /usr/include/c++/6/bits/stl_tree.h /usr/include/c++/6/bits/stl_map.h \
  /usr/include/c++/6/bits/stl_multimap.h /usr/include/c++/6/utility \
  /usr/include/c++/6/bits/stl_relops.h buildinglayer.h layer.h \
@@ -134,9 +133,7 @@ texture.o: texture.cpp /usr/include/stdc-predef.h \
 
 /usr/include/stdc-predef.h:
 
-../src/enum/opencity_direction.h:
-
-../src/enum/opencity_structure_type.h:
+enum.h:
 
 texture.h:
 
@@ -453,8 +450,6 @@ macros.h:
 /usr/include/c++/6/cassert:
 
 /usr/include/assert.h:
-
-enum.h:
 
 /usr/include/c++/6/map:
 

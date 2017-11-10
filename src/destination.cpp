@@ -18,7 +18,7 @@
  ***************************************************************************/
 
 // Useful enumerations
-#include "opencity_direction.h"
+#include "enum.h"
 
 // OpenCity header
 #include "destination.h"

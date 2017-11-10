@@ -8,10 +8,6 @@
  *                                                                         *
  ***************************************************************************/
 
-// Useful enumerations
-#include "opencity_direction.h"
-#include "opencity_structure_type.h"
-
 // OpenCity headers
 #include "guiwindow.h"
 #include "guicontainer.h"

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 // Useful enumeration
-#include "opencity_direction.h"
+#include "enum.h"
 
 // MAS headers
 #include "agentpolice.h"

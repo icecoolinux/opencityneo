@@ -18,8 +18,7 @@
  ***************************************************************************/
 
 // Useful enumerations
-#include "opencity_direction.h"
-#include "opencity_structure_type.h"
+#include "enum.h"
 
 // OpenCity header
 #include "buildinglayer.h"
@@ -435,6 +434,7 @@ BuildingLayer::ResizeStructure(
 		linearIndex = (dl*_uiLayerWidth) + w;
 		for (dw = w; dw < w + ow; dw++) {
 			pTemp = _tabpStructure[ linearIndex++ ];
+printf("desmarco w:%d l:%d\n", dw, dl);
 		// NOTE: the following "if" is unnecessary, since pTemp is never NULL
 			assert( pTemp != NULL );
 			if (pTemp != NULL)
@@ -450,6 +450,7 @@ BuildingLayer::ResizeStructure(
 
 		// IF there is nothing here, THEN build a new part
 			if (pTemp == NULL) {
+printf("Contruyo vacio w:%d l:%d\n", dw, dl);
 				pTemp = new RCIStructure( OC_STRUCTURE_PART, pStruct );
 				_tabpStructure[ linearIndex ] = pTemp;
 			}
@@ -472,12 +473,14 @@ BuildingLayer::ResizeStructure(
 				gVars.gpPropertyMgr->GetWLH( pMain->GetGraphicCode(), xw, 0, xl, 0, xh, 0 );
 
 //				OPENCITY_DEBUG( "Delete structure - W/L " << dw << "/" << dl );
+printf("Destruyo viejo w:%d l:%d\n", dw, dl);
 				_DestroyStructure( dw, dl, uiCost, false );
 				pTemp = new RCIStructure( OC_STRUCTURE_PART, pStruct );
 				_tabpStructure[ linearIndex ] = pTemp;
-
+printf("Contruyo ocupa w:%d l:%d\n", dw, dl);
 				// Rebuild the neighbourhood
 				if (xw > 1 or xl > 1) {
+printf("ReContruyo edificio viejo vacio w:%d l:%d w2:%d, l2:%d code: %d\n", sxw, sxl, dw + xw-1, dl + xl-1, destroyedSC);
 					BuildStructure( sxw, sxl, dw + xw-1, dl + xl-1, destroyedSC, uiCost, uiFund );
 				}
 			}
@@ -500,6 +503,7 @@ BuildingLayer::ResizeStructure(
 				// get the structure's size and delete the whole structure
 				// that we're working on
 				delete _tabpStructure[ linearIndex ];
+printf("Desmarcada, reconstruyo principal w:%d l:%d\n", dw, dl);
 				_tabpStructure[ linearIndex ] = new RCIStructure( structCode );
 			}
 			linearIndex++;

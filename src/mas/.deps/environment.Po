@@ -1,7 +1,6 @@
 environment.o: environment.cpp /usr/include/stdc-predef.h \
- ../../src/enum/opencity_direction.h \
- ../../src/enum/opencity_structure_type.h environment.h \
- /usr/include/c++/6/vector /usr/include/c++/6/bits/stl_algobase.h \
+ ../../src/enum.h environment.h /usr/include/c++/6/vector \
+ /usr/include/c++/6/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/6/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/6/bits/os_defines.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -137,9 +136,7 @@ environment.o: environment.cpp /usr/include/stdc-predef.h \
 
 /usr/include/stdc-predef.h:
 
-../../src/enum/opencity_direction.h:
-
-../../src/enum/opencity_structure_type.h:
+../../src/enum.h:
 
 environment.h:
 

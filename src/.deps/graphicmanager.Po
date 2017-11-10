@@ -1,5 +1,4 @@
-graphicmanager.o: graphicmanager.cpp /usr/include/stdc-predef.h \
- ../src/enum/opencity_direction.h ../src/enum/opencity_structure_type.h \
+graphicmanager.o: graphicmanager.cpp /usr/include/stdc-predef.h enum.h \
  graphicmanager.h main.h ../config.h /usr/include/SDL/SDL.h \
  /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
  /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
@@ -108,9 +107,9 @@ graphicmanager.o: graphicmanager.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/6/bits/basic_ios.tcc \
  /usr/include/c++/6/bits/ostream.tcc /usr/include/c++/6/istream \
  /usr/include/c++/6/bits/istream.tcc /usr/include/c++/6/cassert \
- /usr/include/assert.h enum.h ../src/structure/structure.h main.h \
- persistence.h main.h /usr/include/c++/6/fstream \
- /usr/include/c++/6/bits/codecvt.h /usr/include/c++/6/cstdio \
+ /usr/include/assert.h ../src/structure/structure.h main.h persistence.h \
+ main.h /usr/include/c++/6/fstream /usr/include/c++/6/bits/codecvt.h \
+ /usr/include/c++/6/cstdio \
  /usr/include/x86_64-linux-gnu/c++/6/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/6/bits/c++io.h \
  /usr/include/c++/6/bits/fstream.tcc ../src/model/model.h texture.h \
@@ -146,9 +145,7 @@ graphicmanager.o: graphicmanager.cpp /usr/include/stdc-predef.h \
 
 /usr/include/stdc-predef.h:
 
-../src/enum/opencity_direction.h:
-
-../src/enum/opencity_structure_type.h:
+enum.h:
 
 graphicmanager.h:
 
@@ -465,8 +462,6 @@ macros.h:
 /usr/include/c++/6/cassert:
 
 /usr/include/assert.h:
-
-enum.h:
 
 ../src/structure/structure.h:
 

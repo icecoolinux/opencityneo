@@ -102,6 +102,45 @@
 		OC_TOOL_NUMBER			// Total number of tools
 	};
 
+
+/** The directions used in map calculation, vehicle movement, path placement etc...
+*/
+	enum OPENCITY_DIRECTION {
+		OC_DIR_O_N = 0,					///< North
+		OC_DIR_O_E,						///< East
+		OC_DIR_O_S,						///< South
+		OC_DIR_O_W,						///< West
+		OC_DIR_S_N,
+		OC_DIR_W_E,     // +5
+		OC_DIR_N_E,
+		OC_DIR_N_W,
+		OC_DIR_S_E,
+		OC_DIR_S_W,
+		OC_DIR_S_N_E,   // +10
+		OC_DIR_S_W_E,
+		OC_DIR_S_N_W,
+		OC_DIR_N_W_E,
+		OC_DIR_S_N_W_E,
+		OC_DIR_UNDEFINED				///< What the heck is this ?
+	};
+
+/** Each type of structure has several different structure code.
+	This is used for un/serialization and metadata loading
+*/
+	enum OPENCITY_STRUCTURE_TYPE {
+		OC_TYPE_UNDEFINED = 0,
+		OC_TYPE_RESIDENCE,
+		OC_TYPE_COMMERCE,
+		OC_TYPE_INDUSTRY,
+		OC_TYPE_WATER,
+		OC_TYPE_ELECTRICITY,
+		OC_TYPE_GAS,
+		OC_TYPE_GOVERNMENT,
+		OC_TYPE_PATH,
+		OC_TYPE_TREE,
+		OC_TYPE_VEHICLE
+	};
+
 // OpenCity's codes for structures
 // See the notes above the GRAPHIC_CODE
 	enum OPENCITY_STRUCTURE_CODE {

@@ -17,8 +17,6 @@
  *                                                                         *
  ***************************************************************************/
 
-// Useful enumerations
-#include "opencity_structure_type.h"
 
 // OpenCity headers
 #include "layer.h"

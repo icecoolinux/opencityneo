@@ -1,8 +1,7 @@
-destination.o: destination.cpp /usr/include/stdc-predef.h \
- ../src/enum/opencity_direction.h destination.h main.h ../config.h \
- /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h \
+destination.o: destination.cpp /usr/include/stdc-predef.h enum.h \
+ destination.h main.h ../config.h /usr/include/SDL/SDL.h \
+ /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
+ /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -108,11 +107,11 @@ destination.o: destination.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/6/bits/basic_ios.tcc \
  /usr/include/c++/6/bits/ostream.tcc /usr/include/c++/6/istream \
  /usr/include/c++/6/bits/istream.tcc /usr/include/c++/6/cassert \
- /usr/include/assert.h enum.h
+ /usr/include/assert.h
 
 /usr/include/stdc-predef.h:
 
-../src/enum/opencity_direction.h:
+enum.h:
 
 destination.h:
 
@@ -429,5 +428,3 @@ macros.h:
 /usr/include/c++/6/cassert:
 
 /usr/include/assert.h:
-
-enum.h:

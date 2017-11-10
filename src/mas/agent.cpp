@@ -19,7 +19,7 @@
 ***************************************************************************/
 
 // Useful enumerations
-#include "opencity_structure_type.h"
+#include "enum.h"
 
 // MAS headers
 #include "agent.h"

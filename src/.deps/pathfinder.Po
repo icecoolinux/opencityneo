@@ -1,5 +1,4 @@
-pathfinder.o: pathfinder.cpp /usr/include/stdc-predef.h \
- ../src/enum/opencity_direction.h ../src/enum/opencity_structure_type.h \
+pathfinder.o: pathfinder.cpp /usr/include/stdc-predef.h enum.h \
  buildinglayer.h main.h ../config.h /usr/include/SDL/SDL.h \
  /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
  /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
@@ -108,9 +107,8 @@ pathfinder.o: pathfinder.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/6/bits/basic_ios.tcc \
  /usr/include/c++/6/bits/ostream.tcc /usr/include/c++/6/istream \
  /usr/include/c++/6/bits/istream.tcc /usr/include/c++/6/cassert \
- /usr/include/assert.h enum.h layer.h persistence.h \
- /usr/include/c++/6/fstream /usr/include/c++/6/bits/codecvt.h \
- /usr/include/c++/6/cstdio \
+ /usr/include/assert.h layer.h persistence.h /usr/include/c++/6/fstream \
+ /usr/include/c++/6/bits/codecvt.h /usr/include/c++/6/cstdio \
  /usr/include/x86_64-linux-gnu/c++/6/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/6/bits/c++io.h \
  /usr/include/c++/6/bits/fstream.tcc ui.h guiwindow.h guimain.h \
@@ -130,9 +128,7 @@ pathfinder.o: pathfinder.cpp /usr/include/stdc-predef.h \
 
 /usr/include/stdc-predef.h:
 
-../src/enum/opencity_direction.h:
-
-../src/enum/opencity_structure_type.h:
+enum.h:
 
 buildinglayer.h:
 
@@ -449,8 +445,6 @@ macros.h:
 /usr/include/c++/6/cassert:
 
 /usr/include/assert.h:
-
-enum.h:
 
 layer.h:
 

@@ -1,2 +1,2 @@
-src/opencity --data-dir "." --conf-dir "."
+gdb --args src/opencity --data-dir "." --conf-dir "."
 

@@ -1,9 +1,7 @@
-mainsim.o: mainsim.cpp /usr/include/stdc-predef.h \
- ../../src/enum/opencity_direction.h \
- ../../src/enum/opencity_structure_type.h mainsim.h ../../src/main.h \
- ../../config.h /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h \
+mainsim.o: mainsim.cpp /usr/include/stdc-predef.h ../../src/enum.h \
+ mainsim.h ../../src/main.h ../../config.h /usr/include/SDL/SDL.h \
+ /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
+ /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -142,9 +140,7 @@ mainsim.o: mainsim.cpp /usr/include/stdc-predef.h \
 
 /usr/include/stdc-predef.h:
 
-../../src/enum/opencity_direction.h:
-
-../../src/enum/opencity_structure_type.h:
+../../src/enum.h:
 
 mainsim.h:
 

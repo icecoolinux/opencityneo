@@ -18,7 +18,7 @@
  ***************************************************************************/
 
 // Useful enumerations
-#include "opencity_structure_type.h"
+#include "enum.h"
 
 // OpenCity headers
 #include "industrialsim.h"

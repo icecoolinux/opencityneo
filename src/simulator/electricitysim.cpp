@@ -18,8 +18,7 @@
  ***************************************************************************/
 
 // Useful enumerations
-#include "opencity_direction.h"
-#include "opencity_structure_type.h"
+#include "enum.h"
 
 // OpenCity headers
 #include "electricitysim.h"

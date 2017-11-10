@@ -19,8 +19,7 @@
 ***************************************************************************/
 
 // Useful enumeration
-#include "opencity_direction.h"
-#include "opencity_structure_type.h"
+#include "enum.h"
 
 // MAS headers
 #include "environment.h"

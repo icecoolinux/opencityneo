@@ -2,13 +2,12 @@
 # Makefile.am for the source root.
 # $Id: Makefile.am 427 2009-11-23 22:48:26Z neoneurone $
 #==============================================================================
-SUBDIRS = binreloc enum framework mapgen mas model networking pngfuncs \
+SUBDIRS = binreloc framework mapgen mas model networking pngfuncs \
 	simulator structure tinyxml tinyxpath triangulation
 
 AM_CPPFLAGS = \
 	-I@top_srcdir@/src \
 	-I@top_srcdir@/src/binreloc \
-	-I@top_srcdir@/src/enum \
 	-I@top_srcdir@/src/framework \
 	-I@top_srcdir@/src/mas \
 	-I@top_srcdir@/src/mapgen \

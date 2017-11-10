@@ -1,6 +1,5 @@
-guiwindow.o: guiwindow.cpp /usr/include/stdc-predef.h \
- ../src/enum/opencity_direction.h ../src/enum/opencity_structure_type.h \
- guiwindow.h guimain.h main.h ../config.h /usr/include/SDL/SDL.h \
+guiwindow.o: guiwindow.cpp /usr/include/stdc-predef.h guiwindow.h \
+ guimain.h main.h ../config.h /usr/include/SDL/SDL.h \
  /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
  /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h \
@@ -131,10 +130,6 @@ guiwindow.o: guiwindow.cpp /usr/include/stdc-predef.h \
  mapgen/mapmaker.h mapgen/map.h macros.h
 
 /usr/include/stdc-predef.h:
-
-../src/enum/opencity_direction.h:
-
-../src/enum/opencity_structure_type.h:
 
 guiwindow.h:
 

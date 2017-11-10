@@ -115,7 +115,6 @@ property.o: property.cpp /usr/include/stdc-predef.h property.h main.h \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- ../src/enum/opencity_direction.h ../src/enum/opencity_structure_type.h \
  ../src/tinyxpath/xpath_processor.h ../src/tinyxpath/action_store.h \
  ../src/tinyxml/tinyxml.h /usr/include/c++/6/cstdio \
  /usr/include/c++/6/sstream /usr/include/c++/6/bits/sstream.tcc \
@@ -464,10 +463,6 @@ enum.h:
 /usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
-
-../src/enum/opencity_direction.h:
-
-../src/enum/opencity_structure_type.h:
 
 ../src/tinyxpath/xpath_processor.h:
 

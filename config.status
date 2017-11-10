@@ -393,7 +393,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" config/Makefile docs/Makefile map/Makefile map/heightmap/Makefile sound/Makefile src/Makefile src/binreloc/Makefile src/enum/Makefile src/framework/Makefile src/framework/System/Makefile src/framework/System/Information/Makefile src/framework/System/Information/Software/Makefile src/framework/System/Reflection/Makefile src/mapgen/Makefile src/mas/Makefile src/model/Makefile src/networking/Makefile src/pngfuncs/Makefile src/simulator/Makefile src/structure/Makefile src/tinyxml/Makefile src/tinyxpath/Makefile src/triangulation/Makefile viewer/Makefile Makefile"
+config_files=" config/Makefile docs/Makefile map/Makefile map/heightmap/Makefile sound/Makefile src/Makefile src/binreloc/Makefile src/framework/Makefile src/framework/System/Makefile src/framework/System/Information/Makefile src/framework/System/Information/Software/Makefile src/framework/System/Reflection/Makefile src/mapgen/Makefile src/mas/Makefile src/model/Makefile src/networking/Makefile src/pngfuncs/Makefile src/simulator/Makefile src/structure/Makefile src/tinyxml/Makefile src/tinyxpath/Makefile src/triangulation/Makefile viewer/Makefile Makefile"
 config_headers=" config.h"
 config_commands=" depfiles libtool"
 
@@ -812,7 +812,6 @@ do
     "sound/Makefile") CONFIG_FILES="$CONFIG_FILES sound/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "src/binreloc/Makefile") CONFIG_FILES="$CONFIG_FILES src/binreloc/Makefile" ;;
-    "src/enum/Makefile") CONFIG_FILES="$CONFIG_FILES src/enum/Makefile" ;;
     "src/framework/Makefile") CONFIG_FILES="$CONFIG_FILES src/framework/Makefile" ;;
     "src/framework/System/Makefile") CONFIG_FILES="$CONFIG_FILES src/framework/System/Makefile" ;;
     "src/framework/System/Information/Makefile") CONFIG_FILES="$CONFIG_FILES src/framework/System/Information/Makefile" ;;

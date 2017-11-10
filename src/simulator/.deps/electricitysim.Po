@@ -1,9 +1,8 @@
 electricitysim.o: electricitysim.cpp /usr/include/stdc-predef.h \
- ../../src/enum/opencity_direction.h \
- ../../src/enum/opencity_structure_type.h electricitysim.h \
- ../../src/main.h ../../config.h /usr/include/SDL/SDL.h \
- /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
+ ../../src/enum.h electricitysim.h ../../src/main.h ../../config.h \
+ /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
+ /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
+ /usr/include/SDL/SDL_platform.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -143,9 +142,7 @@ electricitysim.o: electricitysim.cpp /usr/include/stdc-predef.h \
 
 /usr/include/stdc-predef.h:
 
-../../src/enum/opencity_direction.h:
-
-../../src/enum/opencity_structure_type.h:
+../../src/enum.h:
 
 electricitysim.h:
 

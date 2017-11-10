@@ -23,7 +23,6 @@ Tareas a realizar para futuras versiones
 -Si la zona, carretera o construccion no se va a hacer que se muestre en rojo.
 -El tema de la configuracion que inicializa y lee en main.cpp, estaria bueno que se pase todo a globarvar.cpp
 -Tengo que rotar la camara hacia arriba y abajo.
--Tengo que mostrar como va a quedar la construccion colocada.
 -Error cuando se carga un mapa de diferente tamaño
 -No puedo construir una calle sobre una zona.
 -Error al seleccionar una zona (para residencial, destruir, etc.) y suelto el click en la barra de titulo, violacion de segmento. (No me paso despues)
