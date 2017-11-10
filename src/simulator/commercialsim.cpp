@@ -92,6 +92,7 @@ CommercialSim::Main()
 	else
 		_tiVariation[Simulator::OC_INDUSTRIAL]++;
 
+// LevelUp if there'is energy, residential, industrial and transport.
 	if (pstruct->IsSet(
 		OC_STRUCTURE_E |
 		OC_STRUCTURE_R | OC_STRUCTURE_C | OC_STRUCTURE_I |
@@ -103,8 +104,7 @@ CommercialSim::Main()
 	if (boolLevelUp == true) {
 	// really levelup ?
 		if (iRandom < OC_SIMULATOR_UP) {
-			if ((this->CheckLevelUp(w, l, pstruct) == true)
-			&&  (pstruct->LevelUp() == true)) {
+			if (this->CheckLevelUp(w, l, pstruct) && pstruct->LevelUp()) {
 				_pBuildLayer->ResizeStructure( w, l, oldGC );
 				_iValue++;
 				_tiVariation[Simulator::OC_COMMERCIAL]--;
@@ -114,8 +114,7 @@ CommercialSim::Main()
 	else {
 	// really level down ?
 		if (iRandom < OC_SIMULATOR_DOWN)
-			if ((this->CheckLevelDown(w, l, pstruct) == true)
-			&&  (pstruct->LevelDown() == true)) {
+			if (this->CheckLevelDown(w, l, pstruct) && pstruct->LevelDown()) {
 				_pBuildLayer->ResizeStructure( w, l, oldGC );
 				_iValue--;
 				_tiVariation[Simulator::OC_COMMERCIAL]++;

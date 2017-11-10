@@ -207,8 +207,7 @@ Simulator::CheckLevelUp(
 
 // The old WLH are smaller
 // IF the new required surface does not contains only the required structure THEN
-	if (_pBuildLayer->ContainStructureOnly(
-		w, l, w2, l2, pStruct->GetCode()) == false ) {
+	if ( !_pBuildLayer->ContainStructureOnly(w, l, w2, l2, pStruct->GetCode()) ) {
 //		OPENCITY_DEBUG( "ContainStructureOnly failed - W/L/W2/L2 "
 //			<< w << "/" << l << "/" << w2 << "/" << l2 );
 		return false;
