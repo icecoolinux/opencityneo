@@ -85,14 +85,7 @@ public:
 		OC_SIMULATOR_DEFAULT
 	};
 
-	enum SIMULATOR_STATE {
-		SIMULATOR_RUNNING,
-		SIMULATOR_STOPED,
-		SIMULATOR_RETURN
-	};
-
 	Simulator(
-		SDL_mutex* mutex,
 		BuildingLayer* pblayer,
 		Map* pmap );
 	virtual ~Simulator();
@@ -115,7 +108,7 @@ public:
 
 
 	virtual int
-	Main() = 0;
+	Run() = 0;
 
 
 	virtual void
@@ -131,16 +124,6 @@ public:
 		const uint & h1,
 		const uint & w2,
 		const uint & h2 ) {}
-
-
-	void
-	Run();
-
-	void
-	Stop();
-
-	void
-	Return();
 
 
 //========================================================================
@@ -206,30 +189,10 @@ this method works only on the electricity micro simulator.
 	SetValue(
 		const int rcValue );
 
-
-   /*=====================================================================*/
-   /*                        STATIC      METHODS                          */
-   /*=====================================================================*/
-	static int
-	ThreadWrapper(
-		void* pSim );
-
-
-//========================================================================
-/** Each RCI (residential, commercial, industrial) micro simulator should
-	call this at the end of each treatement so that the main thread can
-	execute.
-*/
-	static void
-	RCIDelay( void );
-
-
 protected:
 	int _iVariation;	///< The average variation of the structures stimulated
 	int _iValue;		///< The current global value of the simulator
 
-	SIMULATOR_STATE		_eSimState;		///< The current state of the simulator
-	SDL_mutex*			_pMutexMain;	///< The global mutex
 	BuildingLayer*		_pBuildLayer;	///< The building layer
 	Map*				_pMapCity;		///< The city map
 

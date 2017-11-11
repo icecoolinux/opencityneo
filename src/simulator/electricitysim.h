@@ -36,7 +36,6 @@ class ElectricitySim : public Simulator
 {
 public:
 	ElectricitySim(
-		SDL_mutex* mutex,
 		BuildingLayer* pblayer,
 		Map* pmap );
 	~ElectricitySim();
@@ -59,7 +58,7 @@ public:
 
 
 	int
-	Main();
+	Run();
 
 	void
 	AddStructure(

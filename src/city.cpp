@@ -113,13 +113,12 @@ _pctrMenu( NULL )
 
 // Pathfinder initialization
 	gVars.gpPathFinder = new PathFinder(
-		gVars.gpmutexSim,
 		(BuildingLayer*)_apLayer[ OC_LAYER_BUILDING ],
 		gVars.gpMapMgr,
 		_uiWidth, _uiLength );
 
 // Simulators' initialization
-	_CreateSimulator();
+	_pMSim = new MainSim( (BuildingLayer*)_apLayer[ OC_LAYER_BUILDING ], gVars.gpMapMgr );
 
 	if (_bGUIEnabled) {
 	// Debug toolcircle
@@ -161,7 +160,7 @@ City::~City()
 	}
 
 // delete all the simulators
-	_DeleteSimulator();
+	delete _pMSim;
 
 // Delete the pathfinder
 	delete gVars.gpPathFinder;
@@ -254,6 +253,9 @@ void City::Run()
 {
 	static uint uiNumberFrame = 0;
 
+// Run simulation.
+	_pMSim->Run();
+	
 // Send the movement manager the move order
 	gVars.gpMoveMgr->Move();
 
@@ -1007,45 +1009,6 @@ void City::_CreateTree()
 
 
    /*=====================================================================*/
-void City::_CreateSimulator()
-{
-// Simulators' initialization
-	_pMSim = new MainSim( gVars.gpmutexSim, (BuildingLayer*)_apLayer[ OC_LAYER_BUILDING ], gVars.gpMapMgr );
-
-// Now initialize simulators threads
-	_pthreadMSim = SDL_CreateThread( Simulator::ThreadWrapper, _pMSim );
-
-// Kept for future reference
-// How can I put funcTSim into the TrafficSim class ?
-//
-//	int (*fn)(void*);
-//	fn = reinterpret_cast<int (*)(void*)>(&TrafficSim::Run);
-//	pthreadTSim = SDL_CreateThread( TrafficSim::Run, pTSim );
-//
-
-// Put all the simulators' threads into RUN state
-	_pMSim->Run();
-}
-
-
-   /*=====================================================================*/
-void
-City::_DeleteSimulator()
-{
-	int iStatus;
-
-// put all the simulators' threads into RETURN state
-	_pMSim->Return();
-
-// wait for simulator threads to end
-	SDL_WaitThread( _pthreadMSim, &iStatus );
-
-// delete simulators at the end
-	delete _pMSim;
-}
-
-
-   /*=====================================================================*/
 void
 City::_CreateGUI()
 {
@@ -1453,9 +1416,6 @@ City::_DoTool(
 
 
 
-// block all the sim threads while modifying the game datas
-	SDL_LockMutex( gVars.gpmutexSim );
-
 	switch (_eCurrentTool) {
 	case OC_TOOL_ZONE_RES:
 		if ((enumErrCode = _apLayer[ _eCurrentLayer ]->
@@ -1675,9 +1635,6 @@ City::_DoTool(
 	default:
 		enumErrCode = OC_ERR_SOMETHING;// which tool is this ?
 	} // switch
-
-// now unlock the mutex and let the sims run
-	SDL_UnlockMutex( gVars.gpmutexSim );
 
 	if (enumErrCode == OC_ERR_FREE) {
 		_liCityFund -= cost;
@@ -1922,7 +1879,6 @@ City::_HandleStatusClick()
 			_pbtnPlay->Set( OC_GUIMAIN_VISIBLE );
 			_pbtnPause->Unset( OC_GUIMAIN_VISIBLE );
 			_eSpeed = OC_SPEED_PAUSE;
-			_pMSim->Stop();
 			break;
 
 		case 2:		// Click on Play button
@@ -1930,7 +1886,6 @@ City::_HandleStatusClick()
 			_pbtnPause->Set( OC_GUIMAIN_VISIBLE );
 			_pbtnPlay->Unset( OC_GUIMAIN_VISIBLE );
 			_eSpeed = OC_SPEED_NORMAL;
-			_pMSim->Run();
 			break;
 
 		case 3:		// Click on Query tool
@@ -2389,9 +2344,6 @@ City::_Save( const string& strFilename )
 	fs << "OpenCity_" << ocStrVersion() << std::endl;
 	fs << ocLongVersion() << std::ends;
 
-// Lock the simulator
-	SDL_LockMutex( gVars.gpmutexSim );
-
 // Save city data
 	this->SaveTo( fs );
 
@@ -2403,9 +2355,6 @@ City::_Save( const string& strFilename )
 
 // Save simulators data
 	_pMSim->SaveTo( fs );
-
-// Unlock the simulator
-	SDL_UnlockMutex( gVars.gpmutexSim );
 
 	fs.close();
 	return true;
@@ -2441,9 +2390,6 @@ City::_Load( const string& strFilename )
 		return false;
 	}
 
-// Lock the simulator
-	SDL_LockMutex( gVars.gpmutexSim );
-
 // Remove all moving objects
 	gVars.gpMoveMgr->Remove();
 
@@ -2471,9 +2417,6 @@ City::_Load( const string& strFilename )
 
 // Refresh/recalculate the simulators' value
 	_pMSim->RefreshSimValue();
-
-// Unlock the simulator
-	SDL_UnlockMutex( gVars.gpmutexSim );
 
 	fs.close();
 	return true;

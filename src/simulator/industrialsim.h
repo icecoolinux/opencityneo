@@ -30,13 +30,12 @@ class IndustrialSim : public Simulator
 {
 public:
 	IndustrialSim(
-		SDL_mutex* mutex,
 		BuildingLayer* pblayer,
 		Map* pmap );
 	~IndustrialSim();
 
 	int
-	Main();
+	Run();
 
 	void
 	RemoveStructure(

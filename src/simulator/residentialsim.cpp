@@ -28,10 +28,9 @@
 
    /*=====================================================================*/
 ResidentialSim::ResidentialSim(
-	SDL_mutex* mutex,
 	BuildingLayer* pblayer,
 	Map* pmap ):
-Simulator( mutex, pblayer, pmap )
+Simulator( pblayer, pmap )
 {
 	OPENCITY_DEBUG( "RSim param ctor" );
 }
@@ -45,7 +44,7 @@ ResidentialSim::~ResidentialSim()
 
 
    //========================================================================
-   // int Main() const
+   // int Run() const
    //
    // description: simulate the growth of a Residential square
    // algorithm  :
@@ -64,7 +63,7 @@ ResidentialSim::~ResidentialSim()
    //                 FI
    //========================================================================
 int
-ResidentialSim::Main()
+ResidentialSim::Run()
 {
 	static uint w, l;
 	static Structure* pstruct;
@@ -73,9 +72,6 @@ ResidentialSim::Main()
 	static OPENCITY_GRAPHIC_CODE oldGC;
 
 
-	if (_eSimState != SIMULATOR_RUNNING)
-		return 0;
-
 // Get a random residential structure
 	pstruct = _pBuildLayer->GetRandomStructure(w, l, OC_STRUCTURE_RES );
 	if (pstruct == NULL)
@@ -83,10 +79,6 @@ ResidentialSim::Main()
 
 	boolLevelUp = false;
 //	OPENCITY_DEBUG( "Begin - ResidentialSim - w/l: " << w << "/" << l );
-
-// Try to lock the mutex to prevent the others from deleting the structure
-// pointed by "pstruct" while we're playing with
-	SDL_LockMutex( _pMutexMain );
 
 	pstruct->Unset(
 		OC_STRUCTURE_W                  | OC_STRUCTURE_G |
@@ -141,9 +133,6 @@ ResidentialSim::Main()
 				_tiVariation[Simulator::OC_RESIDENTIAL]++;
 			}
 	}
-
-// Let the other simulators run
-	SDL_UnlockMutex( _pMutexMain );
 
 //	OPENCITY_DEBUG( "End - ResidentialSim - w/l: " << w << "/" << l );
 

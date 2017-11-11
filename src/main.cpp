@@ -681,10 +681,6 @@ static int clientMode()
 	}
 
 
-// Create the mutex first
-	gVars.gpmutexSim = SDL_CreateMutex();
-
-
 // Load OpenGL extensions
 	gVars.gpExtensionMgr = new ExtensionManager();
 	if (gVars.gpExtensionMgr == NULL or !gVars.gpExtensionMgr->Load()) {
@@ -791,9 +787,7 @@ located in OpenCity executable directory.",
 	// Restart with a new city from scratch
 	// WARNING: code duplication
 		if (bRestart) {
-		// Lock the simulator
-			SDL_LockMutex( gVars.gpmutexSim );
-
+			
 		// Remove all moving objects
 			gVars.gpMoveMgr->Remove();
 
@@ -819,9 +813,6 @@ located in OpenCity executable directory.",
 			}
 			gVars.gpRenderer->bHeightChange = true;
 			gVars.gpRenderer->bMinimapChange = true;
-
-		// Unlock the simulator
-			SDL_UnlockMutex( gVars.gpmutexSim );
 
 			bRestart = false;
 		}
@@ -875,9 +866,6 @@ located in OpenCity executable directory.",
 
 	delete gVars.gpRenderer;
 	delete gVars.gpExtensionMgr;
-
-// delete the simulators' mutex now
-	SDL_DestroyMutex( gVars.gpmutexSim );
 
 //	SDL_FreeSurface( gVars.gpVideoSrf ); // This is not recommended by SDL documentation
 	gVars.gpVideoSrf = NULL;
@@ -1193,9 +1181,6 @@ static void initGlobalVar()
 
 // Application status
 	gVars.gboolActive				= true;		// the application is active at start
-
-// The mutex that all the simulators depend on
-	gVars.gpmutexSim				= NULL;
 
 // The famous renderer
 	gVars.gpRenderer				= NULL;

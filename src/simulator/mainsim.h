@@ -22,7 +22,7 @@
 
 #include "main.h"
 #include "simulator.h"
-
+#include "systime.h"
 
 //========================================================================
 /** Handles the simulation of the commercial sub-system.
@@ -35,14 +35,11 @@ public:
 
 //========================================================================
 /** Constructs a new MainSim object.
-	\param mutex A pointer to a SDL_mutex which should be used to prevent
-that the gobal simulator's data is overwritten by multiple micro simulators
 	\param pblayer A pointer to the BuildingLayer
 	\param pmap A pointer to the gobal Map object
 	\todo Remove pblayer and pmap. Use global pointer for them
 */
 	MainSim(
-		SDL_mutex* mutex,
 		BuildingLayer* pblayer,
 		Map* pmap );
 
@@ -70,10 +67,10 @@ that the gobal simulator's data is overwritten by multiple micro simulators
 
 
 //========================================================================
-/** The main method of the simulator
+/** Run a step of the simulation
 */
 	int
-	Main();
+	Run();
 
 
 //========================================================================
@@ -100,30 +97,6 @@ system
 		const uint w1, const uint l1,
 		const uint w2, const uint l2,
 		const OPENCITY_SIMULATOR sim = OC_SIMULATOR_DEFAULT );
-
-
-//========================================================================
-/** Overload the parent's method
-	\see Simulator::Run()
-*/
-	void
-	Run();
-
-
-//========================================================================
-/** Overload the parent's method
-	\see Simulator::Stop()
-*/
-	void
-	Stop();
-
-
-//========================================================================
-/** Overload the parent's method
-	\see Simulator::Return()
-*/
-	void
-	Return();
 
 
 //========================================================================
@@ -158,6 +131,9 @@ simulator.
 private:
 	/** Table of pointers to Simulator object */
 	Simulator* _tpSimulator[Simulator::OC_SIMULATOR_NUMBER];
+	
+	uint times;	//< For refresh the simulator values.
+	unsigned long nextSimulation;	//< Time the next simulation execute.
 };
 
 #endif

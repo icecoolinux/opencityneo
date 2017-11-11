@@ -29,9 +29,6 @@
 #include "globalvar.h"
 extern GlobalVar gVars;
 
-// Standard headers
-#include <cmath>				// For log10
-
 
 // This shared table is initialized by MainSim
 // WARNING: this may not be thread safe !
@@ -41,20 +38,16 @@ volatile int Simulator::_tiVariation[Simulator::OC_SIMULATOR_NUMBER];
    /*=====================================================================*/
 Simulator::Simulator():
 _iVariation( 0 ),
-_iValue( 0 ),
-_eSimState( SIMULATOR_STOPED ),
-_pMutexMain( NULL )
+_iValue( 0 )
 {
 	OPENCITY_DEBUG( "Sim ctor , do not use" );
 }
 
 
    /*=====================================================================*/
-Simulator::Simulator( SDL_mutex* mutex, BuildingLayer* pblayer, Map* pmap ):
+Simulator::Simulator( BuildingLayer* pblayer, Map* pmap ):
 _iVariation( 0 ),
 _iValue( 0 ),
-_eSimState( SIMULATOR_STOPED ),
-_pMutexMain( mutex ),
 _pBuildLayer( pblayer ),
 _pMapCity( pmap )
 {
@@ -69,7 +62,6 @@ _pMapCity( pmap )
 Simulator::~Simulator()
 {
 	OPENCITY_DEBUG( "Sim dtor" );
-	_pMutexMain = NULL;
 }
 
 
@@ -92,30 +84,6 @@ Simulator::LoadFrom( std::fstream& rfs )
 
 	rfs >> _iVariation; rfs.ignore();
 	rfs >> _iValue; rfs.ignore();
-}
-
-
-   /*======================================================================*/
-void
-Simulator::Run()
-{
-	_eSimState = SIMULATOR_RUNNING;
-}
-
-
-   /*======================================================================*/
-void
-Simulator::Stop()
-{
-	_eSimState = SIMULATOR_STOPED;
-}
-
-
-   /*======================================================================*/
-void
-Simulator::Return()
-{
-	_eSimState = SIMULATOR_RETURN;
 }
 
 
@@ -212,6 +180,7 @@ Simulator::CheckLevelUp(
 //			<< w << "/" << l << "/" << w2 << "/" << l2 );
 		return false;
 	}
+
 
 // OK, next level has passed all the tests
 	OPENCITY_DEBUG( "CheckLevelUp OK - W/L/Level - " << w << "/" << l << "/" << pStruct->GetLevel() );
@@ -333,27 +302,4 @@ Simulator::SetValue(
 	const int rciValue )
 {
 	_iValue = rciValue;
-}
-
-
-   /*=====================================================================*/
-   /*                        STATIC      METHODS                          */
-   /*=====================================================================*/
-int
-Simulator::ThreadWrapper(
-	void* pSim )
-{
-	return ((Simulator*)pSim)->Main();
-}
-
-
-   /*======================================================================*/
-void
-Simulator::RCIDelay( void )
-{
-// Added +1 to avoid log10(0)
-	SDL_Delay((uint)
-		(gVars.gfMsSimDelayMax - log10((OC_FLOAT)Structure::GetNumber() + 1)
-		*OC_MS_STRUCTURE_LOG_FACTOR )
-		);
 }

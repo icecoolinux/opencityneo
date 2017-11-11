@@ -267,9 +267,6 @@ int serverMode()
 // Initialize the video system in order to capture Ctrl-C !
 	SDL_Init(SDL_INIT_VIDEO);
 
-// Create the mutex first
-	gVars.gpmutexSim = SDL_CreateMutex();
-
 // Create the global renderer in order to use its text rendering functions
 //	gVars.gpRenderer = new Renderer( gVars.guiCityWidth, gVars.guiCityLength );
 
@@ -349,9 +346,6 @@ int serverMode()
 //	delete gVars.gpAudioMgr;
 
 //	delete gVars.gpRenderer;
-
-// Delete the simulators' mutex now
-	SDL_DestroyMutex( gVars.gpmutexSim );
 
 	gVars.gpVideoSrf = NULL;
 	SDL_Quit();					// WARNING: Calls free() on an invalid pointer. Detected by glibc
@@ -598,9 +592,6 @@ void initGlobalVar()
 
 // Application status
 	gVars.gboolActive				= true;		// the application is active at start
-
-// The mutex that all the simulators depend on
-	gVars.gpmutexSim				= NULL;
 
 // The famous renderer
 	gVars.gpRenderer				= NULL;

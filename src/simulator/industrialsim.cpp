@@ -28,10 +28,9 @@
 
    /*======================================================================*/
 IndustrialSim::IndustrialSim(
-	SDL_mutex* mutex,
 	BuildingLayer* pblayer,
 	Map* pmap ):
-Simulator( mutex, pblayer, pmap )
+Simulator( pblayer, pmap )
 {
 	OPENCITY_DEBUG( "ISim param ctor" );
 }
@@ -46,7 +45,7 @@ IndustrialSim::~IndustrialSim()
 
    /*======================================================================*/
 int
-IndustrialSim::Main()
+IndustrialSim::Run()
 {
 	static uint w, l;
 	static Structure* pstruct;
@@ -54,20 +53,12 @@ IndustrialSim::Main()
 	static int iRandom;
 	static OPENCITY_GRAPHIC_CODE oldGC;
 
-
-	if (_eSimState != SIMULATOR_RUNNING)
-		return 0;
-
 // Get a random industrial structure
 	pstruct = _pBuildLayer->GetRandomStructure(w, l, OC_STRUCTURE_IND);
 	if (pstruct == NULL)
 		return 0;
 
 	boolLevelUp = false;
-
-// Try to lock the mutex to prevent the others from deleting the structure
-// pointed by "pstruct" while we're playing with
-	SDL_LockMutex( _pMutexMain );
 
 	pstruct->Unset(
 		OC_STRUCTURE_W                  | OC_STRUCTURE_G |
@@ -122,8 +113,6 @@ IndustrialSim::Main()
 				_tiVariation[Simulator::OC_INDUSTRIAL]++;
 			}
 	}
-
-	SDL_UnlockMutex( _pMutexMain );
 
 	return 0;
 }

@@ -195,7 +195,6 @@ private:
 
 // Simulator
 	MainSim*	_pMSim;
-	SDL_Thread*	_pthreadMSim;
 
 // The main menu
 	GUIContainer* _pctrMenu;		// The main menu container
@@ -284,20 +283,6 @@ private:
 /** Create few trees on the map according to the density map
 */
 	void _CreateTree();
-
-
-//========================================================================
-/** Create all the threads which handle the simulation aspect
-	\sa _DeleteSimulator()
-*/
-	void _CreateSimulator();
-
-
-//========================================================================
-/** Wait for the simulation thread's exit
-	\sa _CreateSimulator()
-*/
-	void _DeleteSimulator();
 
 
 //========================================================================

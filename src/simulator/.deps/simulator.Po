@@ -133,18 +133,7 @@ simulator.o: simulator.cpp /usr/include/stdc-predef.h ../../src/enum.h \
  /usr/include/c++/6/list /usr/include/c++/6/bits/stl_list.h \
  /usr/include/c++/6/bits/list.tcc ../../src/mas/environment.h \
  ../../src/mas/agentposition.h ../../src/pathfinder.h \
- ../../src/mapgen/mapmaker.h ../../src/mapgen/map.h ../../src/macros.h \
- /usr/include/c++/6/cmath /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/huge_val.h \
- /usr/include/x86_64-linux-gnu/bits/huge_valf.h \
- /usr/include/x86_64-linux-gnu/bits/huge_vall.h \
- /usr/include/x86_64-linux-gnu/bits/inf.h \
- /usr/include/x86_64-linux-gnu/bits/nan.h \
- /usr/include/x86_64-linux-gnu/bits/mathdef.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /usr/include/x86_64-linux-gnu/bits/mathinline.h
+ ../../src/mapgen/mapmaker.h ../../src/mapgen/map.h ../../src/macros.h
 
 /usr/include/stdc-predef.h:
 
@@ -577,27 +566,3 @@ simulator.h:
 ../../src/mapgen/map.h:
 
 ../../src/macros.h:
-
-/usr/include/c++/6/cmath:
-
-/usr/include/math.h:
-
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
-
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/usr/include/x86_64-linux-gnu/bits/huge_val.h:
-
-/usr/include/x86_64-linux-gnu/bits/huge_valf.h:
-
-/usr/include/x86_64-linux-gnu/bits/huge_vall.h:
-
-/usr/include/x86_64-linux-gnu/bits/inf.h:
-
-/usr/include/x86_64-linux-gnu/bits/nan.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathdef.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathinline.h:

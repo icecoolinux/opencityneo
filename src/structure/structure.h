@@ -188,7 +188,7 @@ protected:
 	OPENCITY_GRAPHIC_CODE	_eGC;			///< Graphic code
 	OPENCITY_STRUCTURE_CODE	_eSC;			///< Structure code
 	OPENCITY_STRUCTURE_TYPE _eType;			///< Structure type
-	uint _uiStatus;							///< Are there services near?
+	uint _uiStatus;							///< Are there services near?, also for mark structures
 	uint _uiLevel;
 
 /** Pointer of the main structure

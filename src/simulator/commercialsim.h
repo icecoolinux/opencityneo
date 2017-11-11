@@ -31,13 +31,12 @@ class CommercialSim : public Simulator
 {
 public:
 	CommercialSim(
-		SDL_mutex* mutex,
 		BuildingLayer* pblayer,
 		Map* pmap );
 	~CommercialSim();
 
 	int
-	Main();
+	Run();
 
 	void
 	RemoveStructure(

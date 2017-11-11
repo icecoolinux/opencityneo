@@ -32,12 +32,11 @@
 
    /*=====================================================================*/
 TrafficSim::TrafficSim(
-	SDL_mutex* mutex,
 	BuildingLayer* pblayer,
 	Map* pmap,
 	PathFinder* pf,
 	MovementManager* mm ):
-Simulator( mutex, pblayer, pmap ),
+Simulator( pblayer, pmap ),
 _pPathFinder( pf ),
 _pMovementManager( mm )
 {
@@ -54,7 +53,7 @@ TrafficSim::~TrafficSim()
 
    /*=====================================================================*/
 int
-TrafficSim::Main()
+TrafficSim::Run()
 {
 	static uint w, h;
 	static uint w1, h1, w2, h2;
@@ -65,17 +64,10 @@ TrafficSim::Main()
 	static int iNumberPath;
 
 
-	if (_eSimState != SIMULATOR_RUNNING)
-		return 0;
-
 // get a random road structure
 	pstruct = _pBuildLayer->GetRandomStructure(w, h, OC_STRUCTURE_ROAD );
 	if (pstruct == NULL)
 		return 0;
-
-// Try to lock the mutex to prevent the others from deleting the structure
-// pointed by "pstruct" while we're playing with
-	SDL_LockMutex( _pMutexMain );
 
 // Save the starting point for pathfinding
 	startW = w;	startH = h;
@@ -124,10 +116,6 @@ TrafficSim::Main()
 // since the structure's level is always >= 0
 	ppathstruct->SetTraffic((OC_BYTE)iTrafficValue );
 
-// let the others run !
-	SDL_UnlockMutex( _pMutexMain );
-
-// WARNING: the pathfinderShortestPath() need the unlocked mutex !
 // Are we going to create a new vehicle ?
 	if ((iTrafficValue > OC_TSIM_TRAFFIC_MIN) and ((rand() % 100) < OC_TSIM_VEHICLE_CHANCE )) {
 		this->CreateNewVehicle(startW, startH);

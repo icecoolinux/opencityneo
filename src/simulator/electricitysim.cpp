@@ -37,10 +37,9 @@ using namespace std;
 
    /*=====================================================================*/
 ElectricitySim::ElectricitySim(
-	SDL_mutex* mutex,
 	BuildingLayer* pblayer,
 	Map* pmap ):
-Simulator( mutex, pblayer, pmap ),
+Simulator( pblayer, pmap ),
 _uiNumberEPlant( 0 ),
 _iValueMax( 0 )
 {
@@ -79,7 +78,7 @@ ElectricitySim::LoadFrom( std::fstream& rfs )
 
 
    //========================================================================
-   // int simulatorMain()
+   // int Run()
    //
    // description: simulate the transmission of the electricity
    //
@@ -93,18 +92,12 @@ ElectricitySim::LoadFrom( std::fstream& rfs )
    //              good idea. We should let the electricity sim do its job.
    //========================================================================
 int
-ElectricitySim::Main()
+ElectricitySim::Run()
 {
 	static Structure* pstruct;
 	static vector< pair<uint, uint> >::iterator iter;
 	static pair<uint, uint> pairstructWH;
 	static uint nW, nH;
-
-// IF the simulators are not running THEN return
-	if (_eSimState != SIMULATOR_RUNNING)
-		return 0;
-
-	SDL_LockMutex( _pMutexMain );
 
 // clear the mark and E bit of ALL structure
 	_pBuildLayer->StructureUnset( (OC_BYTE)( OC_STRUCTURE_MARK | OC_STRUCTURE_E ) );
@@ -225,8 +218,6 @@ ElectricitySim::Main()
 		// next EPLANT
 		iter++;
 	} // while _vectorpairuiEPlant
-
-	SDL_UnlockMutex( _pMutexMain );
 
 	return 0;
 }

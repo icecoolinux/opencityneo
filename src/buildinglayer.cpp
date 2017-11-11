@@ -389,6 +389,7 @@ BuildingLayer::ResizeStructure(
 	const uint & l,
 	const OPENCITY_GRAPHIC_CODE & oldGC )
 {
+printf("jaja\n");
 	uint linearIndex = (l*_uiLayerWidth) + w;
 	Structure* pStruct = NULL, * pTemp = NULL, * pMain = NULL;
 	uint ow = 0, ol = 0, oh = 0;					// Old structure dimensions
@@ -428,7 +429,7 @@ BuildingLayer::ResizeStructure(
 		nl, 0,
 		nh, 0 );
 	assert((nw != 0) && (nl != 0));		// not used yet: && (nh != 0)
-
+printf("Y quiero %d %d, vieja %d %d, nueva %d %d\n", w, l, ow, ol, nw, nl);
 // Remove all existing marks on the old surface used by the structure
 	for (dl = l; dl < l + ol; dl++) {
 		linearIndex = (dl*_uiLayerWidth) + w;

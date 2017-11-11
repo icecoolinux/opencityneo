@@ -136,12 +136,10 @@ pathfinderEvaluate(
 
    /*=====================================================================*/
 PathFinder::PathFinder(
-	SDL_mutex* const mutex,
 	BuildingLayer* const pblayer,
 	Map* const map,
 	const uint & rcuiCityWidth,
 	const uint & rcuiCityHeight ):
-pmutex( mutex ),
 pbuildlayer( pblayer ),
 pmap( map ),
 uiWidth( rcuiCityWidth ),
@@ -150,7 +148,6 @@ uiHeight( rcuiCityHeight )
 	OPENCITY_DEBUG( "ctor" );
 
 // some assert for programming errors checking
-	assert( mutex != NULL );
 	assert( pblayer != NULL );
 	assert( map != NULL );
 }
@@ -237,9 +234,6 @@ PathFinder::findShortestPath(
 		OPENCITY_DEBUG("WARNING: Starting point NULL");
 		return false;
 	}
-
-// Block all the other threads while we play with the structures
-	SDL_LockMutex( this->pmutex );
 
 // Initialize the functor
 	switch (enumType) {
@@ -469,9 +463,6 @@ PathFinder::findShortestPath(
 		}
 	}
 #endif
-
-// Let the other threads run now
-	SDL_UnlockMutex( this->pmutex );
 
 	return boolFound;
 }

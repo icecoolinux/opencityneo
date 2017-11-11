@@ -78,9 +78,6 @@ struct GlobalVar
 // Application status
 	bool gboolActive;				///< Is the application active ?
 
-// The mutex that all the simulators depend on
-	SDL_mutex* gpmutexSim;
-
 // The famous renderer
 	Renderer* gpRenderer;
 

@@ -43,7 +43,6 @@ class TrafficSim : public Simulator
 {
 public:
 	TrafficSim(
-		SDL_mutex* mutex,
 		BuildingLayer* pblayer,
 		Map* pmap,
 		PathFinder* pf,
@@ -51,7 +50,7 @@ public:
 
 	virtual ~TrafficSim();
 
-	int Main();
+	int Run();
 
 
 private:

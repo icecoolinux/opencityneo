@@ -50,7 +50,6 @@ public:
 
 
 	PathFinder(
-		SDL_mutex* const mutex,
 		BuildingLayer* const pblayer,
 		Map* const map,
 		const uint & rcuiCityWidth,
@@ -69,7 +68,6 @@ public:
 
 
 private:
-	SDL_mutex* pmutex;
 	BuildingLayer* pbuildlayer;
 	Map* pmap;
 	uint uiWidth;				///< The city's width

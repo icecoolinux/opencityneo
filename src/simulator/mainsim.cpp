@@ -36,23 +36,24 @@ extern GlobalVar gVars;
 
 // Standard header
 #include <sstream>						// Debug string stream
-
+#include <cmath>						// For log10
 
    /*======================================================================*/
 MainSim::MainSim(
-	SDL_mutex* mutex,
 	BuildingLayer* pblayer,
 	Map* pmap ):
-Simulator( mutex, pblayer, pmap )
+Simulator( pblayer, pmap ),
+times(0),
+nextSimulation(0)
 {
 	OPENCITY_DEBUG( "MainSim param ctor" );
 
 // Simulators' initialization
-	_tpSimulator[Simulator::OC_RESIDENTIAL]	= new ResidentialSim( mutex, pblayer, pmap );
-	_tpSimulator[Simulator::OC_COMMERCIAL]	= new CommercialSim( mutex, pblayer, pmap );
-	_tpSimulator[Simulator::OC_INDUSTRIAL]	= new IndustrialSim( mutex, pblayer, pmap );
-	_tpSimulator[Simulator::OC_ELECTRIC]	= new ElectricitySim( mutex, pblayer, pmap );
-	_tpSimulator[Simulator::OC_TRAFFIC]		= new TrafficSim( mutex, pblayer, pmap, gVars.gpPathFinder, gVars.gpMoveMgr );
+	_tpSimulator[Simulator::OC_RESIDENTIAL]	= new ResidentialSim( pblayer, pmap );
+	_tpSimulator[Simulator::OC_COMMERCIAL]	= new CommercialSim( pblayer, pmap );
+	_tpSimulator[Simulator::OC_INDUSTRIAL]	= new IndustrialSim( pblayer, pmap );
+	_tpSimulator[Simulator::OC_ELECTRIC]	= new ElectricitySim( pblayer, pmap );
+	_tpSimulator[Simulator::OC_TRAFFIC]		= new TrafficSim( pblayer, pmap, gVars.gpPathFinder, gVars.gpMoveMgr );
 
 	for (uint ui = 0; ui < Simulator::OC_SIMULATOR_NUMBER; ui++) {
 		Simulator::_tiVariation[ui] = 0;
@@ -93,32 +94,29 @@ MainSim::LoadFrom( std::fstream& rfs )
 
    /*======================================================================*/
 int
-MainSim::Main()
+MainSim::Run()
 {
-	static uint times = 0;
-//	ostringstream oss;
+// Yet don't execute simulation.
+	if(SysTime::currentMs() < nextSimulation)
+		return 0;
 
-// Call the Main method of each micro simulator
-	while (_eSimState != SIMULATOR_RETURN) {
-		if (_eSimState == SIMULATOR_RUNNING) {
-			for (uint ui = 0; ui < Simulator::OC_SIMULATOR_NUMBER; ui++) {
-				_tpSimulator[ui]->Main();
-//				oss << ui << "=" << (int)Simulator::_tiVariation[ui] << " ";
-			}
-		}
-//		OPENCITY_DEBUG( "RCIET: " << oss.str() );
-//		oss.str("");
+// Call the Run method of each micro simulator
+	for (uint ui = 0; ui < Simulator::OC_SIMULATOR_NUMBER; ui++) {
+		_tpSimulator[ui]->Run();
+//		oss << ui << "=" << (int)Simulator::_tiVariation[ui] << " ";
+	}
 
-	// Refresh the simulator values every 5 turns
-		if (times == 0)
-			RefreshSimValue();
+//	OPENCITY_DEBUG( "RCIET: " << oss.str() );
+//	oss.str("");
 
-	// Wait a bit
-		Simulator::RCIDelay();
-// debug
-//		SDL_Delay(50);
-		times = (times+1) % 5;
-	} // while
+// Refresh the simulator values every 5 turns
+	if (times == 0)
+		RefreshSimValue();
+	times = (times+1) % 5;
+		
+// Calculate the next simulation.
+	uint msDelay = gVars.gfMsSimDelayMax - log10((OC_FLOAT)Structure::GetNumber() + 1) *OC_MS_STRUCTURE_LOG_FACTOR;
+	nextSimulation = SysTime::currentMs() + msDelay;
 
 	return 0;
 }
@@ -161,39 +159,6 @@ MainSim::RemoveStructure
 	else {
 		_tpSimulator[sim]->RemoveStructure( w1, l1, w2, l2 );
 	}
-}
-
-
-   /*======================================================================*/
-void
-MainSim::Run()
-{
-	for (uint ui = 0; ui < Simulator::OC_SIMULATOR_NUMBER; ui++) {
-		_tpSimulator[ui]->Run();
-	}
-	Simulator::Run();
-}
-
-
-   /*======================================================================*/
-void
-MainSim::Stop()
-{
-	for (uint ui = 0; ui < Simulator::OC_SIMULATOR_NUMBER; ui++) {
-		_tpSimulator[ui]->Stop();
-	}
-	Simulator::Stop();
-}
-
-
-   /*======================================================================*/
-void
-MainSim::Return()
-{
-	for (uint ui = 0; ui < Simulator::OC_SIMULATOR_NUMBER; ui++) {
-		_tpSimulator[ui]->Return();
-	}
-	Simulator::Return();
 }
 
 
