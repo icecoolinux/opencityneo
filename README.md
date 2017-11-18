@@ -3,10 +3,8 @@ OpenCity Neo 0.1.0
 ------------------------------------------------------------------------------
 
 <p align="center">
-    <img src="http://lmsotfy.com/so.png" width="360px">
+    <img src="screenshots/screen01.png">
 </p>
-
-![stack Overflow](http://lmsotfy.com/so.png)
 
 OpenCity Neo is a fork from OpenCity (http://www.opencity.info).
 Is a city simulator game. You must build a city with three zones, 
