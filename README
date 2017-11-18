@@ -2,82 +2,79 @@
 OpenCity Neo 0.1.0
 ------------------------------------------------------------------------------
 
-OpenCity Neo es un fork de OpenCity (http://www.opencity.info).
-Es un juego simulador de ciudad. La idea es simple, tienes que construir una 
-ciudad con tres tipos de zonas, Residencial, Comercial e Industrial
-Cada una depende de las itras durante su desarrollo.
-Trata de darles lo que necesitan y tu ciudad crecerá.
+OpenCity Neo is a fork from OpenCity (http://www.opencity.info).
+Is a city simulator game. You must build a city with three zones, 
+Residential, Commercial and Industrial.
+Each one depends of the other for its developer.
+Try to give them what they need and your city grow up.
 
-Queremos que OpenCity Neo agregue calidad gráfica, nuevas características y
-la posibilidad de jugar online.
+We like that OpenCity Neo have graphic quality, new features and
+it be an online game.
 
 
 ------------------------------------------------------------------------------
-Requerimientos de software:
+Software requirement:
 ------------------------------------------------------------------------------
-Sistema operativo:
-	Linux (recomendado)
+Operative system:
+	Linux (recommended)
 	Mac OS
 	Microsoft Windows XP/2000
 
-Librerías:
+Library:
 	GL (OpenGL)
 	GLU
 	SDL
 	SDL_image
 	SDL_net
-	SDL_mixer (opcional)
+	SDL_mixer (optional)
 
 
 ------------------------------------------------------------------------------
-Atajos de teclado
+Hotkeys
 ------------------------------------------------------------------------------
-		n: Quita la herramienta actual
-		r: Zona residencial
-		c: Zona comercial
-		i: Zona industrial
-		p: Crea caminos
-		l: Línea eléctrica
-		x: Destruir construcciones
-		q: Consulta sobre objeto
-		e: Construcción de planta eléctrica
-		ctrl: Cancela la acción de agregar zonas
+		n: Clear the current tool
+		r: Residential zone
+		c: Commercial zone
+		i: Industrial zone
+		p: Build paths
+		l: Electric line
+		x: Destroy buildings
+		q: Object query
+		e: Power plant
+		ctrl: Clear zones
 	
-		u: Levanta el terreno
+		u: Ground level up
 
-Navegación:
-		arriba / abajo / izquierda / derecha: Mueve el mapa
-		w / s / a / d: Mueve el mapa
-		pageup / pagedown: Rota el mapa
-		insertar / suprimir: Zoom in/out
-		alt: multiplica el efecto de los botones por 10
+Navigation:
+		up / down / left / right: Move the map
+		w / s / a / d: Move the map
+		pageup / pagedown: Map rotate
+		insert / sup: Zoom in/out
+		alt: Multiply the effect of buttons for 10
 	
-		h: Mueve el mapa al inicio
-		escape: Quita la herramienta actual. Abre/Quita el menú principal
+		h: Move the map to home
+		escape: Clear the current tool. Open/Close the main menu
 
-Opciones:
-		b: Muestra/Quita construcciones
-		g: Muestra/Quita la grilla
-		k: Muestra/Quita la barra de estado principal
-		f: Muestra los graficos en alambre
-		o: Proyección ortogonal/perspectiva
-		t: Muestra/Quita terreno
+Options:
+		b: Show/Hide buildings
+		g: Show/Hide the grid
+		k: Show/hide the main state bar
+		f: Show wired graphics
+		o: Projection Orthogonal/Perspective
+		t: Show/Hide ground
 
-Sonido y música:
-		< / >: reproduce anterior / reproduce siguiente
-		m: Apaga/Enciende musica
-		s: Apaga/Enciende sonido
+Sound and music:
+		< / >: play previus / play next
+		m: On/Off music
+		s: On/Off sound
 
 Experimental:
-		F2: Guarda
-		F6: Carga
+		F2: Save
+		F6: Load
 
-Caracteristicas sin documentar, puede ser riesgoso:
-		v: prueba MAS del menú
-		z: Conecta al servidor local ZeN
-
-
-
+Features without documents, it can be risky:
+		v: probe MAS of the menu
+		z: Connect to local server ZeN
 
 
 ------------------------------------------------------------------------------
