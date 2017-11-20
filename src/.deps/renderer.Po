@@ -136,9 +136,10 @@ renderer.o: renderer.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/6/bits/fstream.tcc ui.h guiwindow.h guimain.h \
  /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h guibutton.h \
  guilabel.h font_8x8.h ../src/model/model.h main.h texture.h \
- ../src/structure/structure.h persistence.h globalvar.h audiomanager.h \
- extensionmanager.h graphicmanager.h map.h propertymanager.h conf.h \
- /usr/include/c++/6/vector /usr/include/c++/6/bits/stl_construct.h \
+ ../src/structure/structure.h persistence.h systime.h globalvar.h \
+ audiomanager.h extensionmanager.h graphicmanager.h map.h \
+ propertymanager.h conf.h /usr/include/c++/6/vector \
+ /usr/include/c++/6/bits/stl_construct.h \
  /usr/include/c++/6/bits/stl_uninitialized.h \
  /usr/include/c++/6/bits/stl_vector.h \
  /usr/include/c++/6/bits/stl_bvector.h /usr/include/c++/6/bits/vector.tcc \
@@ -571,6 +572,8 @@ texture.h:
 ../src/structure/structure.h:
 
 persistence.h:
+
+systime.h:
 
 globalvar.h:
 

@@ -128,7 +128,7 @@ class UI;
 	#define OC_WHITE_COLOR		255, 255, 255
 	#define OC_BLACK_COLOR		0, 0, 0
 
-	#define OC_LIGHT_MODEL_AMBIENT	0.7, 0.7, 0.7, 1.0
+	#define OC_LIGHT_MODEL_AMBIENT	0.6, 0.6, 0.6, 1.0
 
 	#define SIZE_MOUSE_POINTER 25
 

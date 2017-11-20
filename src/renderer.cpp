@@ -69,6 +69,7 @@ for the first time:
 #include "font_acorn_8x8.h"
 #include "font_pearl_8x8.h"
 */
+#include "systime.h"
 
 // Global settings
 #include "globalvar.h"
@@ -196,27 +197,11 @@ _uiCityLength( cityL )
 	_uiWaterList = glGenLists( 1 );
 
 // Define the global ambient light value
-// NOTE: we declare the variables here for better readable codes
 	GLfloat fvLightModelAmbient[] = { OC_LIGHT_MODEL_AMBIENT };
-	GLfloat fvLightAmbient [] = { .6, .6, .4, 1. };
-	GLfloat fvLightDiffuse [] = { .8, .8, .6, 1. };
-	GLfloat fvLightSpecular [] = { .4, .4, .4, 1. };
-
 	glLightModelfv( GL_LIGHT_MODEL_AMBIENT, fvLightModelAmbient );
-	glLightfv( GL_LIGHT0, GL_AMBIENT, fvLightAmbient );
-	glLightfv( GL_LIGHT0, GL_DIFFUSE, fvLightDiffuse );
-	glLightfv( GL_LIGHT0, GL_SPECULAR, fvLightSpecular );
-	glLighti( GL_LIGHT0, GL_SPOT_CUTOFF, 180 );
-
+	
 // Enable lighting
-// WARNING: the light position is transformed by the current MODELVIEW matrix
-	static GLint ivLightPos [] = { 0, 2, 1, 0};		// Directional light
-	static GLint ivLightDir [] = { 0, 2, 0 };
-	glLightiv( GL_LIGHT0, GL_POSITION, ivLightPos );
-	glLightiv( GL_LIGHT0, GL_SPOT_DIRECTION, ivLightDir );
-
 	glEnable( GL_LIGHTING );
-	glEnable( GL_LIGHT0 );
 
 // Enable the GL automatic normals rescaling it's useful when the user zooms
 // in and out ( zooming is uniform here, in OpenCity)
@@ -572,9 +557,14 @@ Renderer::Display
 	glClearColor( OC_CLEAR_COLOR );
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
+	
 // Prepare the world for rendering: calculate the view volume, culling
 	_PrepareView();
 
+// Set lights
+	glEnable(GL_LIGHTING);
+	_setSun();
+	
 // Calculate the culling grid and the culled models if it's requested
 	if (_bCalculateCulling) {
 		_CalculateCulledGrid( 0, 0, _uiCityWidth+1, _uiCityLength+1, true);
@@ -1303,7 +1293,7 @@ Renderer::_DisplayTerrain() const
 	glNewList( _uiTerrainList, GL_COMPILE );
 
 // WARNING: this is used to calculated the final textured fragment.
-	glColor4f( .8, .7, .6, .8 );
+	glColor4f( 1., 1., 1., 1. );
 
 // Enable terrain texturing
 	glPushAttrib( GL_ENABLE_BIT );
@@ -1865,6 +1855,58 @@ Renderer::_PrepareView()
 
 // Rotate the scence to the required angle
 	glMultMatrixd( _dmatrixRotate );
+}
+
+
+/*=====================================================================*/
+void
+Renderer::_setSun
+(
+	
+)
+{
+	unsigned long msPerDay = 60000; // 1 minutes
+	unsigned long ms = SysTime::currentMs();
+	float timeDay = ((ms % msPerDay)*24.0f) / ((float)msPerDay); // 0 to 24
+	
+// Sun's from 4 to 21.
+	float startSun = 3.0f;
+	float endSun = 23.0f;
+	float smoothLightHours = 1.0f;
+	
+// Sun isn't.
+	if( timeDay < startSun || timeDay > endSun)
+	{
+		glDisable( GL_LIGHT0 );
+		return;
+	}
+	
+// Calculate the angle sun, from 0 to 1.
+	float angleSun = (timeDay - startSun) / (endSun-startSun);
+	
+// Smooth light when the sun start and end.
+	float amountLight = 1.0f;
+	if(timeDay <= (startSun+smoothLightHours) )
+		amountLight = (timeDay - startSun) / smoothLightHours;
+	else if(timeDay >= (endSun-smoothLightHours) )
+		amountLight = (smoothLightHours - (timeDay - (endSun-smoothLightHours))) / smoothLightHours;
+
+	GLfloat fvLightAmbient [] = { .1 * amountLight, .1 * amountLight, .1 * amountLight, 1. };
+	GLfloat fvLightDiffuse [] = { .6 * amountLight, .6 * amountLight, .6 * amountLight, 1. };
+	GLfloat fvLightSpecular [] = { .6 * amountLight, .6 * amountLight, .6 * amountLight, 1. };
+
+	GLfloat fvLightPos [] = { .3, sin(angleSun*M_PI), cos(angleSun*M_PI), .0};		// Directional light
+	GLint ivLightDir [] = { 0, 2, 0 };	
+
+	glLightfv( GL_LIGHT0, GL_AMBIENT, fvLightAmbient );
+	glLightfv( GL_LIGHT0, GL_DIFFUSE, fvLightDiffuse );
+	glLightfv( GL_LIGHT0, GL_SPECULAR, fvLightSpecular );
+	glLighti( GL_LIGHT0, GL_SPOT_CUTOFF, 180 );
+
+	glLightfv( GL_LIGHT0, GL_POSITION, fvLightPos );
+	glLightiv( GL_LIGHT0, GL_SPOT_DIRECTION, ivLightDir );
+	
+	glEnable( GL_LIGHT0 );
 }
 
 

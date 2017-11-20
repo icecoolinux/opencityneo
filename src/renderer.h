@@ -272,6 +272,12 @@ draw the water layer
 */
 	void _PrepareView();
 
+
+//========================================================================
+/** Set sun light opengl
+*/
+	void _setSun();
+
 //========================================================================
 /** Calulate the culled grid which has city_width + 1 and city_length + 1
 nodes
