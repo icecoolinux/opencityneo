@@ -610,17 +610,24 @@ void City::Keyboard( const SDL_KeyboardEvent& rcEvent )
 			break;
 
 
-		case SDLK_ESCAPE:	// Close toolcircle, quit tool, Open/close the main menu.
+		case SDLK_ESCAPE:	// Close toolcircle, quit tool, close static window, close query window, Open/close the main menu.
 			if (_pctrMenu == NULL) {
-				if (_pctr->IsSet( OC_GUIMAIN_VISIBLE ))
+				if (_pctr->IsSet( OC_GUIMAIN_VISIBLE )) // Close toolcircle
 					_pctr->Unset( OC_GUIMAIN_VISIBLE );
-				else if (_eCurrentTool != OC_TOOL_NONE)
+				else if (_eCurrentTool != OC_TOOL_NONE) // Close tool
 					_SetCurrentTool( OC_TOOL_NONE );
-				else
+				else if (_pwStatistics != NULL && ((GUIContainer*)_pwStatistics->GetContainer())->IsSet(OC_GUIMAIN_VISIBLE)) // Close static window
+					((GUIContainer*)_pwStatistics->GetContainer())->Unset(OC_GUIMAIN_VISIBLE);
+				else if (_pwQwery != NULL) // Close query window
+				{
+					delete _pwQwery;
+					_pwQwery = NULL;
+				}
+				else // Open the main menu
 					_LoadMenu();
 			}
 			else {
-				_UnloadMenu();
+				_UnloadMenu(); // Close the main menu
 			}
 			break;
 

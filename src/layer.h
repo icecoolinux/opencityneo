@@ -210,10 +210,9 @@ nothing ?
 
 
 //========================================================================
-/** This methods returns a pointer to a container which contains the
+/** This methods returns a pointer to a GUIWindow which contains the
 queried informations. The user must call "delete pointer" to destroy
 that pointer once he/she've done with it.
-	\see _CreateQueryContainer(), _DeleteQueryContainer()
 */
 	virtual GUIWindow* const
 	QueryStructure(

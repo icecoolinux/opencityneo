@@ -816,27 +816,23 @@ BuildingLayer::QueryStructure
 {
 	Structure* pstruct = _tabpStructure[ l*_uiLayerWidth + w ];
 
-	// Window's info
+// Window's info
 	char titleQuery[200];
 	int xWin, yWin, widthWin, heightWin;
 
-	// Set window size
-	widthWin = gVars.guiScreenWidth*0.4;
-	if(widthWin > 300)
-		widthWin = 300;
-	heightWin = gVars.guiScreenHeight*0.6;
-	if(heightWin > 500)
-		heightWin = 500;
+// Set window size and position
+	widthWin = 250;
+	heightWin = 300;
 	xWin = (gVars.guiScreenWidth - widthWin) / 2;
 	yWin = (gVars.guiScreenHeight - heightWin) / 2;
 
-	// Variables of Structure's info
+// Variables of Structure's info
 	GUILabel* _lblEnergy = 		new GUILabel(widthWin*0.1, heightWin*0.80, "Energy: ");
 	GUILabel* _lblWater = 		new GUILabel(widthWin*0.1, heightWin*0.75, "Water: ");
 	GUILabel* _lblGas = 		new GUILabel(widthWin*0.1, heightWin*0.70, "Gas: ");
-	GUILabel* _lblHasEnergy = 	new GUILabel(widthWin*0.35, heightWin*0.80, "No");
-	GUILabel* _lblHasWater = 	new GUILabel(widthWin*0.35, heightWin*0.75, "No");
-	GUILabel* _lblHasGas = 		new GUILabel(widthWin*0.35, heightWin*0.70, "No");
+	GUILabel* _lblHasEnergy = 	new GUILabel(widthWin*0.4, heightWin*0.80, "No");
+	GUILabel* _lblHasWater = 	new GUILabel(widthWin*0.4, heightWin*0.75, "No");
+	GUILabel* _lblHasGas = 		new GUILabel(widthWin*0.4, heightWin*0.70, "No");
 	_lblHasEnergy->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
 	_lblHasWater->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
 	_lblHasGas->SetForeground(OPENCITY_PALETTE[Color::OC_RED]);
