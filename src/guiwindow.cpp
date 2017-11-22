@@ -17,8 +17,9 @@
 extern GlobalVar gVars;
 
 #define TEXTURE_FILE_WINDOW "graphism/gui/windowgui.png"
-#define HEIGHT_TITLE_BAR 30
-#define PIXELS_BORDER_WINDOW 10
+#define HEIGHT_TITLE_BAR 33
+#define PIXELS_BORDER_WINDOW 30
+#define SIZE_CLOSE_BUTTON 25
 
 // Texture of the window: borders, title bar and corners.
 Texture* GUIWindow::_textureWindow = NULL;
@@ -51,7 +52,7 @@ GUIWindow::GUIWindow
 	titleBarClicked = false;
 
 // Window title
-	_lblTitle = new GUILabel(cuiW/2, cuiH-HEIGHT_TITLE_BAR/2, strTitle);
+	_lblTitle = new GUILabel(cuiW/2, cuiH-3*HEIGHT_TITLE_BAR/4, strTitle);
 	_lblTitle->SetAlign(GUILabel::OC_ALIGN_CENTER);
 	_lblTitle->SetForeground(OPENCITY_PALETTE[Color::OC_WHITE]);
 
@@ -64,7 +65,7 @@ GUIWindow::GUIWindow
 	_pctr = new GUIContainer(ciX, ciY, cuiW, cuiH);
 
 // Close button.
-	_pbtnClose = new GUIButton(cuiW-HEIGHT_TITLE_BAR, cuiH-HEIGHT_TITLE_BAR, HEIGHT_TITLE_BAR, HEIGHT_TITLE_BAR, ocDataDirPrefix("graphism/gui/destroy"));
+	_pbtnClose = new GUIButton(cuiW-HEIGHT_TITLE_BAR, cuiH-HEIGHT_TITLE_BAR, SIZE_CLOSE_BUTTON, SIZE_CLOSE_BUTTON, ocDataDirPrefix("graphism/gui/destroy"));
 
 // Add elements into the container
 	((GUIContainer*)_pctr)->Add(this);
@@ -150,42 +151,42 @@ GUIWindow::Display() const
 
 	// Border left
 	glBegin( GL_QUADS );
-	glTexCoord2f( 0.4, 0.4 );	glVertex2i( 0, PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.6, 0.4 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.6, 0.6 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.4, 0.6 );	glVertex2i( 0, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.0, 0.25 );	glVertex2i( 0, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.5, 0.25 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.5, 0.75 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.0, 0.75 );	glVertex2i( 0, _uiHeight - PIXELS_BORDER_WINDOW );
 	glEnd();
 
 	// Border right
 	glBegin( GL_QUADS );
-	glTexCoord2f( 0.4, 0.4 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.6, 0.4 );	glVertex2i( _uiWidth, PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.6, 0.6 );	glVertex2i( _uiWidth, _uiHeight - PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.4, 0.6 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.5, 0.25 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 1.0, 0.25 );	glVertex2i( _uiWidth, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 1.0, 0.75 );	glVertex2i( _uiWidth, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.5, 0.75 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
 	glEnd();
 
 	// Border top
 	glBegin( GL_QUADS );
-	glTexCoord2f( 0.4, 0.4 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.6, 0.4 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.6, 0.6 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight );
-	glTexCoord2f( 0.4, 0.6 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight );
+	glTexCoord2f( 0.25, 0.5 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.75, 0.5 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.75, 1.0 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight );
+	glTexCoord2f( 0.25, 1.0 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight );
 	glEnd();
 
 	// Border bottom
 	glBegin( GL_QUADS );
-	glTexCoord2f( 0.4, 0.4 );	glVertex2i( PIXELS_BORDER_WINDOW, 0 );
-	glTexCoord2f( 0.6, 0.4 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, 0 );
-	glTexCoord2f( 0.6, 0.6 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.4, 0.6 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.25, 0.0 );	glVertex2i( PIXELS_BORDER_WINDOW, 0 );
+	glTexCoord2f( 0.75, 0.0 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, 0 );
+	glTexCoord2f( 0.75, 0.5 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.25, 0.5 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
 	glEnd();
 
 // Draw window's middle
 	glBegin( GL_QUADS );
-	glTexCoord2f( 0.4, 0.4 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.6, 0.4 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.6, 0.6 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
-	glTexCoord2f( 0.4, 0.6 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.25, 0.25 );	glVertex2i( PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.75, 0.25 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.75, 0.75 );	glVertex2i( _uiWidth - PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
+	glTexCoord2f( 0.25, 0.75 );	glVertex2i( PIXELS_BORDER_WINDOW, _uiHeight - PIXELS_BORDER_WINDOW );
 	glEnd();
 
 // Display title
