@@ -19,7 +19,7 @@ extern GlobalVar gVars;
 #define TEXTURE_FILE_WINDOW "graphism/gui/windowgui.png"
 #define HEIGHT_TITLE_BAR 33
 #define PIXELS_BORDER_WINDOW 30
-#define SIZE_CLOSE_BUTTON 25
+#define SIZE_CLOSE_BUTTON 20
 
 // Texture of the window: borders, title bar and corners.
 Texture* GUIWindow::_textureWindow = NULL;
@@ -65,7 +65,11 @@ GUIWindow::GUIWindow
 	_pctr = new GUIContainer(ciX, ciY, cuiW, cuiH);
 
 // Close button.
-	_pbtnClose = new GUIButton(cuiW-HEIGHT_TITLE_BAR, cuiH-HEIGHT_TITLE_BAR, SIZE_CLOSE_BUTTON, SIZE_CLOSE_BUTTON, ocDataDirPrefix("graphism/gui/destroy"));
+	_pbtnClose = new GUIButton(cuiW-HEIGHT_TITLE_BAR, 
+								cuiH - SIZE_CLOSE_BUTTON - (HEIGHT_TITLE_BAR-SIZE_CLOSE_BUTTON)/2.0f, 
+								SIZE_CLOSE_BUTTON, 
+								SIZE_CLOSE_BUTTON, 
+								ocDataDirPrefix("graphism/gui/destroy"));
 
 // Add elements into the container
 	((GUIContainer*)_pctr)->Add(this);
@@ -192,6 +196,15 @@ GUIWindow::Display() const
 // Display title
 	_lblTitle->Display();
 
+// Draw a separator line of the title bar 
+	glDisable(GL_TEXTURE_2D);
+	glLineWidth(1.5);
+	glColor3f(124, 212, 248);
+	glBegin(GL_LINES);
+		glVertex2i(PIXELS_BORDER_WINDOW/2, _uiHeight - PIXELS_BORDER_WINDOW);
+		glVertex2i(_uiWidth - PIXELS_BORDER_WINDOW/2, _uiHeight - PIXELS_BORDER_WINDOW);
+	glEnd();
+
 // Restore the old matrix and attribs
 	glPopMatrix();
 	glPopAttrib();
@@ -204,15 +217,15 @@ GUIWindow::SetLocation(const int & rciX, const int & rciY ) {
 	int xWin = rciX;
 	int yWin = rciY - _uiHeight;
 
-	if( (xWin+_uiWidth) > gVars.guiScreenWidth )
-		xWin = gVars.guiScreenWidth - _uiWidth;
-	else if( xWin < 0 )
-		xWin = 0;
+	if( (xWin+_uiWidth) > (gVars.guiScreenWidth - _uiWidth/2.0f) )
+		xWin = gVars.guiScreenWidth - 1.5f*_uiWidth;
+	else if( xWin < _uiWidth/2.0f )
+		xWin = _uiWidth/2.0f;
 
-	if( (yWin+_uiHeight) > gVars.guiScreenHeight )
-		yWin = gVars.guiScreenHeight - _uiHeight;
-	else if( yWin < 0 )
-		yWin = 0;
+	if( (yWin+_uiHeight) > (gVars.guiScreenHeight - _uiHeight/2.0f) )
+		yWin = gVars.guiScreenHeight - 1.5f*_uiHeight;
+	else if( yWin < _uiHeight/2.0f )
+		yWin = _uiHeight/2.0f;
 
 	_pctr->SetLocation(xWin, yWin);
 }

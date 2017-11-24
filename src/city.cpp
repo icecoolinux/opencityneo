@@ -618,7 +618,7 @@ void City::Keyboard( const SDL_KeyboardEvent& rcEvent )
 					_SetCurrentTool( OC_TOOL_NONE );
 				else if (_pwStatistics != NULL && ((GUIContainer*)_pwStatistics->GetContainer())->IsSet(OC_GUIMAIN_VISIBLE)) // Close static window
 					((GUIContainer*)_pwStatistics->GetContainer())->Unset(OC_GUIMAIN_VISIBLE);
-				else if (_pwQwery != NULL) // Close query window
+				else if (_pwQwery != NULL && ((GUIContainer*)_pwQwery->GetContainer())->IsSet(OC_GUIMAIN_VISIBLE)) // Close query window
 				{
 					delete _pwQwery;
 					_pwQwery = NULL;
