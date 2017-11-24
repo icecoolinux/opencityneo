@@ -115,6 +115,7 @@ class UI;
 // Bad values can block your system, don't change them !
 	#define OC_MS_PER_FRAME 10			// Milliseconds delay per frame
 	#define OC_MS_PER_DAY	1750		// Milliseconds delay per day
+	#define OC_MS_PER_DAY_FAST	300		// Milliseconds delay per day fast
 	#define OC_MS_GLOBAL_LOG_FACTOR		500
 	#define OC_MS_STRUCTURE_LOG_FACTOR	400
 

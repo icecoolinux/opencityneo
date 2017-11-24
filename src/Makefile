@@ -119,7 +119,7 @@ am_oczen_OBJECTS = audiomanager.$(OBJEXT) buildinglayer.$(OBJEXT) \
 	persistence.$(OBJEXT) property.$(OBJEXT) \
 	propertymanager.$(OBJEXT) propertymanager2.$(OBJEXT) \
 	texture.$(OBJEXT) systime.$(OBJEXT) vehicle.$(OBJEXT) \
-	zen.$(OBJEXT)
+	windowfactory.$(OBJEXT) zen.$(OBJEXT)
 oczen_OBJECTS = $(am_oczen_OBJECTS)
 oczen_DEPENDENCIES = binreloc/libbinreloc.a mapgen/libmapgen.a \
 	mas/libmas.a model/libmodel.a networking/libnet.a \
@@ -138,7 +138,7 @@ am__opencity_SOURCES_DIST = audiomanager.cpp audiomanagersdl.cpp \
 	map.cpp movement.cpp movementmanager.cpp renderer.cpp ui.cpp \
 	pathfinder.cpp persistence.cpp property.cpp \
 	propertymanager.cpp propertymanager2.cpp texture.cpp \
-	systime.cpp vehicle.cpp
+	systime.cpp vehicle.cpp windowfactory.cpp
 am__objects_1 = audiomanager.$(OBJEXT)
 #am__objects_1 = audiomanagersdl.$(OBJEXT)
 am_opencity_OBJECTS = $(am__objects_1) buildinglayer.$(OBJEXT) \
@@ -151,7 +151,8 @@ am_opencity_OBJECTS = $(am__objects_1) buildinglayer.$(OBJEXT) \
 	movementmanager.$(OBJEXT) renderer.$(OBJEXT) ui.$(OBJEXT) \
 	pathfinder.$(OBJEXT) persistence.$(OBJEXT) property.$(OBJEXT) \
 	propertymanager.$(OBJEXT) propertymanager2.$(OBJEXT) \
-	texture.$(OBJEXT) systime.$(OBJEXT) vehicle.$(OBJEXT)
+	texture.$(OBJEXT) systime.$(OBJEXT) vehicle.$(OBJEXT) \
+	windowfactory.$(OBJEXT)
 opencity_OBJECTS = $(am_opencity_OBJECTS)
 opencity_DEPENDENCIES = binreloc/libbinreloc.a \
 	framework/libsharpplus.la mapgen/libmapgen.a mas/libmas.a \
@@ -469,7 +470,8 @@ opencity_SOURCES = \
 	propertymanager2.cpp \
 	texture.cpp \
 	systime.cpp \
-	vehicle.cpp
+	vehicle.cpp \
+	windowfactory.cpp
 
 noinst_HEADERS = \
 	audiomanager.h \
@@ -507,6 +509,7 @@ noinst_HEADERS = \
 	systime.h \
 	ui.h \
 	vehicle.h \
+	windowfactory.h \
 	zen.h
 
 
@@ -555,6 +558,7 @@ oczen_SOURCES = \
 	texture.cpp \
 	systime.cpp \
 	vehicle.cpp \
+	windowfactory.cpp \
 	zen.cpp
 
 all: all-recursive
@@ -694,6 +698,7 @@ include ./$(DEPDIR)/systime.Po
 include ./$(DEPDIR)/texture.Po
 include ./$(DEPDIR)/ui.Po
 include ./$(DEPDIR)/vehicle.Po
+include ./$(DEPDIR)/windowfactory.Po
 include ./$(DEPDIR)/zen.Po
 
 .cpp.o:

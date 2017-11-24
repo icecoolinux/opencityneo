@@ -214,6 +214,7 @@ private:
 	GUIBar*			_pbarPower;			///< The power bar
 	GUIButton*		_pbtnPause;			///< Pause button
 	GUIButton*		_pbtnPlay;			///< Play button
+	GUIButton*		_pbtnFast;			///< Fast button
 
 // Windows
 	GUIWindow* _pwQwery;

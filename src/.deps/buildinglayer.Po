@@ -126,10 +126,11 @@ buildinglayer.o: buildinglayer.cpp /usr/include/stdc-predef.h enum.h \
  guicontainer.h /usr/include/c++/6/vector \
  /usr/include/c++/6/bits/stl_vector.h \
  /usr/include/c++/6/bits/stl_bvector.h /usr/include/c++/6/bits/vector.tcc \
- globalvar.h audiomanager.h extensionmanager.h graphicmanager.h map.h \
- propertymanager.h conf.h renderer.h ../src/networking/networking.h \
- /usr/include/SDL/SDL_net.h movementmanager.h ../src/mas/kernel.h \
- ../src/mas/agent.h ../src/mas/role.h /usr/include/c++/6/list \
+ windowfactory.h ../src/structure/structure.h globalvar.h audiomanager.h \
+ extensionmanager.h graphicmanager.h map.h propertymanager.h conf.h \
+ renderer.h ../src/networking/networking.h /usr/include/SDL/SDL_net.h \
+ movementmanager.h ../src/mas/kernel.h ../src/mas/agent.h \
+ ../src/mas/role.h /usr/include/c++/6/list \
  /usr/include/c++/6/bits/stl_list.h /usr/include/c++/6/bits/list.tcc \
  ../src/mas/environment.h ../src/mas/agentposition.h pathfinder.h \
  mapgen/mapmaker.h mapgen/map.h macros.h
@@ -533,6 +534,10 @@ guicontainer.h:
 /usr/include/c++/6/bits/stl_bvector.h:
 
 /usr/include/c++/6/bits/vector.tcc:
+
+windowfactory.h:
+
+../src/structure/structure.h:
 
 globalvar.h:
 

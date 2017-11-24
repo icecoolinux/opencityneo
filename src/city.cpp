@@ -35,6 +35,7 @@
 #include "agentdemonstrator.h"
 #include "agentrobber.h"
 #include "systime.h"
+#include "windowfactory.h"
 
 // Global settings
 #include "globalvar.h"
@@ -47,8 +48,9 @@ using namespace std;
 
 // Local defines
 #define OC_ACTION_FACTOR 10
-#define GUIBUTTON_POSITION_TOOL		85, 4, 24, 24
-
+#define GUIBUTTON_POSITION_QUERY		54, 35, 24, 24
+#define GUIBUTTON_POSITION_PLAY_PAUSE	54, 4, 24, 24
+#define GUIBUTTON_POSITION_FAST			85, 4, 24, 24
 
    /*=====================================================================*/
 City::City
@@ -270,7 +272,10 @@ void City::Run()
 		return;
 
 // IF not new day THEN return
-	if ( ++uiNumberFrame*gVars.guiMsPerFrame <= OC_MS_PER_DAY )
+	uiNumberFrame++;
+	if ( _eSpeed == OC_SPEED_NORMAL && uiNumberFrame*gVars.guiMsPerFrame <= OC_MS_PER_DAY )
+		return;
+	if ( _eSpeed == OC_SPEED_FAST && uiNumberFrame*gVars.guiMsPerFrame <= OC_MS_PER_DAY_FAST )
 		return;
 
 // New day
@@ -1053,13 +1058,14 @@ City::_CreateGUI()
 	_pctrToolMouse[OC_TOOL_NONE]->Set( OC_GUIMAIN_VISIBLE );
 
 // The button query in status bar
-	_btnQuery = new GUIButton( GUIBUTTON_POSITION_TOOL, ocDataDirPrefix( "graphism/gui/status/query" ));
+	_btnQuery = new GUIButton( GUIBUTTON_POSITION_QUERY, ocDataDirPrefix( "graphism/gui/status/query" ));
 	_btnQuery->Set( OC_GUIMAIN_VISIBLE );
 
 // The status bar
-	_pbtnPause = new GUIButton( 54, 4, 24, 24, ocDataDirPrefix( "graphism/gui/status/speed_pause" ));
-	_pbtnPlay  = new GUIButton( 54, 4, 24, 24, ocDataDirPrefix( "graphism/gui/status/speed_play" ));
+	_pbtnPause = new GUIButton( GUIBUTTON_POSITION_PLAY_PAUSE, ocDataDirPrefix( "graphism/gui/status/speed_pause" ));
+	_pbtnPlay  = new GUIButton( GUIBUTTON_POSITION_PLAY_PAUSE, ocDataDirPrefix( "graphism/gui/status/speed_play" ));
 	_pbtnPlay->Unset( OC_GUIMAIN_VISIBLE );
+	_pbtnFast  = new GUIButton( GUIBUTTON_POSITION_FAST, ocDataDirPrefix( "graphism/gui/status/speed_fast" ));
 
 	ossTemp << _liCityFund;
 	_plblFund = new GUILabel( 125, 11, 80, 10, ossTemp.str() );
@@ -1093,6 +1099,7 @@ City::_CreateGUI()
 	_pctrStatus = new GUIContainer( (_iWinWidth-512)/2, 0, 512, 64, ocDataDirPrefix( "graphism/gui/main_status_bar.png" ) );
 	_pctrStatus->Add( _pbtnPause );
 	_pctrStatus->Add( _pbtnPlay );
+	_pctrStatus->Add( _pbtnFast );
 	_pctrStatus->Add( _btnQuery );
 	_pctrStatus->Add( _plblFund );
 	_pctrStatus->Add( _plblPopulation );
@@ -1104,7 +1111,7 @@ City::_CreateGUI()
 	_pctrStatus->Set( OC_GUIMAIN_VISIBLE );
 
 // Windows.
-	_pwStatistics = new GUIWindow(_iWinWidth*0.10f, _iWinHeight*0.10f, _iWinWidth*0.80f, _iWinHeight*0.80f, "Statistics");
+	_pwStatistics = WindowFactory::createStatsWindow();
 	((GUIContainer*)_pwStatistics->GetContainer())->Unset(OC_GUIMAIN_VISIBLE);
 	_pwQwery = NULL;
 
@@ -1298,6 +1305,7 @@ City::_DeleteGUI()
 	delete _plblPopulation;
 	delete _plblDate;
 	delete _pbtnPlay;
+	delete _pbtnFast;
 	delete _pbtnPause;
 
 // The query button
@@ -1895,7 +1903,14 @@ City::_HandleStatusClick()
 			_eSpeed = OC_SPEED_NORMAL;
 			break;
 
-		case 3:		// Click on Query tool
+		case 3:		// Click on Fast button
+			OPENCITY_DEBUG( "Fast speed mode" );
+			_pbtnPlay->Set( OC_GUIMAIN_VISIBLE );
+			_pbtnPause->Unset( OC_GUIMAIN_VISIBLE );
+			_eSpeed = OC_SPEED_FAST;
+			break;
+			
+		case 4:		// Click on Query tool
 			OPENCITY_DEBUG( "Query tool" );
 			if( _eCurrentTool == OC_TOOL_QUERY )
 				_SetCurrentTool( OC_TOOL_NONE );
