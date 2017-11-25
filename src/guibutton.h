@@ -23,13 +23,6 @@
 #include "guimain.h"
 #include "texture.h"
 
-#define GUIBUTTON_POSITION_1		19, 73, 30, 30
-#define GUIBUTTON_POSITION_2		19, 33, 30, 30
-#define GUIBUTTON_POSITION_3		55, 13, 30, 30
-#define GUIBUTTON_POSITION_4		91, 33, 30, 30
-#define GUIBUTTON_POSITION_5		91, 73, 30, 30
-#define GUIBUTTON_POSITION_6		55, 93, 30, 30
-
 
 //========================================================================
 /** One or two states button: onMouseOver and onMouseOut. The default
@@ -44,10 +37,17 @@ public:
 		const uint& rcuiW,
 		const uint& rcuiH,
 		const string& strFile,
-		uint numberState = 2 );
+		bool hasMouseOver = true,
+		bool hasActive = false);
 	~GUIButton();
 
 
+	bool
+	IsActive();
+	
+	void
+	SetActive(bool active);
+	
 	void
 	SetBackground(
 		const Color& color );
@@ -75,9 +75,12 @@ public:
 
 
 private:
-	uint		_uiNumberState;				///< Number of state (default is 2)
+	bool 		_active;					///< The button is active.
+	uint		_uiHasMouseOver;			///< Has texture with mouse over (default is true)
+	uint		_uiHasActive;				///< Has texture when is active (default is false)
 	Texture		moTextureNormal;			///< Inactive button texture
 	Texture		moTextureOver;				///< On mouse over button texture
+	Texture		moTextureActive;			///< On active button texture
 
 	Color		_cForeground;				///< Foreground color
 	Color		_cBackground;				///< Background color

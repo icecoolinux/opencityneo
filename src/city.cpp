@@ -48,9 +48,20 @@ using namespace std;
 
 // Local defines
 #define OC_ACTION_FACTOR 10
-#define GUIBUTTON_POSITION_QUERY		54, 35, 24, 24
-#define GUIBUTTON_POSITION_PLAY_PAUSE	54, 4, 24, 24
-#define GUIBUTTON_POSITION_FAST			85, 4, 24, 24
+#define GUIBUTTON_POSITION_QUERY	54, 4, 24, 24
+#define GUIBUTTON_POSITION_PAUSE	54, 35, 24, 24
+#define GUIBUTTON_POSITION_PLAY		81, 35, 24, 24
+#define GUIBUTTON_POSITION_FAST		108, 35, 24, 24
+
+#define SIZE_BUTTON_TOOLCIRCLE 45
+#define RADIO_TOOLCIRCLE 80
+#define DIST_CENTER (RADIO_TOOLCIRCLE - SIZE_BUTTON_TOOLCIRCLE/2)
+#define GUIBUTTON_POSITION_1		RADIO_TOOLCIRCLE - DIST_CENTER*0.5f - SIZE_BUTTON_TOOLCIRCLE/2, RADIO_TOOLCIRCLE + DIST_CENTER*0.87f - SIZE_BUTTON_TOOLCIRCLE/2,	SIZE_BUTTON_TOOLCIRCLE, SIZE_BUTTON_TOOLCIRCLE
+#define GUIBUTTON_POSITION_2		RADIO_TOOLCIRCLE - DIST_CENTER - SIZE_BUTTON_TOOLCIRCLE/2, 		RADIO_TOOLCIRCLE - SIZE_BUTTON_TOOLCIRCLE/2, 						SIZE_BUTTON_TOOLCIRCLE, SIZE_BUTTON_TOOLCIRCLE
+#define GUIBUTTON_POSITION_3		RADIO_TOOLCIRCLE - DIST_CENTER*0.5f - SIZE_BUTTON_TOOLCIRCLE/2, RADIO_TOOLCIRCLE - DIST_CENTER*0.87f - SIZE_BUTTON_TOOLCIRCLE/2, 	SIZE_BUTTON_TOOLCIRCLE, SIZE_BUTTON_TOOLCIRCLE
+#define GUIBUTTON_POSITION_4		RADIO_TOOLCIRCLE + DIST_CENTER*0.5f - SIZE_BUTTON_TOOLCIRCLE/2, RADIO_TOOLCIRCLE - DIST_CENTER*0.87f - SIZE_BUTTON_TOOLCIRCLE/2,	SIZE_BUTTON_TOOLCIRCLE, SIZE_BUTTON_TOOLCIRCLE
+#define GUIBUTTON_POSITION_5		RADIO_TOOLCIRCLE + DIST_CENTER - SIZE_BUTTON_TOOLCIRCLE/2, 		RADIO_TOOLCIRCLE - SIZE_BUTTON_TOOLCIRCLE/2, 						SIZE_BUTTON_TOOLCIRCLE, SIZE_BUTTON_TOOLCIRCLE
+#define GUIBUTTON_POSITION_6		RADIO_TOOLCIRCLE + DIST_CENTER*0.5f - SIZE_BUTTON_TOOLCIRCLE/2, RADIO_TOOLCIRCLE + DIST_CENTER*0.87f - SIZE_BUTTON_TOOLCIRCLE/2, 	SIZE_BUTTON_TOOLCIRCLE, SIZE_BUTTON_TOOLCIRCLE
 
    /*=====================================================================*/
 City::City
@@ -617,8 +628,10 @@ void City::Keyboard( const SDL_KeyboardEvent& rcEvent )
 
 		case SDLK_ESCAPE:	// Close toolcircle, quit tool, close static window, close query window, Open/close the main menu.
 			if (_pctrMenu == NULL) {
-				if (_pctr->IsSet( OC_GUIMAIN_VISIBLE )) // Close toolcircle
+				if (_pctr->IsSet( OC_GUIMAIN_VISIBLE )) { // Close toolcircle
 					_pctr->Unset( OC_GUIMAIN_VISIBLE );
+					_pctr = _pctrMain; // Back to main menu toolcircle.
+				}
 				else if (_eCurrentTool != OC_TOOL_NONE) // Close tool
 					_SetCurrentTool( OC_TOOL_NONE );
 				else if (_pwStatistics != NULL && ((GUIContainer*)_pwStatistics->GetContainer())->IsSet(OC_GUIMAIN_VISIBLE)) // Close static window
@@ -812,6 +825,7 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
  			{
 				if (_pctr->IsSet( OC_GUIMAIN_VISIBLE )) {
 					_pctr->Unset( OC_GUIMAIN_VISIBLE );
+					_pctr = _pctrMain; // Back to main toolcircle.
 				}
 				else if (!_pctrStatus->IsInside(rcsMBE.x, _iWinHeight - rcsMBE.y) and
 						gVars.gpRenderer->GetSelectedWLFrom(rcsMBE.x, rcsMBE.y, _uiMapW1, _uiMapL1, gVars.gpMapMgr, _apLayer[ _eCurrentLayer ])) {
@@ -827,6 +841,7 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
 			if (rcsMBE.button == SDL_BUTTON_RIGHT) {
 			// Hide toolcircle.
 				_pctr->Unset( OC_GUIMAIN_VISIBLE );
+				_pctr = _pctrMain; // Back to main toolcircle.
 				_bRMBPressed = true;
 				// Reset the move of mouse.
 				_iXMove = 0;
@@ -1062,10 +1077,10 @@ City::_CreateGUI()
 	_btnQuery->Set( OC_GUIMAIN_VISIBLE );
 
 // The status bar
-	_pbtnPause = new GUIButton( GUIBUTTON_POSITION_PLAY_PAUSE, ocDataDirPrefix( "graphism/gui/status/speed_pause" ));
-	_pbtnPlay  = new GUIButton( GUIBUTTON_POSITION_PLAY_PAUSE, ocDataDirPrefix( "graphism/gui/status/speed_play" ));
-	_pbtnPlay->Unset( OC_GUIMAIN_VISIBLE );
-	_pbtnFast  = new GUIButton( GUIBUTTON_POSITION_FAST, ocDataDirPrefix( "graphism/gui/status/speed_fast" ));
+	_pbtnPause = new GUIButton( GUIBUTTON_POSITION_PAUSE, ocDataDirPrefix( "graphism/gui/status/speed_pause" ), true, true);
+	_pbtnPlay  = new GUIButton( GUIBUTTON_POSITION_PLAY, ocDataDirPrefix( "graphism/gui/status/speed_play" ), true, true);
+	_pbtnPlay->SetActive(true);
+	_pbtnFast  = new GUIButton( GUIBUTTON_POSITION_FAST, ocDataDirPrefix( "graphism/gui/status/speed_fast" ), true, true);
 
 	ossTemp << _liCityFund;
 	_plblFund = new GUILabel( 125, 11, 80, 10, ossTemp.str() );
@@ -1123,7 +1138,7 @@ City::_CreateGUI()
 	pbtnX = new GUIButton( GUIBUTTON_POSITION_4, ocDataDirPrefix( "graphism/gui/bulldozer" ));
 	pbtnG = new GUIButton( GUIBUTTON_POSITION_6, ocDataDirPrefix( "graphism/gui/government" ));
 
-	_pctrMain = new GUIContainer( 100, 100, 140, 140, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
+	_pctrMain = new GUIContainer( 100, 100, RADIO_TOOLCIRCLE*2, RADIO_TOOLCIRCLE*2, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
 	_pctrMain->Add( pbtnZ );
 	_pctrMain->Add( pbtnS );
 	_pctrMain->Add( pbtnL );
@@ -1138,7 +1153,7 @@ City::_CreateGUI()
 	pbtnZC = new GUIButton( GUIBUTTON_POSITION_3, ocDataDirPrefix( "graphism/gui/commercial" ));
 	pbtnZI = new GUIButton( GUIBUTTON_POSITION_4, ocDataDirPrefix( "graphism/gui/industrial" ));
 
-	_pctrZ = new GUIContainer( 100, 100, 140, 140, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
+	_pctrZ = new GUIContainer( 100, 100, RADIO_TOOLCIRCLE*2, RADIO_TOOLCIRCLE*2, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
 	_pctrZ->Add( pbtnZB );
 	_pctrZ->Add( pbtnZR );
 	_pctrZ->Add( pbtnZC );
@@ -1151,7 +1166,7 @@ City::_CreateGUI()
 	pbtnLN = new GUIButton( GUIBUTTON_POSITION_4, ocDataDirPrefix( "graphism/gui/power_plant_nuclear" ));
 	pbtnLC = new GUIButton( GUIBUTTON_POSITION_5, ocDataDirPrefix( "graphism/gui/power_plant_coal" ));
 
-	_pctrL = new GUIContainer( 100, 100, 140, 140, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
+	_pctrL = new GUIContainer( 100, 100, RADIO_TOOLCIRCLE*2, RADIO_TOOLCIRCLE*2, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
 	_pctrL->Add( pbtnLB );
 	_pctrL->Add( pbtnLL );
 	_pctrL->Add( pbtnLN );
@@ -1165,7 +1180,7 @@ City::_CreateGUI()
 	pbtnTX = new GUIButton( GUIBUTTON_POSITION_1, ocDataDirPrefix( "graphism/gui/destroy" ));
 	pbtnTQ = new GUIButton( GUIBUTTON_POSITION_5, ocDataDirPrefix( "graphism/gui/query" ));
 
-	_pctrT = new GUIContainer( 100, 100, 140, 140, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
+	_pctrT = new GUIContainer( 100, 100, RADIO_TOOLCIRCLE*2, RADIO_TOOLCIRCLE*2, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
 	_pctrT->Add( pbtnTB );
 	_pctrT->Add( pbtnTU );
 	_pctrT->Add( pbtnTD );
@@ -1181,7 +1196,7 @@ City::_CreateGUI()
 	pbtnGL = new GUIButton( GUIBUTTON_POSITION_3, ocDataDirPrefix( "graphism/gui/police" ));
 	pbtnGF = new GUIButton( GUIBUTTON_POSITION_4, ocDataDirPrefix( "graphism/gui/fire" ));
 
-	_pctrG = new GUIContainer( 100, 100, 140, 140, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
+	_pctrG = new GUIContainer( 100, 100, RADIO_TOOLCIRCLE*2, RADIO_TOOLCIRCLE*2, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
 	_pctrG->Add( pbtnGB );
 	_pctrG->Add( pbtnGP );
 	_pctrG->Add( pbtnGE );
@@ -1195,7 +1210,7 @@ City::_CreateGUI()
 	pbtnNP = new GUIButton( GUIBUTTON_POSITION_6, ocDataDirPrefix( "graphism/gui/park_city" ));
 	pbtnNT = new GUIButton( GUIBUTTON_POSITION_5, ocDataDirPrefix( "graphism/gui/tree" ));
 
-	_pctrN = new GUIContainer( 100, 100, 140, 140, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
+	_pctrN = new GUIContainer( 100, 100, RADIO_TOOLCIRCLE*2, RADIO_TOOLCIRCLE*2, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
 	_pctrN->Add( pbtnNB );
 	_pctrN->Add( pbtnNP );
 	_pctrN->Add( pbtnNT );
@@ -1206,14 +1221,14 @@ City::_CreateGUI()
 	pbtnSS = new GUIButton( GUIBUTTON_POSITION_6, ocDataDirPrefix( "graphism/gui/save_save" ));
 	pbtnSB = new GUIButton( GUIBUTTON_POSITION_5, ocDataDirPrefix( "graphism/gui/back" ));
 
-	_pctrS = new GUIContainer( 100, 100, 140, 140, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
+	_pctrS = new GUIContainer( 100, 100, RADIO_TOOLCIRCLE*2, RADIO_TOOLCIRCLE*2, ocDataDirPrefix( "graphism/gui/toolcircle_bg.png" ) );
 	_pctrS->Add( pbtnSB );
 	_pctrS->Add( pbtnSS );
 	_pctrS->Add( pbtnSL );
 
 
 // MAS toolcircle
-	_pctrMAS = new GUIContainer( 100, 100, 140, 140 );
+	_pctrMAS = new GUIContainer( 100, 100, RADIO_TOOLCIRCLE*2, RADIO_TOOLCIRCLE*2 );
 	pbtnMASPolice = new GUIButton( 20,  20,  30, 30, ocDataDirPrefix( "graphism/gui/police" ));
 	pbtnMASDemonstrator = new GUIButton( 60,  0,   30, 30, ocDataDirPrefix( "graphism/gui/demonstrator" ));
 	pbtnMASRobber = new GUIButton( 100, 20,  30, 30, ocDataDirPrefix( "graphism/gui/robber" ));
@@ -1890,24 +1905,36 @@ City::_HandleStatusClick()
 // WARNING: the GUI button displays the current speed
 	switch (uiObject) {
 		case 1:		// Click on Pause button
-			OPENCITY_DEBUG( "Pause mode" );
-			_pbtnPlay->Set( OC_GUIMAIN_VISIBLE );
-			_pbtnPause->Unset( OC_GUIMAIN_VISIBLE );
-			_eSpeed = OC_SPEED_PAUSE;
+			if( _pbtnPause->IsActive() )
+			{
+				OPENCITY_DEBUG( "Normal speed mode" );
+				_eSpeed = OC_SPEED_NORMAL;
+				_pbtnPause->SetActive(false);
+				_pbtnPlay->SetActive(true);
+			}
+			else {
+				OPENCITY_DEBUG( "Pause mode" );
+				_eSpeed = OC_SPEED_PAUSE;
+				_pbtnPause->SetActive(true);
+				_pbtnPlay->SetActive(false);
+				_pbtnFast->SetActive(false);
+			}
 			break;
 
 		case 2:		// Click on Play button
 			OPENCITY_DEBUG( "Normal speed mode" );
-			_pbtnPause->Set( OC_GUIMAIN_VISIBLE );
-			_pbtnPlay->Unset( OC_GUIMAIN_VISIBLE );
 			_eSpeed = OC_SPEED_NORMAL;
+			_pbtnPause->SetActive(false);
+			_pbtnPlay->SetActive(true);
+			_pbtnFast->SetActive(false);
 			break;
 
 		case 3:		// Click on Fast button
 			OPENCITY_DEBUG( "Fast speed mode" );
-			_pbtnPlay->Set( OC_GUIMAIN_VISIBLE );
-			_pbtnPause->Unset( OC_GUIMAIN_VISIBLE );
 			_eSpeed = OC_SPEED_FAST;
+			_pbtnPause->SetActive(false);
+			_pbtnPlay->SetActive(false);
+			_pbtnFast->SetActive(true);
 			break;
 			
 		case 4:		// Click on Query tool

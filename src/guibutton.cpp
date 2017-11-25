@@ -24,7 +24,9 @@
 
    /*=====================================================================*/
 GUIButton::GUIButton():
-_uiNumberState(0)
+_active(false),
+_uiHasMouseOver(false),
+_uiHasActive(false)
 {
 	OPENCITY_DEBUG( "Dctor" );
 }
@@ -38,9 +40,12 @@ GUIButton::GUIButton
 	const uint& rcuiW,
 	const uint& rcuiH,
 	const string& strFile,
-	uint numberState
+	bool hasMouseOver,
+	bool hasActive
 ):
-_uiNumberState(numberState)
+_active(false),
+_uiHasMouseOver(hasMouseOver),
+_uiHasActive(hasActive)
 {
 	OPENCITY_DEBUG( "Pctor" );
 
@@ -56,11 +61,12 @@ _uiNumberState(numberState)
 	_uiWidth = rcuiW;
 	_uiHeight = rcuiH;
 
-// Load the texture from the image
+// Load the textures from the image
 	moTextureNormal = Texture( strFile + ".png" );
-	if (_uiNumberState == 2) {
+	if (_uiHasMouseOver)
 		moTextureOver = Texture( strFile + "_over.png" );
-	}
+	if (_uiHasActive)
+		moTextureActive = Texture( strFile + "_active.png" );
 
 // Set the default colors
 	_cForeground = OPENCITY_PALETTE[ Color::OC_BLACK ];
@@ -77,6 +83,20 @@ GUIButton::~GUIButton()
 	OPENCITY_DEBUG( "Dtor" );
 }
 
+
+  /*=====================================================================*/
+bool
+GUIButton::IsActive()
+{
+	return _active;
+}
+
+  /*=====================================================================*/
+void
+GUIButton::SetActive(bool active)
+{
+	_active = active;
+}
 
    /*=====================================================================*/
 void
@@ -132,9 +152,12 @@ GUIButton::Display() const
 
 // Select the appropriate texture
 // IF the mouse is over THEN choose the over texture
+// ELSE IF the button is active THEN choose the active texture
 // ELSE, use the normal texture
-	if ( IsSet(OC_GUIMAIN_MOUSEOVER) && _uiNumberState > 1 )
+	if ( IsSet(OC_GUIMAIN_MOUSEOVER) && _uiHasMouseOver )
 		glBindTexture( GL_TEXTURE_2D, moTextureOver.GetName() );
+	else if ( _active && _uiHasActive )
+		glBindTexture( GL_TEXTURE_2D, moTextureActive.GetName() );
 	else
 		glBindTexture( GL_TEXTURE_2D, moTextureNormal.GetName() );
 
