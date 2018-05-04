@@ -84,6 +84,7 @@ _uiWidth( width ),
 _uiLength( length ),
 
 _bLMBPressedOverMap( false ),
+_bLMBPressed( false ),
 _bRMBPressed( false ),
 
 _bMoveCamera(false),
@@ -742,27 +743,27 @@ City::MouseMotion( const SDL_MouseMotionEvent& rcEvent )
 {
 //	OPENCITY_DEBUG("Mouse moved");
 
-// We process the menu first
-	if (_pctrMenu != NULL) {
+	// We process the menu first
+	if (_pctrMenu != NULL)
 		_pctrMenu->MouseMotion( rcEvent );
-	}
-	else {
-				
+	else
+	{
 		_pwStatistics->GetContainer()->MouseMotion( rcEvent );
 		if(_pwQwery != NULL)
 			_pwQwery->GetContainer()->MouseMotion( rcEvent );
 		_pctr->MouseMotion( rcEvent );
 		_pctrStatus->MouseMotion( rcEvent );
 		
-	// Right mouse button is pressed and the mouse move more than 3 pixels.
-	// Reset and active the move of the camera.
-		if( _bRMBPressed && ( abs(_iXMove)>3 || abs(_iYMove)>3 ) ) {
+		// Right mouse button is pressed, left button isn't pressed and the mouse move more than 3 pixels.
+		// Reset and active the move of the camera.
+		if( _bRMBPressed && !_bLMBPressed && ( abs(_iXMove)>3 || abs(_iYMove)>3 ) )
+		{
 			_bMoveCamera = true;
 			_iXMove = 0;
 			_iYMove = 0;
 		}
 
-	// For the move or rotation of the camera.
+		// For the move or rotation of the camera.
 		_iXMove += rcEvent.xrel;
 		_iYMove += rcEvent.yrel;
 	}
@@ -817,19 +818,35 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
 		return;
 	}
 
-// The user didn't click on a GUI object so we look for clicks on the map
-	switch (rcsMBE.state) {
-		case SDL_PRESSED: {
+	// The user didn't click on a GUI object so we look for clicks on the map
+	switch (rcsMBE.state) 
+	{
+		case SDL_PRESSED:
+		{
 			_bLMBPressedOverMap = false;
 			if (rcsMBE.button == SDL_BUTTON_LEFT)
  			{
-				if (_pctr->IsSet( OC_GUIMAIN_VISIBLE )) {
+				_bLMBPressed = true;
+				
+				// If I'm in the toolcircle, I remove it.
+				if (_pctr->IsSet( OC_GUIMAIN_VISIBLE ))
+				{
 					_pctr->Unset( OC_GUIMAIN_VISIBLE );
 					_pctr = _pctrMain; // Back to main toolcircle.
 				}
-				else if (!_pctrStatus->IsInside(rcsMBE.x, _iWinHeight - rcsMBE.y) and
-						gVars.gpRenderer->GetSelectedWLFrom(rcsMBE.x, rcsMBE.y, _uiMapW1, _uiMapL1, gVars.gpMapMgr, _apLayer[ _eCurrentLayer ])) {
-					_bLMBPressedOverMap = true;
+				// I'm not in the toolcircle.
+				else
+				{
+					// If the right mouse is pressed, active rotate camera.
+					if(_bRMBPressed)
+					{
+						_bRotateCamera = true;
+						_bMoveCamera = false; // And desactive camera move.
+					}
+					
+					// User did click in the map.
+					if (!_pctrStatus->IsInside(rcsMBE.x, _iWinHeight - rcsMBE.y) && gVars.gpRenderer->GetSelectedWLFrom(rcsMBE.x, rcsMBE.y, _uiMapW1, _uiMapL1, gVars.gpMapMgr, _apLayer[ _eCurrentLayer ]))
+						_bLMBPressedOverMap = true;
 				}
 			} //if
 //debug begin
@@ -837,15 +854,24 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
 //SDL_Delay( 500 );
 //debug end
 
-		// RMB (right mouse button) close/open the toolcircle
-			if (rcsMBE.button == SDL_BUTTON_RIGHT) {
-			// Hide toolcircle.
+			// RMB (right mouse button) close/open the toolcircle
+			if (rcsMBE.button == SDL_BUTTON_RIGHT) 
+			{
+				// Hide toolcircle.
 				_pctr->Unset( OC_GUIMAIN_VISIBLE );
 				_pctr = _pctrMain; // Back to main toolcircle.
 				_bRMBPressed = true;
+				
 				// Reset the move of mouse.
 				_iXMove = 0;
 				_iYMove = 0;
+				
+				// If the left mouse is pressed, active rotate camera.
+				if(_bLMBPressed)
+				{
+					_bRotateCamera = true;
+					_bMoveCamera = false; // And desactive camera move.
+				}
 			}
 
 			// Wheel button pressed
@@ -892,15 +918,18 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
 
 	   //-------------------------------------------------------
 		case SDL_RELEASED: {
-		// Left Mouse Button.
-			if(rcsMBE.button == SDL_BUTTON_LEFT){
-			// IF Ctrl not pressed,
-			// AND dragging enabled
-			// AND mouse button was correctly released in the map
-			// THEN do tool
-				if (not (SDL_GetModState() & KMOD_CTRL)
-					and _bLMBPressedOverMap
-					and gVars.gpRenderer->GetSelectedWLFrom(
+			// Left Mouse Button.
+			if(rcsMBE.button == SDL_BUTTON_LEFT)
+			{
+				_bLMBPressed = false;
+				
+				// IF Ctrl not pressed,
+				// AND dragging enabled
+				// AND mouse button was correctly released in the map
+				// THEN do tool
+				if (! (SDL_GetModState() & KMOD_CTRL)
+					&& _bLMBPressedOverMap
+					&& gVars.gpRenderer->GetSelectedWLFrom(
 						rcsMBE.x, rcsMBE.y,
 						_uiMapW2, _uiMapL2,
 						gVars.gpMapMgr,
@@ -915,19 +944,22 @@ City::MouseButton( const SDL_MouseButtonEvent& rcsMBE )
 				} //if
 
 				_bLMBPressedOverMap = false;
+				
+				// Stop the move with the mouse.
+				_bRotateCamera = false;
 			}
-
-		// RMB (right mouse button).
-			if (rcsMBE.button == SDL_BUTTON_RIGHT) {
-
-			// Show toolcircle if not ckicked on top the status bar and not move/rotate the camera.
-				if( (!_pctrStatus->IsSet(OC_GUIMAIN_VISIBLE) || !_pctrStatus->IsInside(rcsMBE.x, _iWinHeight - rcsMBE.y))
-					&& !_bMoveCamera && !_bRotateCamera ){
+			// RMB (right mouse button).
+			if (rcsMBE.button == SDL_BUTTON_RIGHT) 
+			{
+				// Show toolcircle if not ckicked on top the status bar and not move/rotate the camera.
+				if( (!_pctrStatus->IsSet(OC_GUIMAIN_VISIBLE) || !_pctrStatus->IsInside(rcsMBE.x, _iWinHeight - rcsMBE.y)) && !_bMoveCamera && !_bRotateCamera )
+				{
 					_pctr->SetLocation( rcsMBE.x - 70, _iWinHeight - rcsMBE.y - 70 );
 					_pctr->Set( OC_GUIMAIN_VISIBLE );
 				}
 
-				// Stop the move of the mouse
+				// Stop the move with the mouse.
+				_bRotateCamera = false;
 				_bMoveCamera = false;
 				_bRMBPressed = false;
 			}

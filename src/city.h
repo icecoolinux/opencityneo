@@ -138,6 +138,7 @@ private:
 
 // Dragging mode and mouse click
 	bool		_bLMBPressedOverMap;		///< Is the left mouse button pressed over the map?
+	bool		_bLMBPressed;				///< Is the left mouse button pressed?
 	bool		_bRMBPressed;				///< Is the right mouse button pressed?
 	
 // Current voxel selected with mouse.
