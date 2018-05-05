@@ -20,8 +20,8 @@
 #ifndef _OPENCITY_UI_H_
 #define _OPENCITY_UI_H_ 1
 
-#include "macros.h"
 #include "SDL.h"
+#include "macros.h"
 
 //========================================================================
 /** This is the base class for all other User Interface classes. It

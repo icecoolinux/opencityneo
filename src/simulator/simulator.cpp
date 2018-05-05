@@ -54,7 +54,7 @@ _pMapCity( pmap )
 	OPENCITY_DEBUG( "Sim param ctor" );
 
    // it is critical to have a functional mutex
-	assert( mutex != NULL );
+//   assert( mutex != NULL );
 }
 
 

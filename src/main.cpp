@@ -787,7 +787,7 @@ located in OpenCity executable directory.",
 	// Restart with a new city from scratch
 	// WARNING: code duplication
 		if (bRestart) {
-			
+
 		// Remove all moving objects
 			gVars.gpMoveMgr->Remove();
 

@@ -93,7 +93,8 @@ const String XmlDocument::GetOuterXml() const
 
 	// Converts the character buffer to the String type
 	String lsDump(lpBuffer);
-	xmlFree(lpBuffer);
+	//xmlFree(lpBuffer);
+	free(lpBuffer);
 	lpBuffer = NULL;
 
 	return lsDump;
