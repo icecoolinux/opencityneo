@@ -7,17 +7,17 @@
 
 [Setup]
 AppCopyright=Copyright (C) 2009 by Duong Khang NGUYEN
-AppName=OpenCity 0.0.6.2 stable
-AppPublisher=Duong Khang NGUYEN
-AppPublisherURL=http://www.opencity.info
-AppVerName=OpenCity 0.0.6.2 stable
-AppVersion=OpenCity 0.0.6.2 stable
+AppName=OpenCityNeo 0.1.0 dev
+AppPublisher=Icecool
+AppPublisherURL=https://github.com/icecoolinux/opencityneo
+AppVerName=OpenCityNeo 0.1.0 dev
+AppVersion=OpenCityNeo 0.1.0 dev
 Compression=lzma
-DefaultDirName={pf}\OpenCity
-DefaultGroupName=OpenCity
+DefaultDirName={pf}\OpenCityNeo
+DefaultGroupName=OpenCityNeo
 LicenseFile=..\COPYING
 SolidCompression=yes
-VersionInfoVersion=0.0.6.2
+VersionInfoVersion=0.1.0
 ;WindowVisible=no
 
 [Languages]
@@ -28,39 +28,39 @@ Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
 
 [Files]
-Source: "bin\Release\OpenCity-0.0.6.2stable.exe"; DestDir: "{app}\bin";
+Source: "bin\Release\OpenCityNeo.exe"; DestDir: "{app}\bin";
 Source: "bin\Release\*.dll"; DestDir: "{app}\bin"
-Source: "..\config\*"; DestDir: "{app}\etc\opencity\config"; Excludes: ".svn"
-Source: "..\graphism\*"; DestDir: "{app}\share\opencity\graphism"; Excludes: ".svn"; Flags: recursesubdirs createallsubdirs
-Source: "..\sound\*"; DestDir: "{app}\share\opencity\sound"; Excludes: ".svn"
-Source: "docs\*.txt"; DestDir: "{app}\share\opencity\docs";
+Source: "..\config\*"; DestDir: "{app}\etc\opencityneo\config"; Excludes: ".svn"
+Source: "..\graphism\*"; DestDir: "{app}\share\opencityneo\graphism"; Excludes: ".svn"; Flags: recursesubdirs createallsubdirs
+Source: "..\sound\*"; DestDir: "{app}\share\opencityneo\sound"; Excludes: ".svn"
+Source: "docs\*.txt"; DestDir: "{app}\share\opencityneo\docs";
 Source: "docs\FAQ.txt"; DestDir: "{app}"
 Source: "docs\README.txt"; DestDir: "{app}"; Flags: isreadme
 ; MSVC C runtime manifest
 ;Source: "Release\Microsoft.VC80.CRT.manifest"; DestDir: "{app}\bin"
 
 [Dirs]
-Name: "{userappdata}\opencity\"
+Name: "{userappdata}\opencityneo\"
 
 [Icons]
-Name: "{group}\OpenCity - window"; Filename: "{app}\bin\OpenCity-0.0.6.2stable.exe"; IconFilename: "{app}\share\opencity\graphism\icon\OpenCity32.ico"; Parameters: "-dd ""{app}\share\opencity"" -cd ""{app}\etc\opencity"" -glv"; WorkingDir: "{app}"
-Name: "{group}\OpenCity - fullscreen (autodetect mode)"; Filename: "{app}\bin\OpenCity-0.0.6.2stable.exe"; IconFilename: "{app}\share\opencity\graphism\icon\OpenCity32.ico"; Parameters: "-dd ""{app}\share\opencity"" -cd ""{app}\etc\opencity"" -fs -glv"; WorkingDir: "{app}"
+Name: "{group}\OpenCityNeo - window"; Filename: "{app}\bin\OpenCityNeo.exe"; IconFilename: "{app}\share\opencityneo\graphism\icon\OpenCity32.ico"; Parameters: "-dd ""{app}\share\opencityneo"" -cd ""{app}\etc\opencityneo"" -glv"; WorkingDir: "{app}"
+Name: "{group}\OpenCityNeo - fullscreen (autodetect mode)"; Filename: "{app}\bin\OpenCityNeo.exe"; IconFilename: "{app}\share\opencityneo\graphism\icon\OpenCity32.ico"; Parameters: "-dd ""{app}\share\opencityneo"" -cd ""{app}\etc\opencityneo"" -fs -glv"; WorkingDir: "{app}"
 Name: "{group}\Configuration file"; Filename: "{app}\etc\opencity\config\opencity.xml"
-Name: "{group}\Save folder"; Filename: "{userappdata}\opencity\"
-Name: "{group}\Homepage"; Filename: "http://www.opencity.info"
+Name: "{group}\Save folder"; Filename: "{userappdata}\opencityneo\"
+Name: "{group}\Homepage"; Filename: "https://github.com/icecoolinux/opencityneo"
 Name: "{group}\Documentation\FAQ in English"; Filename: "{app}\FAQ.txt"
-Name: "{group}\Documentation\FAQ in Italian"; Filename: "{app}\share\opencity\docs\FAQ_it.txt"
-Name: "{group}\Documentation\INSTALL in Italian"; Filename: "{app}\share\opencity\docs\INSTALL_it.txt"
+Name: "{group}\Documentation\FAQ in Italian"; Filename: "{app}\share\opencityneo\docs\FAQ_it.txt"
+Name: "{group}\Documentation\INSTALL in Italian"; Filename: "{app}\share\opencityneo\docs\INSTALL_it.txt"
 Name: "{group}\Documentation\README in English"; Filename: "{app}\README.txt";
-Name: "{group}\Documentation\README in Italian"; Filename: "{app}\share\opencity\docs\README_it.txt"
-Name: "{group}\Documentation\README in Spanish"; Filename: "{app}\share\opencity\docs\README_es.txt"
+Name: "{group}\Documentation\README in Italian"; Filename: "{app}\share\opencityneo\docs\README_it.txt"
+Name: "{group}\Documentation\README in Spanish"; Filename: "{app}\share\opencityneo\docs\README_es.txt"
 Name: "{group}\Uninstall"; Filename: "{uninstallexe}";
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}"
 
 [Run]
-Filename: "{win}\explorer.exe"; Parameters: "http://www.opencity.info"; Flags: nowait skipifdoesntexist
+Filename: "{win}\explorer.exe"; Parameters: "https://github.com/icecoolinux/opencityneo"; Flags: nowait skipifdoesntexist
 
 [Code]
 function InitializeSetup: Boolean;
